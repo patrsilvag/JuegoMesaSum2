@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+/**
+ * @description Item dentro del carrito de compras.
+ * @usageNotes
+ * Se usa para representar una línea de producto en el carrito.
+ */
 export interface CartItem {
   id: string;
   nombre: string;
@@ -8,7 +13,13 @@ export interface CartItem {
   imagen: string;
   cantidad: number;
 }
-
+/**
+ * @description Servicio de carrito. Gestiona productos, cantidades
+ * y totales de la compra.
+ * @usageNotes
+ * - Expone un observable `carrito$` para reaccionar a cambios.
+ * - Contiene lógica de subtotal, descuento y envío.
+ */
 @Injectable({ providedIn: 'root' })
 export class Cart {
   private items = new BehaviorSubject<CartItem[]>([]);
@@ -17,11 +28,20 @@ export class Cart {
   // 🔹 DESCUENTO GLOBAL (porcentaje)
   private descuento = 0;
 
+  /**
+   * @description Aplica un porcentaje de descuento sobre el total actual.
+   * @param porcentaje Porcentaje de descuento (0–100).
+   * @returns Nada (`void`).
+   */
   // 🔹 Aplicar descuento (llamado desde el formulario reactivo)
   aplicarDescuento(porcentaje: number) {
     this.descuento = porcentaje;
   }
-
+  /**
+   * @description Agrega un producto al carrito o incrementa su cantidad si ya existe.
+   * @param p Producto a agregar.
+   * @returns Nada (`void`).
+   */
   // 🔹 Agregar al carrito
   agregar(p: CartItem) {
     const actual = [...this.items.value];
@@ -36,6 +56,10 @@ export class Cart {
     this.items.next(actual);
   }
 
+  /**
+   * @description Incrementa en 1 la cantidad de un ítem del carrito.
+   * @param id Identificador del producto.
+   */
   // 🔹 Sumar cantidad
   sumar(id: string) {
     const actual = [...this.items.value];
@@ -47,6 +71,11 @@ export class Cart {
     }
   }
 
+  /**
+   * @description Decrementa en 1 la cantidad de un ítem del carrito.
+   * Elimina el ítem si la cantidad llega a 0.
+   * @param id Identificador del producto.
+   */
   // 🔹 Restar cantidad
   restar(id: string) {
     const actual = [...this.items.value];
@@ -58,18 +87,30 @@ export class Cart {
     }
   }
 
+  /**
+   * @description Elimina por completo un producto del carrito.
+   * @param id Identificador del producto a quitar.
+   */
   // 🔹 Eliminar producto
   quitarProducto(id: string) {
     const actual = this.items.value.filter((i) => i.id !== id);
     this.items.next(actual);
   }
 
+  /**
+   * @description Limpia el carrito y elimina todos los ítems.
+   * @returns Nada (`void`).
+   */
   // 🔹 Limpiar carrito (resetea descuento también)
   limpiar() {
     this.items.next([]);
     this.descuento = 0;
   }
 
+  /**
+   * @description Calcula el subtotal (sin envío) del carrito.
+   * @returns Monto numérico del subtotal.
+   */
   // 🔹 Total general (YA INCLUYE DESCUENTO)
   total() {
     const base = this.items.value.reduce((sum, p) => sum + p.cantidad * p.precio, 0);
@@ -77,12 +118,22 @@ export class Cart {
     return base - (base * this.descuento) / 100;
   }
 
+  /**
+   * @description Calcula el costo de envío en función del subtotal.
+   * @returns `0` si se alcanza el umbral de envío gratis; en otro caso el costo fijo.
+   * @usageNotes
+   * La lógica concreta (umbral, monto) está codificada en el método.
+   */
   // 🔹 Envío basado en subtotal
   envio() {
     const subtotal = this.total();
     return subtotal >= 50000 ? 0 : 3990;
   }
 
+  /**
+   * @description Calcula el total final incluyendo envío.
+   * @returns Monto total de la compra.
+   */
   // 🔹 Total final con envío incluido
   totalFinal() {
     return this.total() + this.envio();
