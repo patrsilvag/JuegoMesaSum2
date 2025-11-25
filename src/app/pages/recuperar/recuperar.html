@@ -1,0 +1,176 @@
+<section class="form-container">
+  <div class="container recuperar-container">
+    <!-- ============================
+       PASO 1 — INGRESAR CORREO
+  ============================= -->
+    <div *ngIf="paso === 1" class="form-block">
+      <h2 class="text-center mb-3">Recuperar contraseña</h2>
+
+      <form [formGroup]="formCorreo" novalidate>
+        <label>Correo electrónico</label>
+        <input type="email" class="form-control" formControlName="correo" />
+
+        <small
+          *ngIf="
+            formCorreo.get('correo')?.invalid &&
+            (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched)
+          "
+          class="error"
+        >
+          Debes ingresar un correo válido.
+        </small>
+
+        <small
+          *ngIf="
+    formCorreo.get('correo')?.errors?.['noExiste'] &&
+    (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched)
+  "
+          class="error"
+        >
+          El correo no está registrado.
+        </small>
+
+        <button type="button" class="btn-primary mt-3" (click)="enviarCorreo()">
+          Enviar código
+        </button>
+      </form>
+    </div>
+
+    <!-- ============================
+       PASO 2 — VALIDAR CÓDIGO
+  ============================= -->
+    <div *ngIf="paso === 2" class="form-block">
+      <h2 class="text-center mb-3">Verifica tu código</h2>
+
+      <p class="text-center">
+        Ingresa el código enviado a: <strong>{{ correoValidado }}</strong>
+      </p>
+
+      <form [formGroup]="formCodigo" novalidate>
+        <label>Código</label>
+        <input type="text" class="form-control" formControlName="codigo" />
+
+        <small
+          *ngIf="
+            formCodigo.get('codigo')?.errors &&
+            (formCodigo.get('codigo')?.dirty || formCodigo.get('codigo')?.touched)
+          "
+          class="error"
+        >
+          <span *ngIf="formCodigo.get('codigo')?.errors?.['required']">
+            Debes ingresar el código.
+          </span>
+
+          <span *ngIf="formCodigo.get('codigo')?.errors?.['pattern']">
+            Solo se permiten números.
+          </span>
+
+          <span *ngIf="formCodigo.get('codigo')?.errors?.['minlength']">
+            El código debe tener 6 dígitos.
+          </span>
+
+          <span *ngIf="formCodigo.get('codigo')?.errors?.['maxlength']">
+            El código debe tener 6 dígitos.
+          </span>
+
+          <span *ngIf="formCodigo.errors?.['incorrecto']">
+            El código ingresado no es correcto.
+          </span>
+        </small>
+
+        <button type="button" class="btn-primary mt-3" (click)="verificarCodigo()">
+          Validar código
+        </button>
+
+        <p class="mt-3 text-center">
+          <a style="cursor: pointer" (click)="paso = 1">← Cambiar correo</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- ============================
+       PASO 3 — NUEVA CONTRASEÑA
+  ============================= -->
+   <!-- ============================
+     PASO 3 — NUEVA CONTRASEÑA
+============================= -->
+<div *ngIf="paso === 3" class="form-block">
+  <h2 class="text-center mb-3">Nueva contraseña</h2>
+
+  <form [formGroup]="formClave" novalidate>
+
+    <!-- NUEVA CLAVE -->
+    <label>Nueva contraseña</label>
+    <div class="password-group">
+      <input
+        [type]="verClave ? 'text' : 'password'"
+        class="form-control"
+        formControlName="clave"
+      />
+      <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>
+    </div>
+
+    <!-- ERRORES DE LA NUEVA CLAVE -->
+    <small
+      *ngIf="
+        formClave.get('clave')?.errors &&
+        (formClave.get('clave')?.dirty || formClave.get('clave')?.touched)
+      "
+      class="error"
+    >
+      <span *ngIf="formClave.get('clave')?.errors?.['required']">
+        La nueva contraseña es obligatoria.
+      </span>
+
+      <span *ngIf="formClave.get('clave')?.errors?.['minlength']">
+        Debe tener al menos 6 caracteres.
+      </span>
+
+      <span *ngIf="formClave.get('clave')?.errors?.['maxlength']">
+        Debe tener máximo 18 caracteres.
+      </span>
+
+      <span *ngIf="formClave.get('clave')?.errors?.['uppercase']">
+        Debe incluir al menos una letra mayúscula.
+      </span>
+
+      <span *ngIf="formClave.get('clave')?.errors?.['number']">
+        Debe incluir al menos un número.
+      </span>
+    </small>
+
+    <!-- REPETIR CLAVE -->
+    <label class="mt-2">Repetir contraseña</label>
+    <div class="password-group">
+      <input
+        [type]="verClave2 ? 'text' : 'password'"
+        class="form-control"
+        formControlName="clave2"
+      />
+      <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>
+    </div>
+
+    <!-- ERROR: CONTRASEÑAS NO COINCIDEN -->
+    <small *ngIf="formClave.errors?.['noCoinciden']" class="error">
+      Las contraseñas no coinciden.
+    </small>
+
+    <button type="button" class="btn-primary mt-3" (click)="actualizarClave()">
+      Guardar nueva contraseña
+    </button>
+
+    <p class="mt-3 text-center">
+      <a style="cursor: pointer" (click)="paso = 2">← Volver</a>
+    </p>
+  </form>
+</div>
+
+
+    <!-- ============================
+       MENSAJE DE ÉXITO
+  ============================= -->
+    <div *ngIf="mensajeExito" class="alert alert-success text-center mt-3">
+      Contraseña actualizada correctamente ✔
+    </div>
+  </div>
+</section>

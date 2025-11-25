@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+
+    <a class="navbar-brand" routerLink="/">
+      🎲 Cuatro Esquinas
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">
+            Inicio
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            Categorías
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/categorias/estrategia">Estrategia</a></li>
+            <li><a class="dropdown-item" routerLink="/categorias/infantiles">Infantiles</a></li>
+            <li><a class="dropdown-item" routerLink="/categorias/amigos">Amigos</a></li>
+            <li><a class="dropdown-item" routerLink="/categorias/cartas">Cartas</a></li>
+          </ul>
+        </li>
+
+        <ng-container *ngIf="!usuario">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/registro">Registrarse</a>
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="usuario">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              👋 Hola, <strong>{{ usuario.usuario }}</strong>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              
+              <li>
+                <a class="dropdown-item" routerLink="/perfil">Mi perfil</a>
+              </li>
+
+              <ng-container *ngIf="usuario.rol === 'admin'">
+                <li>
+                  <a class="dropdown-item" routerLink="/admin">
+                    <i class="bi bi-gear"></i> Panel Admin
+                  </a>
+                </li>
+              </ng-container>
+              <li><hr class="dropdown-divider" /></li>
+
+              <li>
+                <button class="dropdown-item" (click)="logout()">
+                  Cerrar sesión
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+
+        <li class="nav-item ms-lg-3">
+          <a routerLink="/carrito" class="btn btn-outline-light position-relative">
+            <i class="bi bi-cart"></i> Carrito
+
+            <span
+              *ngIf="cantidadTotal > 0"
+              class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle"
+              style="font-size: 0.7rem"
+            >
+              {{ cantidadTotal }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

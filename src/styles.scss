@@ -1,0 +1,104 @@
+/* =======================================================
+   TIPOGRAFÍA GLOBAL — Mobile First + Bootstrap Friendly
+   Opción A: Profesional / Escala Suave
+   ======================================================= */
+
+:root {
+  /* Base (Mobile First) */
+  font-size: 16px;
+
+  /* Escala tipográfica más equilibrada */
+  --fs-base: 1rem;      /* 16px */
+  --fs-sm: 0.9rem;      /* 14px */
+  --fs-md: 1rem;        /* 16px */
+  --fs-lg: 1.15rem;     /* 18px */
+  --fs-xl: 1.5rem;      /* 24px */
+  --fs-xxl: 2rem;       /* 32px */
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --line-base: 1.6;
+}
+
+/* =======================================================
+   ESTILO BASE DE TIPOGRAFÍA
+   ======================================================= */
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
+  line-height: var(--line-base);
+  color: #222;
+}
+
+/* TITULARES — Mobile First */
+h1, .h1 {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+h2, .h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h3, .h3 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  margin-bottom: 0.6rem;
+}
+
+h4, .h4 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  margin-bottom: 0.5rem;
+}
+
+h5, .h5 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  margin-bottom: 0.4rem;
+}
+
+h6, .h6 {
+  font-size: 0.85rem;
+  font-weight: var(--fw-medium);
+  margin-bottom: 0.3rem;
+}
+
+/* Texto pequeño */
+small {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* =======================================================
+   ESCALA RESPONSIVE — Tablets y Desktop
+   ======================================================= */
+
+@media (min-width: 768px) {
+  :root {
+    --fs-xl: 1.75rem;   /* 28px */
+    --fs-xxl: 2.25rem;  /* 36px */
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --fs-xl: 2rem;      /* 32px */
+    --fs-xxl: 2.5rem;   /* 40px */
+  }
+}
+
+/* Navbar elegante */
+.navbar-nav .nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+}

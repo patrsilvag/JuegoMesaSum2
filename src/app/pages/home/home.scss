@@ -1,0 +1,102 @@
+/* ============================================
+   HERO — Tipografía y espaciado
+   ============================================ */
+
+.hero {
+  padding: 3rem 1rem; /* mobile first */
+
+  @media (min-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 5rem 1rem;
+  }
+}
+
+/* H1 principal */
+.hero-title {
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  color: #333;
+  margin-bottom: 0.5rem;
+
+  /* Desktop refinado */
+  @media (min-width: 1200px) {
+    font-size: 2.5rem; /* 40px */
+  }
+}
+
+/* H2 subtítulo */
+.hero-subtitle {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: #555;
+  margin-bottom: 2rem;
+
+  @media (min-width: 1200px) {
+    font-size: 1.75rem; /* 28px */
+  }
+}
+
+
+/* ============================================
+   ANIMACIÓN DE ENTRADA
+   ============================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================
+   CARD DE CATEGORÍA
+   ============================================ */
+
+.card-categoria {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: fade-in 0.8s ease-out;
+}
+
+.card-categoria:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Imagen */
+.card-categoria img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.card-categoria:hover img {
+  transform: scale(1.03);
+}
+
+/* Texto del nombre */
+.categoria-name {
+  margin: 1rem 0;
+  color: var(--color-primario);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.categoria-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

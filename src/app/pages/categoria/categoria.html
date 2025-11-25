@@ -1,0 +1,59 @@
+<section class="bg-light border-bottom py-3">
+  <div class="container">
+    <h1 class="h4 mb-0">
+      {{ categoriaActual?.titulo }}
+    </h1>
+  </div>
+</section>
+
+<main class="container my-5">
+  <h2 class="text-center mb-4">{{ categoriaActual?.subtitulo }}</h2>
+
+  <!-- LISTA DE PRODUCTOS -->
+  <div class="row g-4 justify-content-center">
+    @for (p of productosFiltrados; track p.id) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="producto-card h-100 shadow-sm">
+
+          <!-- Imagen -->
+          <img 
+            [src]="p.imagen" 
+            [alt]="p.alt" 
+            loading="lazy" 
+          />
+
+          <!-- Contenido -->
+          <div class="contenido text-center p-3">
+
+            <h3 class="fw-bold fs-6">{{ p.nombre }}</h3>
+
+            <p class="descripcion mb-2">
+              {{ p.desc }}
+            </p>
+
+            <p class="precio fw-bold text-primary mb-1">
+              Precio: $ {{ p.precio | number }}
+            </p>
+
+            @if (p.descuento) {
+              <p class="descuento text-success fw-bold mb-2">Descuento disponible</p>
+            }
+
+            <button 
+              class="btn btn-primary btn-sm w-100"
+              (click)="agregarProducto(p)"
+            >
+              Agregar
+            </button>
+
+          </div> <!-- /contenido -->
+
+        </div> <!-- /producto-card -->
+      </div>
+    }
+  </div>
+
+  <div class="text-center mt-5">
+    <a class="btn btn-primary" routerLink="/">← Volver al inicio</a>
+  </div>
+</main>

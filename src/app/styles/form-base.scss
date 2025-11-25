@@ -1,0 +1,130 @@
+/* ==========================
+   CONTENEDOR PRINCIPAL
+========================== */
+.form-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 2rem 2.2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================
+   TITULO
+========================== */
+.form-title {
+  font-weight: 700;
+  font-size: 1.55rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+/* ==========================
+   GRUPOS DE FORMULARIO
+========================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+.form-control {
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 1rem;
+}
+
+/* ==========================
+   ERRORES
+========================== */
+.error {
+  font-size: 0.83rem;
+  color: #d9534f;
+  margin-top: 0.2rem;
+}
+
+/* ==========================
+   PASSWORD GROUP + OJO
+========================== */
+.password-group {
+  position: relative;
+}
+
+.password-group .form-control {
+  padding-right: 2.4rem;
+}
+
+.btn-ojo {
+  position: absolute;
+  top: 50%;
+  right: .6rem;
+  transform: translateY(-50%);
+  font-size: 1.15rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+.btn-primary {
+  background: #1661ff;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #0d4edb;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bfbfbf;
+  background: #f8f8f8;
+  font-weight: 600;
+}
+
+/* ==========================
+   REGLAS DE CLAVE
+========================== */
+.reglas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.reglas span {
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #f2f2f2;
+  border: 1px solid #e1e1e1;
+  color: #900;
+}
+
+.reglas .ok {
+  background: #c6f5c6;
+  border-color: #9ae79a;
+  color: #0a6f0a;
+}

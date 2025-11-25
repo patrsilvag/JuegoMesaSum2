@@ -1,0 +1,100 @@
+<section class="registro-container">
+  <h2 class="text-center mb-4">Formulario de Registro</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="registro-form">
+    <!-- NOMBRE -->
+    <label>Nombre completo:</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="nombre"
+      placeholder="Ej: Patricio Silva"
+    />
+    <small *ngIf="campo('nombre').touched && campo('nombre').invalid" class="error">
+      Ingresa un nombre válido.
+    </small>
+
+    <!-- USUARIO -->
+    <label>Nombre de usuario:</label>
+    <input type="text" class="form-control" formControlName="usuario" placeholder="Ej: PSilva" />
+    <small *ngIf="campo('usuario').touched && campo('usuario').invalid" class="error">
+      Debe tener al menos 3 caracteres.
+    </small>
+
+    <!-- CORREO -->
+    <label>Correo electrónico:</label>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="correo"
+      placeholder="Ej: PSilva@gmail.com"
+    />
+    <small *ngIf="campo('correo').touched && campo('correo').invalid" class="error">
+      Ingresa un correo válido.
+    </small>
+
+    <!-- CLAVE -->
+    <label>Clave de ingreso:</label>
+    <div class="input-group password-group">
+      <input [type]="verClave ? 'text' : 'password'" class="form-control" formControlName="clave" />
+      <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>
+    </div>
+
+    <!-- REGLAS -->
+    <div class="reglas" *ngIf="campo('clave').touched">
+      <span [class.ok]="!campo('clave').errors?.['minlength']">Mín. 6</span>
+      <span [class.ok]="!campo('clave').errors?.['maxlength']">Máx. 18</span>
+      <span [class.ok]="!campo('clave').errors?.['uppercase']">Mayúscula</span>
+      <span [class.ok]="!campo('clave').errors?.['number']">Número</span>
+    </div>
+
+    <!-- REPETIR CLAVE -->
+    <label>Repetir clave:</label>
+    <div class="input-group password-group">
+      <input
+        [type]="verClave2 ? 'text' : 'password'"
+        formControlName="repetirClave"
+        class="form-control"
+      />
+      <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>
+    </div>
+
+    <small *ngIf="form.errors?.['noCoinciden'] && campo('repetirClave').touched" class="error">
+      Las claves no coinciden.
+    </small>
+
+    <!-- FECHA -->
+    <label>Fecha de nacimiento:</label>
+    <input type="date" formControlName="fechaNacimiento" class="form-control" />
+    <small
+      *ngIf="
+        campo('fechaNacimiento').errors &&
+        (campo('fechaNacimiento').dirty || campo('fechaNacimiento').touched)
+      "
+      class="error"
+    >
+      <span *ngIf="campo('fechaNacimiento').errors?.['required']">
+         La fecha es obligatoria. 
+      </span>
+      <span *ngIf="campo('fechaNacimiento').errors?.['fechaFutura']">
+        La fecha no puede ser futura.
+      </span>
+      <span *ngIf="campo('fechaNacimiento').errors?.['edadMinima']">
+        Debes tener al menos 13 años.
+      </span>
+    </small>
+
+    <!-- DIRECCIÓN -->
+    <label>Dirección de despacho (opcional):</label>
+    <input type="text" formControlName="direccion" class="form-control" />
+
+    <!-- BOTONES -->
+    <div class="botones">
+      <button type="button" class="btn btn-outline-secondary" (click)="limpiar()">Limpiar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+  </form>
+  <div *ngIf="mensajeExito" class="alert alert-success fade-exito mt-4">
+    ✔ Tu registro fue enviado correctamente. Gracias por unirte.
+  </div>
+</section>

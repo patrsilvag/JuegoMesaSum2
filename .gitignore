@@ -1,0 +1,116 @@
+# ==========================================
+# Angular build outputs
+# ==========================================
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/.angular/cache
+
+# SSR outputs (Angular Universal)
+.server
+/express-server
+angular-server.js
+
+# ==========================================
+# Node dependencies
+# ==========================================
+/node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# ==========================================
+# Environment files (NEVER upload)
+# ==========================================
+src/environments/*.local.ts
+src/environments/environment.local.ts
+*.env
+*.env.local
+.env.*
+!.env.example
+
+# ==========================================
+# IDEs
+# ==========================================
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains
+*.iml
+*.iws
+*.ipr
+
+# VSCode History
+.history/
+
+# Eclipse / Others
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# ==========================================
+# OS files
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Sass / Cache
+# ==========================================
+.sass-cache/
+
+# ==========================================
+# Testing / Coverage
+# ==========================================
+/coverage
+/libpeerconnection.log
+testem.log
+
+# ==========================================
+# Misc
+# ==========================================
+/connect.lock
+/typings
+__screenshots__/
+
+# ==========================================
+# Archivos comprimidos
+# ==========================================
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.bz2
+*.xz
+*.tgz
+*.tbz
+
+# ==========================================
+# Cachés adicionales
+# ==========================================
+.cache/
+.tmp/
+
+# ==========================================
+# Herramientas de build modernas
+# ==========================================
+.angular/ssr
+.parcel-cache/
+node_modules/.vite/
+
+# ==========================================
+# Testing (complemento)
+# ==========================================
+/.cypress-cache/
+/.cypress/
+/playwright-report/
+/test-results

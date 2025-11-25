@@ -1,0 +1,147 @@
+@use '../../styles/form-base.scss';
+
+// ===============================
+// CONTENEDOR PRINCIPAL
+// ===============================
+.form-container {
+  max-width: 650px;
+  margin: 1.5rem auto; /* Reducir margen superior e inferior */
+  padding: 1.5rem;   /* Reducir el padding de 2rem a 1.5rem */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+// ===============================
+// TITULOS
+// ===============================
+.form-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1rem; /* Reducir el espacio después del título */
+  color: #111;
+}
+
+// ===============================
+// GRID RESPONSIVE 3 COLS
+// ===============================
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;  // MOBILE FIRST
+  gap: 0.8rem; /* Reducir el espacio entre los campos de 1rem a 0.8rem */
+
+  // en pantallas medianas o más → 3 columnas
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+
+    @media (min-width: 600px) {
+      grid-column: span 3;
+    }
+  }
+}
+
+// ===============================
+// FORM GROUP (Ajustar labels y inputs)
+// ===============================
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: 600;
+    margin-bottom: .15rem; /* Reducir el espacio entre label y input */
+  }
+
+  input {
+    padding: .4rem .75rem; /* Reducir la altura del input de .55rem a .4rem */
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 0.95rem;
+    background: #fff;
+  }
+// ... (resto del código)
+
+// ===============================
+// BOTONES (Ajustar el margen superior del botón de Guardar Cambios)
+// ===============================
+.btn-primary {
+  width: 100%;
+  padding: .65rem;
+  border: none;
+  background: #1d60ff;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.2s;
+
+  &:hover {
+    background: #134bcc;
+  }
+}
+
+// ===============================
+// PASSWORD + OJO
+// ===============================
+.password-group {
+  position: relative;
+
+  input {
+    padding-right: 2.5rem;
+  }
+
+  .btn-ojo {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+}
+
+// ===============================
+// REGLAS DE CONTRASEÑA
+// ===============================
+.reglas {
+  margin-top: .3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  font-size: .82rem;
+
+  span {
+    background: #eee;
+    padding: .15rem .4rem;
+    border-radius: 4px;
+
+    &.ok {
+      background: #c6efc6;
+      color: #0c6b00;
+      font-weight: 600;
+    }
+  }
+}
+
+// ===============================
+// ERRORES
+// ===============================
+.error {
+  color: #d10000;
+  font-size: .8rem;
+  margin-top: .25rem;
+}
+
+// ===============================
+// SEPARADOR HR
+// ===============================
+hr {
+  margin: 1.5rem 0; /* Reducir el espacio alrededor del separador */
+  border-color: #ddd;
+}
+}

@@ -1,0 +1,104 @@
+/* =============================== */
+/*   ADMIN PANEL - MOBILE FIRST    */
+/* =============================== */
+
+/* WRAPPER PRINCIPAL */
+.admin-wrapper {
+  width: 100%;
+  max-width: none;
+  padding: 1rem;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 850px;
+  }
+}
+
+/* TITULO */
+.admin-container h1 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* FORMULARIO REACTIVO */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc3545 !important;
+}
+
+small.text-danger {
+  font-size: 0.8rem;
+  margin-top: 3px;
+  display: block;
+}
+
+.form-state-box {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+/* =============================== */
+/*   TABLA RESPONSIVE MOBILE       */
+/* =============================== */
+
+@media (max-width: 767px) {
+  .table-responsive-mobile {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  /* Anchos mínimos para evitar compresión */
+  .table-responsive-mobile th:nth-child(1),
+  .table-responsive-mobile td:nth-child(1) {
+    min-width: 160px;
+  }
+
+  .table-responsive-mobile th:nth-child(2),
+  .table-responsive-mobile td:nth-child(2) {
+    min-width: 120px;
+  }
+
+  .table-responsive-mobile th:nth-child(3),
+  .table-responsive-mobile td:nth-child(3) {
+    min-width: 100px;
+  }
+
+  .table-responsive-mobile th:nth-child(4),
+  .table-responsive-mobile td:nth-child(4) {
+    min-width: 100px;
+  }
+
+  .table-responsive-mobile th:nth-child(5),
+  .table-responsive-mobile td:nth-child(5) {
+    min-width: 140px;
+    text-align: left !important;
+  }
+}
+
+@media (min-width: 768px) {
+  tbody tr:hover {
+    background: #fafafa;
+  }
+}
+
+/* BADGES */
+.badge {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+}
+
+/* BOTONES */
+button.btn {
+  min-width: 110px;
+  font-size: 0.8rem;
+}

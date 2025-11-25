@@ -1,0 +1,79 @@
+.registro-container {
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #830000;
+  margin-top: 3px;
+  display: block;
+}
+
+.password-group {
+  display: flex;
+
+  .btn-ojo {
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+}
+
+.reglas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.8rem;
+
+  span {
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: #efeeee;
+    color: #830000;
+
+    &.ok {
+      background: #d4f8d4;
+      color: #1b7a1b;
+      font-weight: bold;
+    }
+  }
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+
+  button {
+    flex: 1;
+  }
+}
+
+.fade-exito {
+  animation: desaparecer 3s forwards;
+}
+
+@keyframes desaparecer {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1; /* visible casi todo el tiempo */
+  }
+  100% {
+    opacity: 0; /* se desvanece */
+  }
+}
