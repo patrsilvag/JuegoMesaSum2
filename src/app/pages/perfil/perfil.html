@@ -5,11 +5,7 @@
        DATOS PERSONALES
   =========================== -->
   <!-- ✅ *ngIf en el MISMO form que usa [formGroup] -->
-  <form *ngIf="formDatos"
-        [formGroup]="formDatos"
-        (ngSubmit)="guardarDatos()"
-        novalidate>
-
+  <form *ngIf="formDatos" [formGroup]="formDatos" (ngSubmit)="guardarDatos()" novalidate>
     <div class="grid-2">
       <!-- NOMBRE -->
       <div class="form-group">
@@ -85,10 +81,6 @@
     <button type="submit" class="btn-primary mt-3">Guardar cambios</button>
   </form>
 
-  <div *ngIf="mensajeExito" class="alert alert-success text-center mt-3">
-    ✔ Datos actualizados correctamente.
-  </div>
-
   <hr class="my-4" />
 
   <!-- ==========================
@@ -97,11 +89,7 @@
   <h3 class="form-title" style="font-size: 1.3rem">Cambiar contraseña</h3>
 
   <!-- ✅ *ngIf en el MISMO form que usa [formGroup] -->
-  <form *ngIf="formClave"
-        [formGroup]="formClave"
-        (ngSubmit)="actualizarClave()"
-        novalidate>
-
+  <form *ngIf="formClave" [formGroup]="formClave" (ngSubmit)="actualizarClave()" novalidate>
     <div class="grid-2">
       <!-- CLAVE ACTUAL -->
       <div class="form-group">
@@ -115,10 +103,10 @@
           <button type="button" class="btn-ojo" (click)="verActual = !verActual">👁️</button>
         </div>
         <small
-          *ngIf="fcClave('claveActual').touched && fcClave('claveActual').invalid"
+          *ngIf="fcClave('claveActual').touched && fcClave('claveActual').errors?.['incorrecta']"
           class="error"
         >
-          Debes ingresar tu contraseña actual.
+          {{ fcClave('claveActual').errors?.['incorrecta'] }}
         </small>
       </div>
 
@@ -136,9 +124,9 @@
 
         <div class="reglas" *ngIf="fcClave('nuevaClave').touched">
           <span [class.ok]="!fcClave('nuevaClave').errors?.['minlength']">Mín. 6</span>
+          <span [class.ok]="!fcClave('nuevaClave').errors?.['maxlength']">Máx. 18</span>
           <span [class.ok]="!fcClave('nuevaClave').errors?.['uppercase']">Mayúscula</span>
           <span [class.ok]="!fcClave('nuevaClave').errors?.['number']">Número</span>
-          <span [class.ok]="!fcClave('nuevaClave').errors?.['special']">Especial</span>
         </div>
       </div>
 

@@ -12,6 +12,7 @@ import { ValidatorsService } from '../../core/validators.service';
 import { UserService } from '../../core/user.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { Usuario } from '../../core/auth';
+import { NotificationService } from '../../core/notification.service';
 
 @Component({
   selector: 'app-registro',
@@ -22,8 +23,7 @@ import { Usuario } from '../../core/auth';
 })
 export class RegistroComponent implements OnInit {
   form!: FormGroup;
-  mensajeExito = false;
-
+  
   verClave = false;
   verClave2 = false;
 
@@ -31,7 +31,8 @@ export class RegistroComponent implements OnInit {
     private fb: FormBuilder,
     private validators: ValidatorsService,
     private userSrv: UserService,
-    private err: AuthErrorService
+    private err: AuthErrorService,
+    private notifSrv: NotificationService
   ) {}
 
   ngOnInit() {
@@ -48,7 +49,6 @@ export class RegistroComponent implements OnInit {
             Validators.maxLength(18),
             this.validators.uppercaseValidator(),
             this.validators.numberValidator(),
-            this.validators.specialValidator(),
           ],
         ],
         repetirClave: ['', Validators.required],
@@ -100,9 +100,7 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
-    this.mensajeExito = true;
     this.form.reset();
-
-    setTimeout(() => (this.mensajeExito = false), 2500);
+    this.notifSrv.showSuccess('¡Registro completado! Puedes iniciar sesión.');
   }
 }

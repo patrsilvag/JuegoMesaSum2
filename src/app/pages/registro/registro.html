@@ -29,8 +29,11 @@
       formControlName="correo"
       placeholder="Ej: PSilva@gmail.com"
     />
-    <small *ngIf="campo('correo').touched && campo('correo').invalid" class="error">
+    <small *ngIf="campo('correo').touched && campo('correo').invalid && !campo('correo').errors?.['existe']" class="error">
       Ingresa un correo válido.
+    </small>
+    <small *ngIf="campo('correo').errors?.['existe']" class="error">
+      Este correo ya se encuentra registrado.
     </small>
 
     <!-- CLAVE -->
@@ -73,9 +76,7 @@
       "
       class="error"
     >
-      <span *ngIf="campo('fechaNacimiento').errors?.['required']">
-         La fecha es obligatoria. 
-      </span>
+      <span *ngIf="campo('fechaNacimiento').errors?.['required']"> La fecha es obligatoria. </span>
       <span *ngIf="campo('fechaNacimiento').errors?.['fechaFutura']">
         La fecha no puede ser futura.
       </span>
@@ -94,7 +95,4 @@
       <button type="submit" class="btn btn-primary">Registrar</button>
     </div>
   </form>
-  <div *ngIf="mensajeExito" class="alert alert-success fade-exito mt-4">
-    ✔ Tu registro fue enviado correctamente. Gracias por unirte.
-  </div>
 </section>

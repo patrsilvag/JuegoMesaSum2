@@ -12,6 +12,7 @@ import { ValidatorsService } from '../../core/validators.service';
 import { UserService } from '../../core/user.service';
 import { AuthService } from '../../core/auth.service';
 import { AuthErrorService } from '../../core/auth-error.service';
+import { NotificationService } from '../../core/notification.service'; // <-- NUEVA IMPORTACIÓN
 import { Usuario } from '../../core/auth';
 
 @Component({
@@ -23,7 +24,7 @@ import { Usuario } from '../../core/auth';
 })
 export class PerfilComponent implements OnInit {
   usuario!: Usuario | null;
-  mensajeExito = false;
+  // mensajeExito = false; // <-- ELIMINADO
 
   verActual = false;
   verNueva = false;
@@ -37,7 +38,8 @@ export class PerfilComponent implements OnInit {
     private validators: ValidatorsService,
     private userSrv: UserService,
     private authSrv: AuthService,
-    private err: AuthErrorService
+    private err: AuthErrorService,
+    private notifSrv: NotificationService // <-- SERVICIO INYECTADO
   ) {}
 
   ngOnInit(): void {
@@ -45,22 +47,21 @@ export class PerfilComponent implements OnInit {
 
     if (!this.usuario) return;
 
-    // FORM DATOS
     this.formDatos = this.fb.group({
-      nombre: [this.usuario.nombre, Validators.required],
-      usuario: [this.usuario.usuario, Validators.required],
+      nombre: [this.usuario.nombre, [Validators.required]],
+      usuario: [this.usuario.usuario, [Validators.required]],
       correo: [{ value: this.usuario.correo, disabled: true }],
-      fechaNacimiento: [ this.usuario.fechaNacimiento,
-      [
-        Validators.required,
-        this.validators.edadMinimaValidator(13),
-        this.validators.fechaFuturaValidator(),
-      ],
+      fechaNacimiento: [
+        this.usuario.fechaNacimiento,
+        [
+          Validators.required,
+          this.validators.fechaFuturaValidator(),
+          this.validators.edadMinimaValidator(13),
+        ],
       ],
       direccion: [this.usuario.direccion ?? ''],
     });
 
-    // FORM CLAVE
     this.formClave = this.fb.group(
       {
         claveActual: ['', Validators.required],
@@ -69,9 +70,9 @@ export class PerfilComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(6),
+            Validators.maxLength(18),
             this.validators.uppercaseValidator(),
             this.validators.numberValidator(),
-            this.validators.specialValidator(),
           ],
         ],
         repetirClave: ['', Validators.required],
@@ -82,11 +83,11 @@ export class PerfilComponent implements OnInit {
     );
   }
 
-  fcDatos(nombre: string): AbstractControl {
+  fcDatos(nombre: string) {
     return this.formDatos.get(nombre)!;
   }
 
-  fcClave(nombre: string): AbstractControl {
+  fcClave(nombre: string) {
     return this.formClave.get(nombre)!;
   }
 
@@ -113,8 +114,9 @@ export class PerfilComponent implements OnInit {
     }
 
     this.usuario = data;
-    this.mensajeExito = true;
-    setTimeout(() => (this.mensajeExito = false), 2500);
+    // this.mensajeExito = true;
+    // setTimeout(() => (this.mensajeExito = false), 2500);
+    this.notifSrv.showSuccess('Datos de perfil actualizados.'); // <-- REEMPLAZO
   }
 
   // ==============================================
@@ -126,17 +128,23 @@ export class PerfilComponent implements OnInit {
       return;
     }
 
-    // Validar clave actual
+    // 1. Obtener el control de forma explícita
+    const claveActualControl = this.fcClave('claveActual');
+
+    // 2. Validar clave actual
     const esCorrecta = this.userSrv.validarClaveActual(
       this.usuario!.correo,
-      this.formClave.value.claveActual
+      claveActualControl.value // Usar el valor del control
     );
 
     if (!esCorrecta) {
-      this.formClave.setErrors({ incorrecta: this.err.claveIncorrecta() });
+        this.fcClave('claveActual').setErrors({
+        incorrecta: this.err.claveIncorrecta(),
+      });
       return;
     }
 
+    // Cambiar clave
     const ok = this.userSrv.cambiarClave(this.usuario!.correo, this.formClave.value.nuevaClave);
 
     if (!ok) {
@@ -144,9 +152,8 @@ export class PerfilComponent implements OnInit {
       return;
     }
 
-    this.mensajeExito = true;
+    // Éxito
     this.formClave.reset();
-
-    setTimeout(() => (this.mensajeExito = false), 2500);
+    this.notifSrv.showSuccess('Contraseña actualizada con éxito.'); // <-- REEMPLAZO
   }
 }

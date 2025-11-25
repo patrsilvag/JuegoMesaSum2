@@ -11,6 +11,7 @@ import {
 import { UserService } from '../../core/user.service';
 import { ValidatorsService } from '../../core/validators.service';
 import { AuthErrorService } from '../../core/auth-error.service';
+import { NotificationService } from '../../core/notification.service';
 
 @Component({
   selector: 'app-recuperar',
@@ -21,7 +22,7 @@ import { AuthErrorService } from '../../core/auth-error.service';
 })
 export class RecuperarComponent {
   paso = 1;
-  mensajeExito = false;
+ 
   codigoGenerado = '';
   correoValidado = '';
 
@@ -36,7 +37,8 @@ export class RecuperarComponent {
     private fb: FormBuilder,
     private userSrv: UserService,
     private validators: ValidatorsService,
-    private err: AuthErrorService
+    private err: AuthErrorService,
+    private notifSrv: NotificationService
   ) {}
 
   ngOnInit() {
@@ -66,7 +68,7 @@ export class RecuperarComponent {
             Validators.maxLength(18),
             this.validators.uppercaseValidator(),
             this.validators.numberValidator(),
-            this.validators.specialValidator(),
+          
           ],
         ],
         clave2: ['', Validators.required],
@@ -102,8 +104,6 @@ export class RecuperarComponent {
     // Simulación de envío de código
     this.correoValidado = correo;
     this.codigoGenerado = '123456';
-
-    console.log('Código enviado:', this.codigoGenerado);
 
     this.paso = 2;
   }
@@ -145,12 +145,10 @@ export class RecuperarComponent {
       return;
     }
 
-    this.mensajeExito = true;
-
-    setTimeout(() => (this.mensajeExito = false), 2500);
+    this.notifSrv.showSuccess('Contraseña restaurada con éxito.');
+    this.paso = 1;
 
     // Reiniciar todo
-    this.paso = 1;
     this.formCorreo.reset();
     this.formCodigo.reset();
     this.formClave.reset();
