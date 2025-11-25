@@ -36,15 +36,7 @@
       <div class="col-12 col-md-2">
         <button type="button" class="btn btn-secondary w-100" (click)="resetFiltro()">Limpiar</button>
       </div>
-
-      <!-- DEBUG -->
-      <div class="col-12" *ngIf="debug">
-        <div class="form-state-box">
-          <strong>Estado del formulario:</strong>
-          <pre>{{ filtroForm.value | json }}</pre>
-          <pre>Status: {{ filtroForm.status }}</pre>
-        </div>
-      </div>
+      
     </form>
 
     <!-- TABLA -->

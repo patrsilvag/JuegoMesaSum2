@@ -41,28 +41,14 @@
         <label>Fecha de nacimiento:</label>
         <input type="date" class="form-control" formControlName="fechaNacimiento" />
 
-        <!-- required -->
         <small
-          *ngIf="fcDatos('fechaNacimiento').touched && fcDatos('fechaNacimiento').errors?.['required']"
+          *ngIf="
+            fcDatos('fechaNacimiento').errors &&
+            (fcDatos('fechaNacimiento').dirty || fcDatos('fechaNacimiento').touched)
+          "
           class="error"
         >
-          Este campo es obligatorio.
-        </small>
-
-        <!-- edad mínima -->
-        <small
-          *ngIf="fcDatos('fechaNacimiento').touched && fcDatos('fechaNacimiento').errors?.['edadMinima']"
-          class="error"
-        >
-          Debes tener al menos 13 años.
-        </small>
-
-        <!-- fecha futura -->
-        <small
-          *ngIf="fcDatos('fechaNacimiento').touched && fcDatos('fechaNacimiento').errors?.['fechaFutura']"
-          class="error"
-        >
-          La fecha no puede ser futura.
+          {{ getFechaError() }}
         </small>
       </div>
 

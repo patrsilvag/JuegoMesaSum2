@@ -83,12 +83,17 @@ export class PerfilComponent implements OnInit {
     );
   }
 
-  fcDatos(nombre: string) {
-    return this.formDatos.get(nombre)!;
+  fcDatos(fechaNacimiento: string) {
+    return this.formDatos.get(fechaNacimiento)!;
   }
 
   fcClave(nombre: string) {
     return this.formClave.get(nombre)!;
+  }
+
+  // perfil.ts
+  getFechaError(): string {
+    return this.err.getFechaErrorMessage(this.fcDatos('fechaNacimiento')); // si lo pones en AuthErrorService
   }
 
   // ==============================================
@@ -138,7 +143,7 @@ export class PerfilComponent implements OnInit {
     );
 
     if (!esCorrecta) {
-        this.fcClave('claveActual').setErrors({
+      this.fcClave('claveActual').setErrors({
         incorrecta: this.err.claveIncorrecta(),
       });
       return;

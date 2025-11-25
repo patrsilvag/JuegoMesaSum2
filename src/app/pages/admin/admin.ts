@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminService } from './admin.service';
 
@@ -8,7 +8,7 @@ import { AdminService } from './admin.service';
   templateUrl: './admin.html',
   styleUrls: ['./admin.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, JsonPipe],
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class AdminComponent implements OnInit {
   filtroForm!: FormGroup;

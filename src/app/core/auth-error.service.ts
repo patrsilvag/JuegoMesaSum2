@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class AuthErrorService {
@@ -33,6 +34,24 @@ export class AuthErrorService {
     return 'Ha ocurrido un error inesperado. Intenta nuevamente.';
   }
 
+  // ============================
+  // NUEVO: Lógica de error para Fecha de Nacimiento
+  // ============================
+  getFechaErrorMessage(control: AbstractControl): string {
+    if (!control.errors) return '';
+
+    // Prioridad 1: Requerido
+    if (control.errors['required']) return 'La fecha es obligatoria.';
+
+    // Prioridad 2: Fecha Futura
+    if (control.errors['fechaFutura']) return 'La fecha no puede ser futura.';
+
+    // Prioridad 3: Edad Mínima
+    if (control.errors['edadMinima']) return 'Debes tener al menos 13 años.';
+
+    return '';
+  }
+  
   // ============================
   // Mapeo basado en códigos
   // ============================
