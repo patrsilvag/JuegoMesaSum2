@@ -12,19 +12,17 @@
 
         <small
           *ngIf="
-            formCorreo.get('correo')?.invalid &&
-            (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched)
-          "
+        formCorreo.get('correo')?.invalid &&
+        (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched) &&
+        !formCorreo.get('correo')?.errors?.['noExiste']"
           class="error"
         >
           Debes ingresar un correo válido.
         </small>
 
         <small
-          *ngIf="
-    formCorreo.get('correo')?.errors?.['noExiste'] &&
-    (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched)
-  "
+          *ngIf="formCorreo.get('correo')?.errors?.['noExiste'] && 
+           (formCorreo.get('correo')?.dirty || formCorreo.get('correo')?.touched)"
           class="error"
         >
           El correo no está registrado.
@@ -72,12 +70,10 @@
           <span *ngIf="formCodigo.get('codigo')?.errors?.['maxlength']">
             El código debe tener 6 dígitos.
           </span>
-
-          <span *ngIf="formCodigo.errors?.['incorrecto']">
-            El código ingresado no es correcto.
-          </span>
         </small>
-
+        <small *ngIf="formCodigo.errors?.['incorrecto']" class="error">
+          {{ formCodigo.errors?.['incorrecto'] }}
+        </small>
         <button type="button" class="btn-primary mt-3" (click)="verificarCodigo()">
           Validar código
         </button>
@@ -88,7 +84,7 @@
       </form>
     </div>
 
-     <!-- ============================
+    <!-- ============================
      PASO 3 — NUEVA CONTRASEÑA
 ============================= -->
     <div *ngIf="paso === 3" class="form-block">
@@ -107,33 +103,14 @@
         </div>
 
         <!-- ERRORES DE LA NUEVA CLAVE -->
-        <small
-          *ngIf="
-            formClave.get('clave')?.errors &&
-            (formClave.get('clave')?.dirty || formClave.get('clave')?.touched)
-          "
-          class="error"
-        >
-          <span *ngIf="formClave.get('clave')?.errors?.['required']">
-            La nueva contraseña es obligatoria.
-          </span>
-
-          <span *ngIf="formClave.get('clave')?.errors?.['minlength']">
-            Debe tener al menos 6 caracteres.
-          </span>
-
-          <span *ngIf="formClave.get('clave')?.errors?.['maxlength']">
-            Debe tener máximo 18 caracteres.
-          </span>
-
-          <span *ngIf="formClave.get('clave')?.errors?.['uppercase']">
-            Debe incluir al menos una letra mayúscula.
-          </span>
-
-          <span *ngIf="formClave.get('clave')?.errors?.['number']">
-            Debe incluir al menos un número.
-          </span>
-        </small>
+        ...
+        <div class="reglas" *ngIf="formClave.get('clave')?.touched">
+          <span [class.ok]="!formClave.get('clave')?.errors?.['minlength']">Mín. 6</span>
+          <span [class.ok]="!formClave.get('clave')?.errors?.['maxlength']">Máx. 18</span>
+          <span [class.ok]="!formClave.get('clave')?.errors?.['uppercase']">Mayúscula</span>
+          <span [class.ok]="!formClave.get('clave')?.errors?.['number']">Número</span>
+        </div>
+        ...
 
         <!-- REPETIR CLAVE -->
         <label class="mt-2">Repetir contraseña</label>
@@ -147,9 +124,13 @@
         </div>
 
         <!-- ERROR: CONTRASEÑAS NO COINCIDEN -->
-        <small *ngIf="formClave.errors?.['noCoinciden']" class="error">
-          Las contraseñas no coinciden.
+        <small
+          *ngIf="formClave.errors?.['noCoinciden'] && formClave.get('clave2')?.touched"
+          class="error"
+        >
+          {{ formClave.errors?.['noCoinciden'] }}
         </small>
+
         <small *ngIf="formClave.errors?.['error']" class="error">
           {{ formClave.errors?.['error'] }}
         </small>
@@ -163,6 +144,5 @@
         </p>
       </form>
     </div>
-
   </div>
 </section>

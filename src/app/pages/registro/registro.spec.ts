@@ -1,10 +1,11 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'; // Se eliminó fakeAsync, tick
 import { RegistroComponent } from './registro';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../../core/user.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { ValidatorsService } from '../../core/validators.service';
 import { Usuario } from '../../core/auth';
+import { NotificationService } from '../../core/notification.service'; // <-- NUEVO: Importación del servicio
 
 /**
  * Stub realista de ValidatorsService:
@@ -63,9 +64,12 @@ describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
   let userSpy: jasmine.SpyObj<UserService>;
+  let notifSpy: jasmine.SpyObj<NotificationService>; // <-- NUEVO: Spy para notificaciones
 
   beforeEach(async () => {
     userSpy = jasmine.createSpyObj('UserService', ['registrarUsuario']);
+    // <-- NUEVO: Inicialización del spy
+    notifSpy = jasmine.createSpyObj('NotificationService', ['showSuccess']);
 
     await TestBed.configureTestingModule({
       imports: [RegistroComponent],
@@ -73,6 +77,7 @@ describe('RegistroComponent', () => {
         { provide: UserService, useValue: userSpy },
         { provide: ValidatorsService, useClass: FakeValidatorsService },
         { provide: AuthErrorService, useValue: {} },
+        { provide: NotificationService, useValue: notifSpy }, // <-- NUEVO: Proveedor del spy
       ],
     }).compileComponents();
 
@@ -88,15 +93,14 @@ describe('RegistroComponent', () => {
     expect(component.form.get('correo')).toBeTruthy();
   });
 
-it('campo(nombre) debe devolver el control correcto', () => {
-  const ctrl = component.campo('usuario');
-  const esperado = component.form.get('usuario');
+  it('campo(nombre) debe devolver el control correcto', () => {
+    const ctrl = component.campo('usuario');
+    const esperado = component.form.get('usuario');
 
-  expect(ctrl).not.toBeNull();
-  expect(esperado).not.toBeNull();
-  expect(ctrl!).toBe(esperado!);
-});
-
+    expect(ctrl).not.toBeNull();
+    expect(esperado).not.toBeNull();
+    expect(ctrl!).toBe(esperado!);
+  });
 
   it('limpiar() debe resetear el formulario', () => {
     component.form.patchValue({ nombre: 'X', correo: 'a@b.com' });
@@ -125,7 +129,8 @@ it('campo(nombre) debe devolver el control correcto', () => {
     expect(component.form.errors).toEqual({ noCoinciden: true });
   });
 
-  it('submit() debe llamar registrarUsuario con data correcta si formulario válido', fakeAsync(() => {
+  // <-- MODIFICADO: Se elimina fakeAsync/tick y se cambia la aserción
+  it('submit() debe llamar registrarUsuario con data correcta si formulario válido', () => {
     userSpy.registrarUsuario.and.returnValue(true);
 
     component.form.setValue({
@@ -151,15 +156,18 @@ it('campo(nombre) debe devolver el control correcto', () => {
     };
 
     expect(userSpy.registrarUsuario).toHaveBeenCalledWith(expected);
-    expect(component.mensajeExito).toBeTrue();
+    // expect(component.mensajeExito).toBeTrue(); // ELIMINADO
+    expect(notifSpy.showSuccess).toHaveBeenCalledWith(
+      '¡Registro completado! Puedes iniciar sesión.'
+    ); // <-- NUEVA ASÉRCIÓN
 
     // reset deja el form pristino
     expect(component.form.pristine).toBeTrue();
 
-    tick(2500);
-    expect(component.mensajeExito).toBeFalse();
-  }));
+   
+  });
 
+  // <-- MODIFICADO: Se elimina la aserción sobre mensajeExito
   it('si registrarUsuario devuelve false debe setear error {existe:true} en correo', () => {
     userSpy.registrarUsuario.and.returnValue(false);
 
@@ -178,6 +186,7 @@ it('campo(nombre) debe devolver el control correcto', () => {
     const correoCtrl = component.form.get('correo');
     expect(userSpy.registrarUsuario).toHaveBeenCalled();
     expect(correoCtrl?.errors).toEqual({ existe: true });
-    expect(component.mensajeExito).toBeFalse();
+    // expect(component.mensajeExito).toBeFalse(); // ELIMINADO
+    expect(notifSpy.showSuccess).not.toHaveBeenCalled(); // <-- OPCIONAL: Para asegurar que no se muestra el toast
   });
 });

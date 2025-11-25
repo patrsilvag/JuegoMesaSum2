@@ -5,6 +5,7 @@ import { UserService } from '../../core/user.service';
 import { ValidatorsService } from '../../core/validators.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { Usuario } from '../../core/auth';
+import { NotificationService } from '../../core/notification.service'; // <-- NUEVO: Importación del servicio
 
 /** Fake realista de ValidatorsService */
 class FakeValidatorsService {
@@ -32,9 +33,12 @@ describe('RecuperarComponent (Angular 20)', () => {
   let component: RecuperarComponent;
   let fixture: ComponentFixture<RecuperarComponent>;
   let userSpy: jasmine.SpyObj<UserService>;
+  let notifSpy: jasmine.SpyObj<NotificationService>; // <-- NUEVO: Spy para notificaciones
 
   beforeEach(async () => {
     userSpy = jasmine.createSpyObj<UserService>('UserService', ['buscarPorCorreo', 'cambiarClave']);
+    // <-- NUEVO: Inicialización del spy de notificaciones
+    notifSpy = jasmine.createSpyObj<NotificationService>('NotificationService', ['showSuccess']);
 
     const errStub: Partial<AuthErrorService> = {
       usuarioNoExiste: () => 'usuarioNoExiste',
@@ -48,6 +52,7 @@ describe('RecuperarComponent (Angular 20)', () => {
         { provide: UserService, useValue: userSpy },
         { provide: ValidatorsService, useClass: FakeValidatorsService },
         { provide: AuthErrorService, useValue: errStub },
+        { provide: NotificationService, useValue: notifSpy }, // <-- NUEVO: Proveedor del spy
       ],
     }).compileComponents();
 
@@ -151,6 +156,7 @@ describe('RecuperarComponent (Angular 20)', () => {
     expect(userSpy.cambiarClave).not.toHaveBeenCalled();
   });
 
+  // <-- MODIFICADO: Se elimina la aserción sobre mensajeExito
   it('actualizarClave() debe setear error si cambiarClave devuelve false', () => {
     component.paso = 3;
     component.correoValidado = 'test@mail.com';
@@ -165,10 +171,11 @@ describe('RecuperarComponent (Angular 20)', () => {
 
     expect(userSpy.cambiarClave).toHaveBeenCalledWith('test@mail.com', 'A123456!');
     expect(component.formClave.errors?.['error']).toBe('errorInesperado');
-    expect(component.mensajeExito).toBeFalse();
+  
   });
 
-  it('actualizarClave() debe mostrar éxito, reiniciar y volver a paso 1 si ok', fakeAsync(() => {
+  // <-- MODIFICADO: Se elimina fakeAsync/tick y se cambia la aserción a notifSrv
+  it('actualizarClave() debe mostrar éxito, reiniciar y volver a paso 1 si ok', () => {
     component.paso = 3;
     component.correoValidado = 'test@mail.com';
     userSpy.cambiarClave.and.returnValue(true);
@@ -181,15 +188,12 @@ describe('RecuperarComponent (Angular 20)', () => {
     component.actualizarClave();
 
     expect(userSpy.cambiarClave).toHaveBeenCalledWith('test@mail.com', 'A123456!');
-    expect(component.mensajeExito).toBeTrue();
+    expect(notifSpy.showSuccess).toHaveBeenCalledWith('Contraseña restaurada con éxito.');
 
     // reinicia todo
     expect(component.paso).toBe(1);
     expect(component.formCorreo.pristine).toBeTrue();
     expect(component.formCodigo.pristine).toBeTrue();
     expect(component.formClave.pristine).toBeTrue();
-
-    tick(2500);
-    expect(component.mensajeExito).toBeFalse();
-  }));
+  });
 });

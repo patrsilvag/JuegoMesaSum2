@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AuthErrorService } from './auth-error.service';
 
 @Injectable({ providedIn: 'root' })
 export class ValidatorsService {
-
+  constructor(private err: AuthErrorService) {}
   uppercaseValidator() {
     return (c: AbstractControl): ValidationErrors | null =>
       /[A-Z]/.test(c.value || '') ? null : { uppercase: true };
@@ -23,7 +24,7 @@ export class ValidatorsService {
     return (group: AbstractControl): ValidationErrors | null =>
       group.get(clave)?.value === group.get(repetirClave)?.value
         ? null
-        : { noCoinciden: true };
+        : { noCoinciden: this.err.clavesNoCoinciden() };
   }
 
   fechaFuturaValidator() {

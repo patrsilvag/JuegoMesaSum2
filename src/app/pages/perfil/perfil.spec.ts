@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PerfilComponent } from './perfil';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../../core/user.service';
@@ -6,6 +6,7 @@ import { ValidatorsService } from '../../core/validators.service';
 import { AuthService } from '../../core/auth.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { Usuario } from '../../core/auth';
+import { NotificationService } from '../../core/notification.service'; // <-- NUEVO: Importación del servicio
 
 /** Fake de ValidatorsService alineado con PerfilComponent */
 class FakeValidatorsService {
@@ -63,6 +64,7 @@ describe('PerfilComponent (Angular 20)', () => {
   let userSpy: jasmine.SpyObj<UserService>;
   let authSpy: jasmine.SpyObj<AuthService>;
   let errSpy: jasmine.SpyObj<AuthErrorService>;
+  let notifSpy: jasmine.SpyObj<NotificationService>; // <-- NUEVO: Spy para notificaciones
 
   const usuarioMock: Usuario = {
     nombre: 'Test User',
@@ -89,6 +91,9 @@ describe('PerfilComponent (Angular 20)', () => {
       'claveIncorrecta',
     ]);
 
+    // <-- NUEVO: Inicialización del spy de notificaciones
+    notifSpy = jasmine.createSpyObj<NotificationService>('NotificationService', ['showSuccess']);
+
     authSpy.getUsuarioActual.and.returnValue(usuarioMock);
 
     userSpy.actualizarPerfil.and.returnValue(true);
@@ -105,6 +110,7 @@ describe('PerfilComponent (Angular 20)', () => {
         { provide: UserService, useValue: userSpy },
         { provide: AuthService, useValue: authSpy },
         { provide: AuthErrorService, useValue: errSpy },
+        { provide: NotificationService, useValue: notifSpy }, // <-- NUEVO: Proveedor del spy
       ],
     }).compileComponents();
 
@@ -146,7 +152,8 @@ describe('PerfilComponent (Angular 20)', () => {
     expect(component.formDatos.touched).toBeTrue();
   });
 
-  it('guardarDatos() debe llamar actualizarPerfil con datos combinados y mostrar éxito', fakeAsync(() => {
+  // <-- MODIFICADO: Se elimina fakeAsync y las aserciones sobre mensajeExito
+  it('guardarDatos() debe llamar actualizarPerfil con datos combinados y mostrar éxito', () => {
     component.formDatos.setValue({
       nombre: 'Nuevo Nombre',
       usuario: 'nuevoUser',
@@ -164,12 +171,10 @@ describe('PerfilComponent (Angular 20)', () => {
 
     expect(userSpy.actualizarPerfil).toHaveBeenCalledWith(esperado);
     expect(component.usuario).toEqual(esperado);
-    expect(component.mensajeExito).toBeTrue();
+    expect(notifSpy.showSuccess).toHaveBeenCalledWith('Datos de perfil actualizados.'); // <-- NUEVA ASÉRCIÓN
+  });
 
-    tick(2500);
-    expect(component.mensajeExito).toBeFalse();
-  }));
-
+  // <-- MODIFICADO: Se elimina la aserción sobre mensajeExito
   it('guardarDatos() si actualizarPerfil falla debe alertar y no activar mensajeExito', () => {
     userSpy.actualizarPerfil.and.returnValue(false);
     spyOn(window, 'alert');
@@ -185,7 +190,7 @@ describe('PerfilComponent (Angular 20)', () => {
     component.guardarDatos();
 
     expect(window.alert).toHaveBeenCalledWith('errorInesperado');
-    expect(component.mensajeExito).toBeFalse();
+   
   });
 
   // ==========================
@@ -200,19 +205,24 @@ describe('PerfilComponent (Angular 20)', () => {
   });
 
   it('actualizarClave() debe setear error incorrecta si clave actual no coincide', () => {
-    userSpy.validarClaveActual.and.returnValue(false);
+   userSpy.validarClaveActual.and.returnValue(false); // Simula que la clave es incorrecta
 
-    component.formClave.setValue({
-      claveActual: 'mala',
-      nuevaClave: 'A123456!',
-      repetirClave: 'A123456!',
-    });
+   component.formClave.setValue({
+     claveActual: 'mala',
+     nuevaClave: 'A123456!',
+     repetirClave: 'A123456!',
+   });
 
-    component.actualizarClave();
+   component.actualizarClave();
 
-    expect(userSpy.validarClaveActual).toHaveBeenCalledWith('test@mail.com', 'mala');
-    expect(component.formClave.errors).toEqual({ incorrecta: 'claveIncorrecta' });
-    expect(userSpy.cambiarClave).not.toHaveBeenCalled();
+   expect(userSpy.validarClaveActual).toHaveBeenCalledWith('test@mail.com', 'mala');
+
+   const claveActualControl = component.formClave.get('claveActual');
+
+   // ✅ CORRECCIÓN: Esperar el valor de la cadena simulada, no 'true'.
+   expect(claveActualControl?.errors).toEqual({ incorrecta: 'claveIncorrecta' });
+
+   expect(userSpy.cambiarClave).not.toHaveBeenCalled();
   });
 
   it('actualizarClave() debe setear error si cambiarClave falla', () => {
@@ -231,7 +241,8 @@ describe('PerfilComponent (Angular 20)', () => {
     expect(component.formClave.errors).toEqual({ error: 'errorInesperado' });
   });
 
-  it('actualizarClave() debe cambiar clave, resetear form y mostrar éxito', fakeAsync(() => {
+  // <-- MODIFICADO: Se elimina fakeAsync y las aserciones sobre mensajeExito
+  it('actualizarClave() debe cambiar clave, resetear form y mostrar éxito', () => {
     component.formClave.setValue({
       claveActual: 'A123456!',
       nuevaClave: 'B123456!',
@@ -243,10 +254,7 @@ describe('PerfilComponent (Angular 20)', () => {
     expect(userSpy.validarClaveActual).toHaveBeenCalledWith('test@mail.com', 'A123456!');
     expect(userSpy.cambiarClave).toHaveBeenCalledWith('test@mail.com', 'B123456!');
 
-    expect(component.mensajeExito).toBeTrue();
+    expect(notifSpy.showSuccess).toHaveBeenCalledWith('Contraseña actualizada con éxito.'); // <-- NUEVA ASÉRCIÓN
     expect(component.formClave.pristine).toBeTrue();
-
-    tick(2500);
-    expect(component.mensajeExito).toBeFalse();
-  }));
+  });
 });

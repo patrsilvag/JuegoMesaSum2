@@ -141,8 +141,11 @@
           />
           <button type="button" class="btn-ojo" (click)="verRepetir = !verRepetir">👁️</button>
         </div>
-        <small *ngIf="formClave.errors?.['noCoinciden']" class="error">
-          Las contraseñas no coinciden.
+        <small
+          *ngIf="formClave.errors?.['noCoinciden'] && fcClave('repetirClave').touched"
+          class="error"
+        >
+          {{ formClave.errors?.['noCoinciden'] }}
         </small>
       </div>
     </div>

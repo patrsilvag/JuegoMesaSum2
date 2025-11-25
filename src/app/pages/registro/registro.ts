@@ -23,7 +23,7 @@ import { NotificationService } from '../../core/notification.service';
 })
 export class RegistroComponent implements OnInit {
   form!: FormGroup;
-  
+
   verClave = false;
   verClave2 = false;
 
@@ -70,6 +70,30 @@ export class RegistroComponent implements OnInit {
 
   campo(nombre: string): AbstractControl {
     return this.form.get(nombre)!;
+  }
+
+  // ✅ NUEVO: Función para centralizar y priorizar la lógica de errores de fecha
+  getFechaError(): string {
+    const control = this.campo('fechaNacimiento');
+    if (!control.errors) return '';
+
+    // Prioridad 1: Requerido
+    if (control.errors['required']) {
+      // Nota: Si AuthErrorService tuviera un método para 'required', usaríamos: this.err.campoRequerido()
+      return 'La fecha es obligatoria.';
+    }
+    // Prioridad 2: Fecha Futura
+    if (control.errors['fechaFutura']) {
+      // Nota: Si AuthErrorService tuviera un método para 'fechaFutura', usaríamos: this.err.fechaFuturaNoPermitida()
+      return 'La fecha no puede ser futura.';
+    }
+    // Prioridad 3: Edad Mínima
+    if (control.errors['edadMinima']) {
+      // Nota: Si AuthErrorService tuviera un método para 'edadMinima', usaríamos: this.err.edadMinimaNoCumplida()
+      return 'Debes tener al menos 13 años.';
+    }
+
+    return '';
   }
 
   limpiar() {
