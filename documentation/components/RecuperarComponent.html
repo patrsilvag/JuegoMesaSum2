@@ -1,0 +1,1457 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>juegomesa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">juegomesa documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RecuperarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/recuperar/recuperar.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-recuperar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./recuperar.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./recuperar.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#codigoGenerado" >codigoGenerado</a>
+                            </li>
+                            <li>
+                                <a href="#correoValidado" >correoValidado</a>
+                            </li>
+                            <li>
+                                <a href="#formClave" >formClave</a>
+                            </li>
+                            <li>
+                                <a href="#formCodigo" >formCodigo</a>
+                            </li>
+                            <li>
+                                <a href="#formCorreo" >formCorreo</a>
+                            </li>
+                            <li>
+                                <a href="#paso" >paso</a>
+                            </li>
+                            <li>
+                                <a href="#verClave" >verClave</a>
+                            </li>
+                            <li>
+                                <a href="#verClave2" >verClave2</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actualizarClave" >actualizarClave</a>
+                            </li>
+                            <li>
+                                <a href="#enviarCorreo" >enviarCorreo</a>
+                            </li>
+                            <li>
+                                <a href="#fc" >fc</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#verificarCodigo" >verificarCodigo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, userSrv: <a href="../injectables/UserService.html" target="_self">UserService</a>, validators: <a href="../injectables/ValidatorsService.html" target="_self">ValidatorsService</a>, err: <a href="../injectables/AuthErrorService.html" target="_self">AuthErrorService</a>, notifSrv: <a href="../injectables/NotificationService.html" target="_self">NotificationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>aplicar validadores personalizados y mostrar notificaciones.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Factoría de formularios reactivos.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>userSrv</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de usuarios para buscar y actualizar claves.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>validators</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ValidatorsService.html" target="_self" >ValidatorsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de validadores personalizados (claves).</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>err</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthErrorService.html" target="_self" >AuthErrorService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de mensajes de error de autenticación.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>notifSrv</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationService.html" target="_self" >NotificationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de notificaciones tipo toast.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarClave"></a>
+                    <span class="name">
+                        <span ><b>actualizarClave</b></span>
+                        <a href="#actualizarClave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>actualizarClave()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>actualiza la contraseña del usuario usando <code>UserService</code>.</p>
+<ul>
+<li>En éxito, muestra un toast de confirmación, reinicia todos los formularios
+y vuelve a <code>paso = 1</code>.</li>
+<li>En error, marca un error genérico en <code>formClave</code>.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="enviarCorreo"></a>
+                    <span class="name">
+                        <span ><b>enviarCorreo</b></span>
+                        <a href="#enviarCorreo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>enviarCorreo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>existe y, si es así, genera un código (simulado) y avanza al paso 2.</p>
+<ul>
+<li>Si el correo no existe, se marca el control <code>correo</code> con el error <code>noExiste</code>.</li>
+<li>El código actual está simulado como <code>&#39;123456&#39;</code>.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fc"></a>
+                    <span class="name">
+                        <span ><b>fc</b></span>
+                        <a href="#fc"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fc(c: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>c</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre del control (<code>&#39;clave&#39;</code> o <code>&#39;clave2&#39;</code>).</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>AbstractControl</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>El control correspondiente (no nulo).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><ul>
+<li><code>formCorreo</code> con campo <code>correo</code>.</li>
+<li><code>formCodigo</code> con campo <code>codigo</code> numérico de 6 dígitos.</li>
+<li><code>formClave</code> con los campos <code>clave</code> y <code>clave2</code> y validadores de complejidad.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verificarCodigo"></a>
+                    <span class="name">
+                        <span ><b>verificarCodigo</b></span>
+                        <a href="#verificarCodigo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verificarCodigo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>que el código introducido coincida con el código generado.
+Si el código no coincide, se establece un error en el formulario <code>formCodigo</code>
+con la clave <code>incorrecto</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="codigoGenerado"></a>
+                    <span class="name">
+                        <span ><b>codigoGenerado</b></span>
+                        <a href="#codigoGenerado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="correoValidado"></a>
+                    <span class="name">
+                        <span ><b>correoValidado</b></span>
+                        <a href="#correoValidado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formClave"></a>
+                    <span class="name">
+                        <span ><b>formClave</b></span>
+                        <a href="#formClave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formCodigo"></a>
+                    <span class="name">
+                        <span ><b>formCodigo</b></span>
+                        <a href="#formCodigo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formCorreo"></a>
+                    <span class="name">
+                        <span ><b>formCorreo</b></span>
+                        <a href="#formCorreo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paso"></a>
+                    <span class="name">
+                        <span ><b>paso</b></span>
+                        <a href="#paso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verClave"></a>
+                    <span class="name">
+                        <span ><b>verClave</b></span>
+                        <a href="#verClave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verClave2"></a>
+                    <span class="name">
+                        <span ><b>verClave2</b></span>
+                        <a href="#verClave2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+  AbstractControl,
+} from &#x27;@angular/forms&#x27;;
+
+import { UserService } from &#x27;../../core/user.service&#x27;;
+import { ValidatorsService } from &#x27;../../core/validators.service&#x27;;
+import { AuthErrorService } from &#x27;../../core/auth-error.service&#x27;;
+import { NotificationService } from &#x27;../../core/notification.service&#x27;;
+
+@Component({
+  selector: &#x27;app-recuperar&#x27;,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: &#x27;./recuperar.html&#x27;,
+  styleUrls: [&#x27;./recuperar.scss&#x27;],
+})
+
+/**
+ * @description Flujo de recuperación de contraseña en tres pasos:
+ * 1) Validar correo, 2) Validar código, 3) Establecer nueva clave.
+ * Gestiona tres formularios independientes para cada paso.
+ * @usageNotes
+ * - La propiedad &#x60;paso&#x60; controla qué parte del flujo se muestra (1, 2 o 3).
+ * - Usa &#x60;UserService&#x60; para localizar al usuario y cambiar la contraseña.
+ * - Usa &#x60;NotificationService&#x60; para informar del éxito al finalizar.
+ */
+export class RecuperarComponent {
+  paso &#x3D; 1;
+
+  codigoGenerado &#x3D; &#x27;&#x27;;
+  correoValidado &#x3D; &#x27;&#x27;;
+
+  verClave &#x3D; false;
+  verClave2 &#x3D; false;
+
+  formCorreo!: FormGroup;
+  formCodigo!: FormGroup;
+  formClave!: FormGroup;
+
+  /**
+   * @description Inyecta dependencias para construir formularios, acceder a usuarios,
+   * aplicar validadores personalizados y mostrar notificaciones.
+   * @param fb Factoría de formularios reactivos.
+   * @param userSrv Servicio de usuarios para buscar y actualizar claves.
+   * @param validators Servicio de validadores personalizados (claves).
+   * @param err Servicio de mensajes de error de autenticación.
+   * @param notifSrv Servicio de notificaciones tipo toast.
+   */
+  constructor(
+    private fb: FormBuilder,
+    private userSrv: UserService,
+    private validators: ValidatorsService,
+    private err: AuthErrorService,
+    private notifSrv: NotificationService
+  ) {}
+
+  /**
+   * @description Inicializa los tres formularios:
+   * - &#x60;formCorreo&#x60; con campo &#x60;correo&#x60;.
+   * - &#x60;formCodigo&#x60; con campo &#x60;codigo&#x60; numérico de 6 dígitos.
+   * - &#x60;formClave&#x60; con los campos &#x60;clave&#x60; y &#x60;clave2&#x60; y validadores de complejidad.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  ngOnInit() {
+    this.formCorreo &#x3D; this.fb.group({
+      correo: [&#x27;&#x27;, [Validators.required, Validators.email]],
+    });
+
+    this.formCodigo &#x3D; this.fb.group({
+      codigo: [
+        &#x27;&#x27;,
+        [
+          Validators.required,
+          Validators.pattern(/^[0-9]+$/),
+          Validators.minLength(6),
+          Validators.maxLength(6),
+        ],
+      ],
+    });
+
+    this.formClave &#x3D; this.fb.group(
+      {
+        clave: [
+          &#x27;&#x27;,
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(18),
+            this.validators.uppercaseValidator(),
+            this.validators.numberValidator(),
+          ],
+        ],
+        clave2: [&#x27;&#x27;, Validators.required],
+      },
+      { validators: this.validators.coincidenClaves(&#x27;clave&#x27;, &#x27;clave2&#x27;) }
+    );
+  }
+
+  /**
+   * @description Devuelve un control del formulario de cambio de clave (&#x60;formClave&#x60;).
+   * @param c Nombre del control (&#x60;&#x27;clave&#x27;&#x60; o &#x60;&#x27;clave2&#x27;&#x60;).
+   * @returns El control correspondiente (no nulo).
+   */
+  // &#x3D;&#x3D;&#x3D; GETTER PARA CAMPOS &#x3D;&#x3D;&#x3D;
+  fc(c: string): AbstractControl {
+    return this.formClave.get(c)!;
+  }
+
+  /**
+   * @description Paso 1: valida el formulario de correo, comprueba si el usuario
+   * existe y, si es así, genera un código (simulado) y avanza al paso 2.
+   * @returns Nada (&#x60;void&#x60;).
+   * @usageNotes
+   * - Si el correo no existe, se marca el control &#x60;correo&#x60; con el error &#x60;noExiste&#x60;.
+   * - El código actual está simulado como &#x60;&#x27;123456&#x27;&#x60;.
+   */
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  // PASO 1 → Validar correo
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  enviarCorreo() {
+    if (this.formCorreo.invalid) {
+      this.formCorreo.markAllAsTouched();
+      return;
+    }
+
+    const correo &#x3D; this.formCorreo.value.correo;
+    const user &#x3D; this.userSrv.buscarPorCorreo(correo);
+
+    if (!user) {
+      this.formCorreo.get(&#x27;correo&#x27;)?.setErrors({
+        noExiste: this.err.usuarioNoExiste(),
+      });
+      return;
+    }
+
+    // Simulación de envío de código
+    this.correoValidado &#x3D; correo;
+    this.codigoGenerado &#x3D; &#x27;123456&#x27;;
+
+    this.paso &#x3D; 2;
+  }
+
+  /**
+   * @description Paso 2: valida el formulario de código e intenta comprobar
+   * que el código introducido coincida con el código generado.
+   * @returns Nada (&#x60;void&#x60;).
+   * @usageNotes
+   * Si el código no coincide, se establece un error en el formulario &#x60;formCodigo&#x60;
+   * con la clave &#x60;incorrecto&#x60;.
+   */
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  // PASO 2 → Validar código
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  verificarCodigo() {
+    if (this.formCodigo.invalid) {
+      this.formCodigo.markAllAsTouched();
+      return;
+    }
+
+    if (this.formCodigo.value.codigo !&#x3D;&#x3D; this.codigoGenerado) {
+      this.formCodigo.setErrors({
+        incorrecto: this.err.codigoInvalido(),
+      });
+      return;
+    }
+
+    this.paso &#x3D; 3;
+  }
+
+  /**
+   * @description Paso 3: valida el formulario de nueva clave y, si es correcto,
+   * actualiza la contraseña del usuario usando &#x60;UserService&#x60;.
+   * @returns Nada (&#x60;void&#x60;).
+   * @usageNotes
+   * - En éxito, muestra un toast de confirmación, reinicia todos los formularios
+   *   y vuelve a &#x60;paso &#x3D; 1&#x60;.
+   * - En error, marca un error genérico en &#x60;formClave&#x60;.
+   */
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  // PASO 3 → Cambiar clave
+  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+  actualizarClave() {
+    if (this.formClave.invalid) {
+      this.formClave.markAllAsTouched();
+      return;
+    }
+
+    const ok &#x3D; this.userSrv.cambiarClave(this.correoValidado, this.formClave.value.clave);
+
+    if (!ok) {
+      this.formClave.setErrors({
+        error: this.err.errorInesperado(),
+      });
+      return;
+    }
+
+    this.notifSrv.showSuccess(&#x27;Contraseña restaurada con éxito.&#x27;);
+    this.paso &#x3D; 1;
+
+    // Reiniciar todo
+    this.formCorreo.reset();
+    this.formCodigo.reset();
+    this.formClave.reset();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;form-container&quot;&gt;
+  &lt;div class&#x3D;&quot;container recuperar-container&quot;&gt;
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+       PASO 1 — INGRESAR CORREO
+  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div *ngIf&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; 1&quot; class&#x3D;&quot;form-block&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-center mb-3&quot;&gt;Recuperar contraseña&lt;/h2&gt;
+
+      &lt;form [formGroup]&#x3D;&quot;formCorreo&quot; novalidate&gt;
+        &lt;label&gt;Correo electrónico&lt;/label&gt;
+        &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;correo&quot; /&gt;
+
+        &lt;small
+          *ngIf&#x3D;&quot;
+        formCorreo.get(&#x27;correo&#x27;)?.invalid &amp;&amp;
+        (formCorreo.get(&#x27;correo&#x27;)?.dirty || formCorreo.get(&#x27;correo&#x27;)?.touched) &amp;&amp;
+        !formCorreo.get(&#x27;correo&#x27;)?.errors?.[&#x27;noExiste&#x27;]&quot;
+          class&#x3D;&quot;error&quot;
+        &gt;
+          Debes ingresar un correo válido.
+        &lt;/small&gt;
+
+        &lt;small
+          *ngIf&#x3D;&quot;formCorreo.get(&#x27;correo&#x27;)?.errors?.[&#x27;noExiste&#x27;] &amp;&amp; 
+           (formCorreo.get(&#x27;correo&#x27;)?.dirty || formCorreo.get(&#x27;correo&#x27;)?.touched)&quot;
+          class&#x3D;&quot;error&quot;
+        &gt;
+          El correo no está registrado.
+        &lt;/small&gt;
+
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-primary mt-3&quot; (click)&#x3D;&quot;enviarCorreo()&quot;&gt;
+          Enviar código
+        &lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+       PASO 2 — VALIDAR CÓDIGO
+  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div *ngIf&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; 2&quot; class&#x3D;&quot;form-block&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-center mb-3&quot;&gt;Verifica tu código&lt;/h2&gt;
+
+      &lt;p class&#x3D;&quot;text-center&quot;&gt;
+        Ingresa el código enviado a: &lt;strong&gt;{{ correoValidado }}&lt;/strong&gt;
+      &lt;/p&gt;
+
+      &lt;form [formGroup]&#x3D;&quot;formCodigo&quot; novalidate&gt;
+        &lt;label&gt;Código&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;codigo&quot; /&gt;
+
+        &lt;small
+          *ngIf&#x3D;&quot;
+            formCodigo.get(&#x27;codigo&#x27;)?.errors &amp;&amp;
+            (formCodigo.get(&#x27;codigo&#x27;)?.dirty || formCodigo.get(&#x27;codigo&#x27;)?.touched)
+          &quot;
+          class&#x3D;&quot;error&quot;
+        &gt;
+          &lt;span *ngIf&#x3D;&quot;formCodigo.get(&#x27;codigo&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;
+            Debes ingresar el código.
+          &lt;/span&gt;
+
+          &lt;span *ngIf&#x3D;&quot;formCodigo.get(&#x27;codigo&#x27;)?.errors?.[&#x27;pattern&#x27;]&quot;&gt;
+            Solo se permiten números.
+          &lt;/span&gt;
+
+          &lt;span *ngIf&#x3D;&quot;formCodigo.get(&#x27;codigo&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;
+            El código debe tener 6 dígitos.
+          &lt;/span&gt;
+
+          &lt;span *ngIf&#x3D;&quot;formCodigo.get(&#x27;codigo&#x27;)?.errors?.[&#x27;maxlength&#x27;]&quot;&gt;
+            El código debe tener 6 dígitos.
+          &lt;/span&gt;
+        &lt;/small&gt;
+        &lt;small *ngIf&#x3D;&quot;formCodigo.errors?.[&#x27;incorrecto&#x27;]&quot; class&#x3D;&quot;error&quot;&gt;
+          {{ formCodigo.errors?.[&#x27;incorrecto&#x27;] }}
+        &lt;/small&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-primary mt-3&quot; (click)&#x3D;&quot;verificarCodigo()&quot;&gt;
+          Validar código
+        &lt;/button&gt;
+
+        &lt;p class&#x3D;&quot;mt-3 text-center&quot;&gt;
+          &lt;a style&#x3D;&quot;cursor: pointer&quot; (click)&#x3D;&quot;paso &#x3D; 1&quot;&gt;← Cambiar correo&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;!-- &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+     PASO 3 — NUEVA CONTRASEÑA
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; --&gt;
+    &lt;div *ngIf&#x3D;&quot;paso &#x3D;&#x3D;&#x3D; 3&quot; class&#x3D;&quot;form-block&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-center mb-3&quot;&gt;Nueva contraseña&lt;/h2&gt;
+
+      &lt;form [formGroup]&#x3D;&quot;formClave&quot; novalidate&gt;
+        &lt;!-- NUEVA CLAVE --&gt;
+        &lt;label&gt;Nueva contraseña&lt;/label&gt;
+        &lt;div class&#x3D;&quot;password-group&quot;&gt;
+          &lt;input
+            [type]&#x3D;&quot;verClave ? &#x27;text&#x27; : &#x27;password&#x27;&quot;
+            class&#x3D;&quot;form-control&quot;
+            formControlName&#x3D;&quot;clave&quot;
+          /&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-ojo&quot; (click)&#x3D;&quot;verClave &#x3D; !verClave&quot;&gt;👁️&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- ERRORES DE LA NUEVA CLAVE --&gt;
+        ...
+        &lt;div class&#x3D;&quot;reglas&quot; *ngIf&#x3D;&quot;formClave.get(&#x27;clave&#x27;)?.touched&quot;&gt;
+          &lt;span [class.ok]&#x3D;&quot;!formClave.get(&#x27;clave&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;Mín. 6&lt;/span&gt;
+          &lt;span [class.ok]&#x3D;&quot;!formClave.get(&#x27;clave&#x27;)?.errors?.[&#x27;maxlength&#x27;]&quot;&gt;Máx. 18&lt;/span&gt;
+          &lt;span [class.ok]&#x3D;&quot;!formClave.get(&#x27;clave&#x27;)?.errors?.[&#x27;uppercase&#x27;]&quot;&gt;Mayúscula&lt;/span&gt;
+          &lt;span [class.ok]&#x3D;&quot;!formClave.get(&#x27;clave&#x27;)?.errors?.[&#x27;number&#x27;]&quot;&gt;Número&lt;/span&gt;
+        &lt;/div&gt;
+        ...
+
+        &lt;!-- REPETIR CLAVE --&gt;
+        &lt;label class&#x3D;&quot;mt-2&quot;&gt;Repetir contraseña&lt;/label&gt;
+        &lt;div class&#x3D;&quot;password-group&quot;&gt;
+          &lt;input
+            [type]&#x3D;&quot;verClave2 ? &#x27;text&#x27; : &#x27;password&#x27;&quot;
+            class&#x3D;&quot;form-control&quot;
+            formControlName&#x3D;&quot;clave2&quot;
+          /&gt;
+          &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-ojo&quot; (click)&#x3D;&quot;verClave2 &#x3D; !verClave2&quot;&gt;👁️&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- ERROR: CONTRASEÑAS NO COINCIDEN --&gt;
+        &lt;small
+          *ngIf&#x3D;&quot;formClave.errors?.[&#x27;noCoinciden&#x27;] &amp;&amp; formClave.get(&#x27;clave2&#x27;)?.touched&quot;
+          class&#x3D;&quot;error&quot;
+        &gt;
+          {{ formClave.errors?.[&#x27;noCoinciden&#x27;] }}
+        &lt;/small&gt;
+
+        &lt;small *ngIf&#x3D;&quot;formClave.errors?.[&#x27;error&#x27;]&quot; class&#x3D;&quot;error&quot;&gt;
+          {{ formClave.errors?.[&#x27;error&#x27;] }}
+        &lt;/small&gt;
+
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-primary mt-3&quot; (click)&#x3D;&quot;actualizarClave()&quot;&gt;
+          Guardar nueva contraseña
+        &lt;/button&gt;
+
+        &lt;p class&#x3D;&quot;mt-3 text-center&quot;&gt;
+          &lt;a style&#x3D;&quot;cursor: pointer&quot; (click)&#x3D;&quot;paso &#x3D; 2&quot;&gt;← Volver&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./recuperar.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@use &#x27;../../styles/form-base.scss&#x27;;
+
+// Ajustes adicionales locales
+
+.text-center {
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.form-block {
+  width: 100%;
+}
+
+.password-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .btn-ojo {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    opacity: 0.7;
+
+    &amp;:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.alert-success {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="form-container">  <div class="container recuperar-container">    <!-- ============================       PASO 1 — INGRESAR CORREO  ============================= -->    <div *ngIf="paso === 1" class="form-block">      <h2 class="text-center mb-3">Recuperar contraseña</h2>      <form [formGroup]="formCorreo" novalidate>        <label>Correo electrónico</label>        <input type="email" class="form-control" formControlName="correo" />        <small          *ngIf="        formCorreo.get(\'correo\')?.invalid &&        (formCorreo.get(\'correo\')?.dirty || formCorreo.get(\'correo\')?.touched) &&        !formCorreo.get(\'correo\')?.errors?.[\'noExiste\']"          class="error"        >          Debes ingresar un correo válido.        </small>        <small          *ngIf="formCorreo.get(\'correo\')?.errors?.[\'noExiste\'] &&            (formCorreo.get(\'correo\')?.dirty || formCorreo.get(\'correo\')?.touched)"          class="error"        >          El correo no está registrado.        </small>        <button type="button" class="btn-primary mt-3" (click)="enviarCorreo()">          Enviar código        </button>      </form>    </div>    <!-- ============================       PASO 2 — VALIDAR CÓDIGO  ============================= -->    <div *ngIf="paso === 2" class="form-block">      <h2 class="text-center mb-3">Verifica tu código</h2>      <p class="text-center">        Ingresa el código enviado a: <strong>{{ correoValidado }}</strong>      </p>      <form [formGroup]="formCodigo" novalidate>        <label>Código</label>        <input type="text" class="form-control" formControlName="codigo" />        <small          *ngIf="            formCodigo.get(\'codigo\')?.errors &&            (formCodigo.get(\'codigo\')?.dirty || formCodigo.get(\'codigo\')?.touched)          "          class="error"        >          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'required\']">            Debes ingresar el código.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'pattern\']">            Solo se permiten números.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'minlength\']">            El código debe tener 6 dígitos.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'maxlength\']">            El código debe tener 6 dígitos.          </span>        </small>        <small *ngIf="formCodigo.errors?.[\'incorrecto\']" class="error">          {{ formCodigo.errors?.[\'incorrecto\'] }}        </small>        <button type="button" class="btn-primary mt-3" (click)="verificarCodigo()">          Validar código        </button>        <p class="mt-3 text-center">          <a style="cursor: pointer" (click)="paso = 1">← Cambiar correo</a>        </p>      </form>    </div>    <!-- ============================     PASO 3 — NUEVA CONTRASEÑA============================= -->    <div *ngIf="paso === 3" class="form-block">      <h2 class="text-center mb-3">Nueva contraseña</h2>      <form [formGroup]="formClave" novalidate>        <!-- NUEVA CLAVE -->        <label>Nueva contraseña</label>        <div class="password-group">          <input            [type]="verClave ? \'text\' : \'password\'"            class="form-control"            formControlName="clave"          />          <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>        </div>        <!-- ERRORES DE LA NUEVA CLAVE -->        ...        <div class="reglas" *ngIf="formClave.get(\'clave\')?.touched">          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'minlength\']">Mín. 6</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'maxlength\']">Máx. 18</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'uppercase\']">Mayúscula</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'number\']">Número</span>        </div>        ...        <!-- REPETIR CLAVE -->        <label class="mt-2">Repetir contraseña</label>        <div class="password-group">          <input            [type]="verClave2 ? \'text\' : \'password\'"            class="form-control"            formControlName="clave2"          />          <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>        </div>        <!-- ERROR: CONTRASEÑAS NO COINCIDEN -->        <small          *ngIf="formClave.errors?.[\'noCoinciden\'] && formClave.get(\'clave2\')?.touched"          class="error"        >          {{ formClave.errors?.[\'noCoinciden\'] }}        </small>        <small *ngIf="formClave.errors?.[\'error\']" class="error">          {{ formClave.errors?.[\'error\'] }}        </small>        <button type="button" class="btn-primary mt-3" (click)="actualizarClave()">          Guardar nueva contraseña        </button>        <p class="mt-3 text-center">          <a style="cursor: pointer" (click)="paso = 2">← Volver</a>        </p>      </form>    </div>  </div></section></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RecuperarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RecuperarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

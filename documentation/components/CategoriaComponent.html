@@ -1,0 +1,1246 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>juegomesa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">juegomesa documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CategoriaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/categoria/categoria.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-categoria</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterLink</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./categoria.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./categoria.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categoriaActual" >categoriaActual</a>
+                            </li>
+                            <li>
+                                <a href="#categoriasData" >categoriasData</a>
+                            </li>
+                            <li>
+                                <a href="#productos" >productos</a>
+                            </li>
+                            <li>
+                                <a href="#productosFiltrados" >productosFiltrados</a>
+                            </li>
+                            <li>
+                                <a href="#slug" >slug</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#agregarProducto" >agregarProducto</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, cart: <a href="../injectables/Cart.html" target="_self">Cart</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/app/pages/categoria/categoria.ts:174</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>y el servicio de carrito para añadir productos.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Ruta activada con acceso a <code>params</code>.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cart</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Cart.html" target="_self" >Cart</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de carrito.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarProducto"></a>
+                    <span class="name">
+                        <span ><b>agregarProducto</b></span>
+                        <a href="#agregarProducto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarProducto(p: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>p</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto de producto tal y como está definido en <code>productos</code>.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><ul>
+<li>Actualizar <code>slug</code>.</li>
+<li>Calcular <code>categoriaActual</code> a partir de <code>categoriasData</code>.</li>
+<li>Filtrar <code>productos</code> por categoría y quedarse con los 3 primeros.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categoriaActual"></a>
+                    <span class="name">
+                        <span ><b>categoriaActual</b></span>
+                        <a href="#categoriaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/categoria/categoria.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categoriasData"></a>
+                    <span class="name">
+                        <span ><b>categoriasData</b></span>
+                        <a href="#categoriasData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    amigos: {
+      titulo: &#x27;Juegos para Amigos&#x27;,
+      subtitulo: &#x27;¡Dibuja, adivina y tiembla! La diversión se apila.&#x27;,
+    },
+    cartas: {
+      titulo: &#x27;Juegos de Cartas&#x27;,
+      subtitulo: &#x27;Barajas y juegos rápidos para todos&#x27;,
+    },
+    estrategia: {
+      titulo: &#x27;Juegos de Estrategia&#x27;,
+      subtitulo: &#x27;Planifica, conquista y desafía tu mente&#x27;,
+    },
+    infantiles: {
+      titulo: &#x27;Juegos Infantiles&#x27;,
+      subtitulo: &#x27;Aprendizaje y diversión para los más pequeños&#x27;,
+    },
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/categoria/categoria.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="productos"></a>
+                    <span class="name">
+                        <span ><b>productos</b></span>
+                        <a href="#productos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    // Estrategia
+    {
+      id: &#x27;sku-catan&#x27;,
+      nombre: &#x27;Catan&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 29990,
+      descuento: true,
+      imagen: &#x27;assets/img/catan.webp&#x27;,
+      alt: &#x27;Tablero Catan&#x27;,
+      desc: &#x27;Coloniza la isla y comercia recursos.&#x27;,
+    },
+    {
+      id: &#x27;sku-risk&#x27;,
+      nombre: &#x27;Risk&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 24990,
+      descuento: false,
+      imagen: &#x27;assets/img/risk.webp&#x27;,
+      alt: &#x27;Tablero Risk&#x27;,
+      desc: &#x27;Conquista el mundo con estrategia.&#x27;,
+    },
+    {
+      id: &#x27;sku-ajed&#x27;,
+      nombre: &#x27;Ajedrez Clásico&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 14990,
+      descuento: true,
+      imagen: &#x27;assets/img/ajedrez.webp&#x27;,
+      alt: &#x27;Ajedrez&#x27;,
+      desc: &#x27;Clásico de estrategia.&#x27;,
+    },
+
+    // Cartas
+    {
+      id: &#x27;sku-ek&#x27;,
+      nombre: &#x27;Exploding Kittens&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 16990,
+      descuento: true,
+      imagen: &#x27;assets/img/exploding_kittens.webp&#x27;,
+      alt: &#x27;Exploding Kittens&#x27;,
+      desc: &#x27;Evita explotar con cartas de defensa.&#x27;,
+    },
+    {
+      id: &#x27;sku-dob&#x27;,
+      nombre: &#x27;Dobble&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 10990,
+      descuento: false,
+      imagen: &#x27;assets/img/dobble.webp&#x27;,
+      alt: &#x27;Dobble&#x27;,
+      desc: &#x27;Encuentra el símbolo común.&#x27;,
+    },
+    {
+      id: &#x27;sku-poker&#x27;,
+      nombre: &#x27;Set Póker Clásico&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 19990,
+      descuento: true,
+      imagen: &#x27;assets/img/cartas_poker.webp&#x27;,
+      alt: &#x27;Poker&#x27;,
+      desc: &#x27;Baraja y fichas clásicas.&#x27;,
+    },
+
+    // Amigos
+    {
+      id: &#x27;sku-pict&#x27;,
+      nombre: &#x27;Pictionary&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 18990,
+      descuento: true,
+      imagen: &#x27;assets/img/pictionary.webp&#x27;,
+      alt: &#x27;Pictionary&#x27;,
+      desc: &#x27;Dibuja y adivina.&#x27;,
+    },
+    {
+      id: &#x27;sku-jenga&#x27;,
+      nombre: &#x27;Jenga&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 13990,
+      descuento: false,
+      imagen: &#x27;assets/img/jenga.webp&#x27;,
+      alt: &#x27;Jenga&#x27;,
+      desc: &#x27;Pulso firme para no botar la torre.&#x27;,
+    },
+    {
+      id: &#x27;sku-uno&#x27;,
+      nombre: &#x27;UNO&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 8990,
+      descuento: true,
+      imagen: &#x27;assets/img/uno.webp&#x27;,
+      alt: &#x27;UNO&#x27;,
+      desc: &#x27;Clásico rápido y divertido.&#x27;,
+    },
+
+    // Infantiles
+    {
+      id: &#x27;sku-candy&#x27;,
+      nombre: &#x27;Candy Land&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 12990,
+      descuento: true,
+      imagen: &#x27;assets/img/candyland.webp&#x27;,
+      alt: &#x27;Candy Land&#x27;,
+      desc: &#x27;Aprenden colores y turnos.&#x27;,
+    },
+    {
+      id: &#x27;sku-serp&#x27;,
+      nombre: &#x27;Serpientes y Escaleras&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 9990,
+      descuento: false,
+      imagen: &#x27;assets/img/serpientes.webp&#x27;,
+      alt: &#x27;Serpientes y Escaleras&#x27;,
+      desc: &#x27;Azar y diversión.&#x27;,
+    },
+    {
+      id: &#x27;sku-memo&#x27;,
+      nombre: &#x27;Memoria Animales&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 7990,
+      descuento: true,
+      imagen: &#x27;assets/img/memoria.webp&#x27;,
+      alt: &#x27;Memoria&#x27;,
+      desc: &#x27;Mejora la concentración.&#x27;,
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/categoria/categoria.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="productosFiltrados"></a>
+                    <span class="name">
+                        <span ><b>productosFiltrados</b></span>
+                        <a href="#productosFiltrados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/categoria/categoria.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="slug"></a>
+                    <span class="name">
+                        <span ><b>slug</b></span>
+                        <a href="#slug"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/categoria/categoria.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, RouterLink } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Cart } from &#x27;../../core/cart&#x27;;
+
+@Component({
+  selector: &#x27;app-categoria&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: &#x27;./categoria.html&#x27;,
+  styleUrls: [&#x27;./categoria.scss&#x27;],
+})
+
+/**
+ * @description Página de listado de productos por categoría. Escucha el parámetro
+ * &#x60;slug&#x60; de la ruta, obtiene los textos de &#x60;categoriasData&#x60; y filtra &#x60;productos&#x60;
+ * para mostrar solo los de esa categoría.
+ * @usageNotes
+ * - Se accede típicamente por ruta &#x60;/categorias/:slug&#x60;.
+ * - Usa &#x60;Cart&#x60; para añadir productos al carrito con cantidad 1.
+ */
+export class CategoriaComponent implements OnInit {
+  slug!: string;
+  categoriaActual: any &#x3D; null;
+  productosFiltrados: any[] &#x3D; [];
+
+  categoriasData: any &#x3D; {
+    amigos: {
+      titulo: &#x27;Juegos para Amigos&#x27;,
+      subtitulo: &#x27;¡Dibuja, adivina y tiembla! La diversión se apila.&#x27;,
+    },
+    cartas: {
+      titulo: &#x27;Juegos de Cartas&#x27;,
+      subtitulo: &#x27;Barajas y juegos rápidos para todos&#x27;,
+    },
+    estrategia: {
+      titulo: &#x27;Juegos de Estrategia&#x27;,
+      subtitulo: &#x27;Planifica, conquista y desafía tu mente&#x27;,
+    },
+    infantiles: {
+      titulo: &#x27;Juegos Infantiles&#x27;,
+      subtitulo: &#x27;Aprendizaje y diversión para los más pequeños&#x27;,
+    },
+  };
+
+  productos &#x3D; [
+    // Estrategia
+    {
+      id: &#x27;sku-catan&#x27;,
+      nombre: &#x27;Catan&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 29990,
+      descuento: true,
+      imagen: &#x27;assets/img/catan.webp&#x27;,
+      alt: &#x27;Tablero Catan&#x27;,
+      desc: &#x27;Coloniza la isla y comercia recursos.&#x27;,
+    },
+    {
+      id: &#x27;sku-risk&#x27;,
+      nombre: &#x27;Risk&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 24990,
+      descuento: false,
+      imagen: &#x27;assets/img/risk.webp&#x27;,
+      alt: &#x27;Tablero Risk&#x27;,
+      desc: &#x27;Conquista el mundo con estrategia.&#x27;,
+    },
+    {
+      id: &#x27;sku-ajed&#x27;,
+      nombre: &#x27;Ajedrez Clásico&#x27;,
+      categoria: &#x27;estrategia&#x27;,
+      precio: 14990,
+      descuento: true,
+      imagen: &#x27;assets/img/ajedrez.webp&#x27;,
+      alt: &#x27;Ajedrez&#x27;,
+      desc: &#x27;Clásico de estrategia.&#x27;,
+    },
+
+    // Cartas
+    {
+      id: &#x27;sku-ek&#x27;,
+      nombre: &#x27;Exploding Kittens&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 16990,
+      descuento: true,
+      imagen: &#x27;assets/img/exploding_kittens.webp&#x27;,
+      alt: &#x27;Exploding Kittens&#x27;,
+      desc: &#x27;Evita explotar con cartas de defensa.&#x27;,
+    },
+    {
+      id: &#x27;sku-dob&#x27;,
+      nombre: &#x27;Dobble&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 10990,
+      descuento: false,
+      imagen: &#x27;assets/img/dobble.webp&#x27;,
+      alt: &#x27;Dobble&#x27;,
+      desc: &#x27;Encuentra el símbolo común.&#x27;,
+    },
+    {
+      id: &#x27;sku-poker&#x27;,
+      nombre: &#x27;Set Póker Clásico&#x27;,
+      categoria: &#x27;cartas&#x27;,
+      precio: 19990,
+      descuento: true,
+      imagen: &#x27;assets/img/cartas_poker.webp&#x27;,
+      alt: &#x27;Poker&#x27;,
+      desc: &#x27;Baraja y fichas clásicas.&#x27;,
+    },
+
+    // Amigos
+    {
+      id: &#x27;sku-pict&#x27;,
+      nombre: &#x27;Pictionary&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 18990,
+      descuento: true,
+      imagen: &#x27;assets/img/pictionary.webp&#x27;,
+      alt: &#x27;Pictionary&#x27;,
+      desc: &#x27;Dibuja y adivina.&#x27;,
+    },
+    {
+      id: &#x27;sku-jenga&#x27;,
+      nombre: &#x27;Jenga&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 13990,
+      descuento: false,
+      imagen: &#x27;assets/img/jenga.webp&#x27;,
+      alt: &#x27;Jenga&#x27;,
+      desc: &#x27;Pulso firme para no botar la torre.&#x27;,
+    },
+    {
+      id: &#x27;sku-uno&#x27;,
+      nombre: &#x27;UNO&#x27;,
+      categoria: &#x27;amigos&#x27;,
+      precio: 8990,
+      descuento: true,
+      imagen: &#x27;assets/img/uno.webp&#x27;,
+      alt: &#x27;UNO&#x27;,
+      desc: &#x27;Clásico rápido y divertido.&#x27;,
+    },
+
+    // Infantiles
+    {
+      id: &#x27;sku-candy&#x27;,
+      nombre: &#x27;Candy Land&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 12990,
+      descuento: true,
+      imagen: &#x27;assets/img/candyland.webp&#x27;,
+      alt: &#x27;Candy Land&#x27;,
+      desc: &#x27;Aprenden colores y turnos.&#x27;,
+    },
+    {
+      id: &#x27;sku-serp&#x27;,
+      nombre: &#x27;Serpientes y Escaleras&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 9990,
+      descuento: false,
+      imagen: &#x27;assets/img/serpientes.webp&#x27;,
+      alt: &#x27;Serpientes y Escaleras&#x27;,
+      desc: &#x27;Azar y diversión.&#x27;,
+    },
+    {
+      id: &#x27;sku-memo&#x27;,
+      nombre: &#x27;Memoria Animales&#x27;,
+      categoria: &#x27;infantiles&#x27;,
+      precio: 7990,
+      descuento: true,
+      imagen: &#x27;assets/img/memoria.webp&#x27;,
+      alt: &#x27;Memoria&#x27;,
+      desc: &#x27;Mejora la concentración.&#x27;,
+    },
+  ];
+
+  /**
+   * @description Inyecta la ruta activada para leer el parámetro &#x60;slug&#x60;
+   * y el servicio de carrito para añadir productos.
+   * @param route Ruta activada con acceso a &#x60;params&#x60;.
+   * @param cart Servicio de carrito.
+   */
+  constructor(private route: ActivatedRoute, private cart: Cart) {}
+
+  /**
+   * @description Se suscribe a los parámetros de la ruta para:
+   * - Actualizar &#x60;slug&#x60;.
+   * - Calcular &#x60;categoriaActual&#x60; a partir de &#x60;categoriasData&#x60;.
+   * - Filtrar &#x60;productos&#x60; por categoría y quedarse con los 3 primeros.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  ngOnInit(): void {
+    // 🔥 escuchar SIEMPRE los cambios de categoría
+    this.route.params.subscribe((params) &#x3D;&gt; {
+      this.slug &#x3D; params[&#x27;slug&#x27;];
+
+      this.categoriaActual &#x3D; this.categoriasData[this.slug] ?? null;
+
+      // Filtrar productos y mostrar solo los 3 primeros
+      this.productosFiltrados &#x3D; this.productos.filter((p) &#x3D;&gt; p.categoria &#x3D;&#x3D;&#x3D; this.slug).slice(0, 3);
+    });
+  }
+
+  /**
+   * @description Añade un producto al carrito con cantidad 1 usando &#x60;Cart.agregar&#x60;.
+   * @param p Objeto de producto tal y como está definido en &#x60;productos&#x60;.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  agregarProducto(p: any) {
+    this.cart.agregar({
+      id: p.id,
+      nombre: p.nombre,
+      precio: p.precio,
+      imagen: p.imagen,
+      cantidad: 1,
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;bg-light border-bottom py-3&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h1 class&#x3D;&quot;h4 mb-0&quot;&gt;
+      {{ categoriaActual?.titulo }}
+    &lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;main class&#x3D;&quot;container my-5&quot;&gt;
+  &lt;h2 class&#x3D;&quot;text-center mb-4&quot;&gt;{{ categoriaActual?.subtitulo }}&lt;/h2&gt;
+
+  &lt;!-- LISTA DE PRODUCTOS --&gt;
+  &lt;div class&#x3D;&quot;row g-4 justify-content-center&quot;&gt;
+    @for (p of productosFiltrados; track p.id) {
+      &lt;div class&#x3D;&quot;col-12 col-sm-6 col-md-4 col-lg-3&quot;&gt;
+        &lt;div class&#x3D;&quot;producto-card h-100 shadow-sm&quot;&gt;
+
+          &lt;!-- Imagen --&gt;
+          &lt;img 
+            [src]&#x3D;&quot;p.imagen&quot; 
+            [alt]&#x3D;&quot;p.alt&quot; 
+            loading&#x3D;&quot;lazy&quot; 
+          /&gt;
+
+          &lt;!-- Contenido --&gt;
+          &lt;div class&#x3D;&quot;contenido text-center p-3&quot;&gt;
+
+            &lt;h3 class&#x3D;&quot;fw-bold fs-6&quot;&gt;{{ p.nombre }}&lt;/h3&gt;
+
+            &lt;p class&#x3D;&quot;descripcion mb-2&quot;&gt;
+              {{ p.desc }}
+            &lt;/p&gt;
+
+            &lt;p class&#x3D;&quot;precio fw-bold text-primary mb-1&quot;&gt;
+              Precio: $ {{ p.precio | number }}
+            &lt;/p&gt;
+
+            @if (p.descuento) {
+              &lt;p class&#x3D;&quot;descuento text-success fw-bold mb-2&quot;&gt;Descuento disponible&lt;/p&gt;
+            }
+
+            &lt;button 
+              class&#x3D;&quot;btn btn-primary btn-sm w-100&quot;
+              (click)&#x3D;&quot;agregarProducto(p)&quot;
+            &gt;
+              Agregar
+            &lt;/button&gt;
+
+          &lt;/div&gt; &lt;!-- /contenido --&gt;
+
+        &lt;/div&gt; &lt;!-- /producto-card --&gt;
+      &lt;/div&gt;
+    }
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;text-center mt-5&quot;&gt;
+    &lt;a class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;/&quot;&gt;← Volver al inicio&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./categoria.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.producto-card {
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;               /* 👈 Permite uniforme en altura */
+  flex-direction: column;
+  height: 100%;                /* 👈 Misma altura en todas */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &amp;:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .contenido {
+    flex: 1;                  /* 👈 Esto empuja el botón abajo */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+
+  .descripcion {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    min-height: 48px; /* mantiene bloques iguales */
+    margin-bottom: .75rem;
+  }
+
+  .precio {
+    font-weight: bold;
+    color: var(--color-primario, #0d6efd);
+    margin-bottom: .5rem;
+  }
+
+  .descuento {
+    color: #10b981;
+    font-weight: 700;
+    margin-bottom: .75rem;
+  }
+
+  button {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.75rem;
+    margin-top: auto;        /* 👈 asegura que siempre quede abajo */
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="bg-light border-bottom py-3">  <div class="container">    <h1 class="h4 mb-0">      {{ categoriaActual?.titulo }}    </h1>  </div></section><main class="container my-5">  <h2 class="text-center mb-4">{{ categoriaActual?.subtitulo }}</h2>  <!-- LISTA DE PRODUCTOS -->  <div class="row g-4 justify-content-center">    @for (p of productosFiltrados; track p.id) {      <div class="col-12 col-sm-6 col-md-4 col-lg-3">        <div class="producto-card h-100 shadow-sm">          <!-- Imagen -->          <img             [src]="p.imagen"             [alt]="p.alt"             loading="lazy"           />          <!-- Contenido -->          <div class="contenido text-center p-3">            <h3 class="fw-bold fs-6">{{ p.nombre }}</h3>            <p class="descripcion mb-2">              {{ p.desc }}            </p>            <p class="precio fw-bold text-primary mb-1">              Precio: $ {{ p.precio | number }}            </p>            @if (p.descuento) {              <p class="descuento text-success fw-bold mb-2">Descuento disponible</p>            }            <button               class="btn btn-primary btn-sm w-100"              (click)="agregarProducto(p)"            >              Agregar            </button>          </div> <!-- /contenido -->        </div> <!-- /producto-card -->      </div>    }  </div>  <div class="text-center mt-5">    <a class="btn btn-primary" routerLink="/">← Volver al inicio</a>  </div></main></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CategoriaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoriaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

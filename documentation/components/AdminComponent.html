@@ -1,0 +1,1124 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>juegomesa documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">juegomesa documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AdminComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/admin/admin.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-admin</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./admin.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#debug" >debug</a>
+                            </li>
+                            <li>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <a href="#filtroForm" >filtroForm</a>
+                            </li>
+                            <li>
+                                <a href="#usuarios" >usuarios</a>
+                            </li>
+                            <li>
+                                <a href="#usuariosFiltrados" >usuariosFiltrados</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filtrar" >filtrar</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#resetFiltro" >resetFiltro</a>
+                            </li>
+                            <li>
+                                <a href="#toggleEstado" >toggleEstado</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, adminSrv: <a href="../injectables/AdminService.html" target="_self">AdminService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/admin/admin.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Factoría para construir el formulario de filtros.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>adminSrv</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AdminService.html" target="_self" >AdminService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio que encapsula la lógica sobre usuarios administrables.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtrar"></a>
+                    <span class="name">
+                        <span ><b>filtrar</b></span>
+                        <a href="#filtrar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filtrar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>de usuarios, usando <code>AdminService.filtrarUsuarios</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>desde <code>AdminService</code> y configura una suscripción a <code>valueChanges</code> para
+filtrar automáticamente.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetFiltro"></a>
+                    <span class="name">
+                        <span ><b>resetFiltro</b></span>
+                        <a href="#resetFiltro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetFiltro()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleEstado"></a>
+                    <span class="name">
+                        <span ><b>toggleEstado</b></span>
+                        <a href="#toggleEstado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleEstado(usuario: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p><code>AdminService.toggleEstado</code> y vuelve a aplicar los filtros para refrescar
+la vista.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto usuario tal y como lo devuelve <code>AdminService</code>.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Nada (<code>void</code>).</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="debug"></a>
+                    <span class="name">
+                        <span ><b>debug</b></span>
+                        <a href="#debug"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/admin/admin.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/admin/admin.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filtroForm"></a>
+                    <span class="name">
+                        <span ><b>filtroForm</b></span>
+                        <a href="#filtroForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/admin/admin.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarios"></a>
+                    <span class="name">
+                        <span ><b>usuarios</b></span>
+                        <a href="#usuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/admin/admin.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuariosFiltrados"></a>
+                    <span class="name">
+                        <span ><b>usuariosFiltrados</b></span>
+                        <a href="#usuariosFiltrados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/admin/admin.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import { AdminService } from &#x27;./admin.service&#x27;;
+
+@Component({
+  selector: &#x27;app-admin&#x27;,
+  templateUrl: &#x27;./admin.html&#x27;,
+  styleUrls: [&#x27;./admin.scss&#x27;],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+})
+
+/**
+ * @description Panel de administración para listar y filtrar usuarios,
+ * así como cambiar su estado activo/inactivo.
+ * @usageNotes
+ * - Se apoya en &#x60;AdminService&#x60; para cargar, filtrar y actualizar usuarios.
+ * - Usa un formulario reactivo &#x60;filtroForm&#x60; con campos &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
+ */
+export class AdminComponent implements OnInit {
+  filtroForm!: FormGroup;
+  usuarios: any[] &#x3D; [];
+  usuariosFiltrados: any[] &#x3D; [];
+  error: string | null &#x3D; null;
+  debug &#x3D; false;
+
+  /**
+   * @description Inyecta el &#x60;FormBuilder&#x60; y el servicio de administración.
+   * @param fb Factoría para construir el formulario de filtros.
+   * @param adminSrv Servicio que encapsula la lógica sobre usuarios administrables.
+   */
+  constructor(private fb: FormBuilder, private adminSrv: AdminService) {}
+
+  /**
+   * @description Inicializa el formulario de filtros, carga la lista de usuarios
+   * desde &#x60;AdminService&#x60; y configura una suscripción a &#x60;valueChanges&#x60; para
+   * filtrar automáticamente.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  ngOnInit() {
+    // Formulario reactivo
+    this.filtroForm &#x3D; this.fb.group({
+      correo: [&#x27;&#x27;, [Validators.email]],
+      rol: [&#x27;&#x27;],
+      estado: [&#x27;&#x27;],
+    });
+
+    // Cargar datos desde el servicio
+    this.usuarios &#x3D; this.adminSrv.cargarUsuarios();
+    this.usuariosFiltrados &#x3D; [...this.usuarios];
+
+    // Filtrar automáticamente cuando cambian los campos del formulario
+    this.filtroForm.valueChanges.subscribe(() &#x3D;&gt; this.filtrar());
+  }
+
+  /**
+   * @description Aplica los filtros actuales del formulario sobre la lista
+   * de usuarios, usando &#x60;AdminService.filtrarUsuarios&#x60;.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  filtrar() {
+    this.usuariosFiltrados &#x3D; this.adminSrv.filtrarUsuarios(this.usuarios, this.filtroForm.value);
+  }
+
+  /**
+   * @description Resetea todos los campos del formulario de filtrado.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  resetFiltro() {
+    this.filtroForm.reset();
+  }
+
+  /**
+   * @description Cambia el estado de un usuario (activo/inactivo) usando
+   * &#x60;AdminService.toggleEstado&#x60; y vuelve a aplicar los filtros para refrescar
+   * la vista.
+   * @param usuario Objeto usuario tal y como lo devuelve &#x60;AdminService&#x60;.
+   * @returns Nada (&#x60;void&#x60;).
+   */
+  toggleEstado(usuario: any) {
+    this.adminSrv.toggleEstado(usuario);
+    this.filtrar();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Cleaned Mobile-First Admin HTML --&gt;
+&lt;div class&#x3D;&quot;admin-wrapper&quot;&gt;
+  &lt;section class&#x3D;&quot;admin-container&quot;&gt;
+    &lt;h1 class&#x3D;&quot;h4 mb-3&quot;&gt;Panel de administración&lt;/h1&gt;
+
+    &lt;!-- ERROR GENERAL --&gt;
+    &lt;div *ngIf&#x3D;&quot;error&quot; class&#x3D;&quot;alert alert-danger text-center&quot;&gt;{{ error }}&lt;/div&gt;
+
+    &lt;!-- FORMULARIO REACTIVO --&gt;
+    &lt;form [formGroup]&#x3D;&quot;filtroForm&quot; class&#x3D;&quot;row g-3 mb-4&quot;&gt;
+      &lt;!-- CORREO --&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-4&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Filtrar por correo&quot; formControlName&#x3D;&quot;correo&quot; /&gt;
+        &lt;small class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;filtroForm.get(&#x27;correo&#x27;)?.invalid &amp;&amp; filtroForm.get(&#x27;correo&#x27;)?.touched&quot;&gt;Formato de correo inválido&lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;!-- ROL --&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-3&quot;&gt;
+        &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;rol&quot;&gt;
+          &lt;option value&#x3D;&quot;&quot;&gt;Rol (todos)&lt;/option&gt;
+          &lt;option value&#x3D;&quot;admin&quot;&gt;Administrador&lt;/option&gt;
+          &lt;option value&#x3D;&quot;cliente&quot;&gt;Cliente&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;!-- ESTADO --&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-3&quot;&gt;
+        &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;estado&quot;&gt;
+          &lt;option value&#x3D;&quot;&quot;&gt;Estado (todos)&lt;/option&gt;
+          &lt;option value&#x3D;&quot;active&quot;&gt;Activo&lt;/option&gt;
+          &lt;option value&#x3D;&quot;inactive&quot;&gt;Inactivo&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;!-- LIMPIAR --&gt;
+      &lt;div class&#x3D;&quot;col-12 col-md-2&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary w-100&quot; (click)&#x3D;&quot;resetFiltro()&quot;&gt;Limpiar&lt;/button&gt;
+      &lt;/div&gt;
+      
+    &lt;/form&gt;
+
+    &lt;!-- TABLA --&gt;
+    &lt;div class&#x3D;&quot;card shadow-sm&quot; *ngIf&#x3D;&quot;usuariosFiltrados.length &gt; 0&quot;&gt;
+      &lt;div class&#x3D;&quot;card-body p-0&quot;&gt;
+        &lt;div class&#x3D;&quot;table-responsive-mobile&quot;&gt;
+          &lt;table class&#x3D;&quot;table table-hover align-middle mb-0&quot;&gt;
+            &lt;thead class&#x3D;&quot;table-dark&quot;&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Correo&lt;/th&gt;
+                &lt;th&gt;Usuario&lt;/th&gt;
+                &lt;th&gt;Rol&lt;/th&gt;
+                &lt;th&gt;Estado&lt;/th&gt;
+                &lt;th class&#x3D;&quot;text-end&quot;&gt;Acciones&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr *ngFor&#x3D;&quot;let u of usuariosFiltrados&quot;&gt;
+                &lt;td&gt;{{ u.correo }}&lt;/td&gt;
+                &lt;td&gt;{{ u.usuario }}&lt;/td&gt;
+                &lt;td&gt;{{ u.rol }}&lt;/td&gt;
+                &lt;td&gt;
+                  &lt;span class&#x3D;&quot;badge&quot; [class.text-bg-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot; [class.text-bg-secondary]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot;&gt;
+                    {{ u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27; ? &#x27;Activo&#x27; : &#x27;Inactivo&#x27; }}
+                  &lt;/span&gt;
+                &lt;/td&gt;
+                &lt;td class&#x3D;&quot;text-end&quot;&gt;
+                  &lt;button class&#x3D;&quot;btn btn-sm&quot; [class.btn-outline-danger]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot; [class.btn-outline-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot; (click)&#x3D;&quot;toggleEstado(u)&quot;&gt;
+                    {{ u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27; ? &#x27;Desactivar&#x27; : &#x27;Activar&#x27; }}
+                  &lt;/button&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- SIN RESULTADOS --&gt;
+    &lt;div *ngIf&#x3D;&quot;usuariosFiltrados.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;alert alert-info text-center&quot;&gt;
+      No hay usuarios que coincidan con el filtro.
+    &lt;/div&gt;
+
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./admin.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+/*   ADMIN PANEL - MOBILE FIRST    */
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+/* WRAPPER PRINCIPAL */
+.admin-wrapper {
+  width: 100%;
+  max-width: none;
+  padding: 1rem;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 850px;
+  }
+}
+
+/* TITULO */
+.admin-container h1 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* FORMULARIO REACTIVO */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc3545 !important;
+}
+
+small.text-danger {
+  font-size: 0.8rem;
+  margin-top: 3px;
+  display: block;
+}
+
+.form-state-box {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+/*   TABLA RESPONSIVE MOBILE       */
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+@media (max-width: 767px) {
+  .table-responsive-mobile {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  /* Anchos mínimos para evitar compresión */
+  .table-responsive-mobile th:nth-child(1),
+  .table-responsive-mobile td:nth-child(1) {
+    min-width: 160px;
+  }
+
+  .table-responsive-mobile th:nth-child(2),
+  .table-responsive-mobile td:nth-child(2) {
+    min-width: 120px;
+  }
+
+  .table-responsive-mobile th:nth-child(3),
+  .table-responsive-mobile td:nth-child(3) {
+    min-width: 100px;
+  }
+
+  .table-responsive-mobile th:nth-child(4),
+  .table-responsive-mobile td:nth-child(4) {
+    min-width: 100px;
+  }
+
+  .table-responsive-mobile th:nth-child(5),
+  .table-responsive-mobile td:nth-child(5) {
+    min-width: 140px;
+    text-align: left !important;
+  }
+}
+
+@media (min-width: 768px) {
+  tbody tr:hover {
+    background: #fafafa;
+  }
+}
+
+/* BADGES */
+.badge {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+}
+
+/* BOTONES */
+button.btn {
+  min-width: 110px;
+  font-size: 0.8rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Cleaned Mobile-First Admin HTML --><div class="admin-wrapper">  <section class="admin-container">    <h1 class="h4 mb-3">Panel de administración</h1>    <!-- ERROR GENERAL -->    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>    <!-- FORMULARIO REACTIVO -->    <form [formGroup]="filtroForm" class="row g-3 mb-4">      <!-- CORREO -->      <div class="col-12 col-md-4">        <input type="text" class="form-control" placeholder="Filtrar por correo" formControlName="correo" />        <small class="text-danger" *ngIf="filtroForm.get(\'correo\')?.invalid && filtroForm.get(\'correo\')?.touched">Formato de correo inválido</small>      </div>      <!-- ROL -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="rol">          <option value="">Rol (todos)</option>          <option value="admin">Administrador</option>          <option value="cliente">Cliente</option>        </select>      </div>      <!-- ESTADO -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="estado">          <option value="">Estado (todos)</option>          <option value="active">Activo</option>          <option value="inactive">Inactivo</option>        </select>      </div>      <!-- LIMPIAR -->      <div class="col-12 col-md-2">        <button type="button" class="btn btn-secondary w-100" (click)="resetFiltro()">Limpiar</button>      </div>          </form>    <!-- TABLA -->    <div class="card shadow-sm" *ngIf="usuariosFiltrados.length > 0">      <div class="card-body p-0">        <div class="table-responsive-mobile">          <table class="table table-hover align-middle mb-0">            <thead class="table-dark">              <tr>                <th>Correo</th>                <th>Usuario</th>                <th>Rol</th>                <th>Estado</th>                <th class="text-end">Acciones</th>              </tr>            </thead>            <tbody>              <tr *ngFor="let u of usuariosFiltrados">                <td>{{ u.correo }}</td>                <td>{{ u.usuario }}</td>                <td>{{ u.rol }}</td>                <td>                  <span class="badge" [class.text-bg-success]="u.status === \'active\'" [class.text-bg-secondary]="u.status === \'inactive\'">                    {{ u.status === \'active\' ? \'Activo\' : \'Inactivo\' }}                  </span>                </td>                <td class="text-end">                  <button class="btn btn-sm" [class.btn-outline-danger]="u.status === \'active\'" [class.btn-outline-success]="u.status === \'inactive\'" (click)="toggleEstado(u)">                    {{ u.status === \'active\' ? \'Desactivar\' : \'Activar\' }}                  </button>                </td>              </tr>            </tbody>          </table>        </div>      </div>    </div>    <!-- SIN RESULTADOS -->    <div *ngIf="usuariosFiltrados.length === 0" class="alert alert-info text-center">      No hay usuarios que coincidan con el filtro.    </div>  </section></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdminComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
