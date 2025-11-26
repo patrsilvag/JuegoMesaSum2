@@ -1,17 +1,31 @@
-<!-- Cleaned Mobile-First Admin HTML -->
-<div class="admin-wrapper">
+<div class="admin-wrapper container my-4">
   <section class="admin-container">
     <h1 class="h4 mb-3">Panel de administración</h1>
 
     <!-- ERROR GENERAL -->
-    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+    <div *ngIf="error" class="alert alert-danger text-center mb-3">
+      {{ error }}
+    </div>
 
-    <!-- FORMULARIO REACTIVO -->
+    <!-- FORMULARIO REACTIVO DE FILTRO -->
     <form [formGroup]="filtroForm" class="row g-3 mb-4">
       <!-- CORREO -->
       <div class="col-12 col-md-4">
-        <input type="text" class="form-control" placeholder="Filtrar por correo" formControlName="correo" />
-        <small class="text-danger" *ngIf="filtroForm.get('correo')?.invalid && filtroForm.get('correo')?.touched">Formato de correo inválido</small>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Filtrar por correo"
+          formControlName="correo"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            filtroForm.get('correo')?.invalid &&
+            filtroForm.get('correo')?.touched
+          "
+        >
+          Formato de correo inválido
+        </small>
       </div>
 
       <!-- ROL -->
@@ -32,14 +46,19 @@
         </select>
       </div>
 
-      <!-- LIMPIAR -->
+      <!-- LIMPIAR: usa tu método EXISTENTE resetFiltro() -->
       <div class="col-12 col-md-2">
-        <button type="button" class="btn btn-secondary w-100" (click)="resetFiltro()">Limpiar</button>
+        <button
+          type="button"
+          class="btn btn-secondary w-100"
+          (click)="resetFiltro()"
+        >
+          Limpiar
+        </button>
       </div>
-      
     </form>
 
-    <!-- TABLA -->
+    <!-- TABLA / TARJETAS RESPONSIVE -->
     <div class="card shadow-sm" *ngIf="usuariosFiltrados.length > 0">
       <div class="card-body p-0">
         <div class="table-responsive-mobile">
@@ -55,16 +74,32 @@
             </thead>
             <tbody>
               <tr *ngFor="let u of usuariosFiltrados">
-                <td>{{ u.correo }}</td>
-                <td>{{ u.usuario }}</td>
-                <td>{{ u.rol }}</td>
-                <td>
-                  <span class="badge" [class.text-bg-success]="u.status === 'active'" [class.text-bg-secondary]="u.status === 'inactive'">
+                <td data-label="Correo">
+                  {{ u.correo }}
+                </td>
+                <td data-label="Usuario">
+                  {{ u.usuario }}
+                </td>
+                <td data-label="Rol">
+                  {{ u.rol }}
+                </td>
+                <td data-label="Estado">
+                  <span
+                    class="badge"
+                    [class.text-bg-success]="u.status === 'active'"
+                    [class.text-bg-secondary]="u.status === 'inactive'"
+                  >
                     {{ u.status === 'active' ? 'Activo' : 'Inactivo' }}
                   </span>
                 </td>
-                <td class="text-end">
-                  <button class="btn btn-sm" [class.btn-outline-danger]="u.status === 'active'" [class.btn-outline-success]="u.status === 'inactive'" (click)="toggleEstado(u)">
+                <td data-label="Acciones" class="text-end">
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    [class.btn-outline-danger]="u.status === 'active'"
+                    [class.btn-outline-success]="u.status === 'inactive'"
+                    (click)="toggleEstado(u)"
+                  >
                     {{ u.status === 'active' ? 'Desactivar' : 'Activar' }}
                   </button>
                 </td>
@@ -76,9 +111,11 @@
     </div>
 
     <!-- SIN RESULTADOS -->
-    <div *ngIf="usuariosFiltrados.length === 0" class="alert alert-info text-center">
+    <div
+      *ngIf="usuariosFiltrados.length === 0"
+      class="alert alert-info text-center"
+    >
       No hay usuarios que coincidan con el filtro.
     </div>
-
   </section>
 </div>

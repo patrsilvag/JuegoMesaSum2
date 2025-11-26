@@ -1,104 +1,75 @@
 /* =============================== */
-/*   ADMIN PANEL - MOBILE FIRST    */
+/* TABLA RESPONSIVE - MODO TARJETA */
 /* =============================== */
 
-/* WRAPPER PRINCIPAL */
-.admin-wrapper {
-  width: 100%;
-  max-width: none;
-  padding: 1rem;
-  margin: 0;
-
-  @media (min-width: 768px) {
-    max-width: 900px;
-    margin: 0 auto;
+@media (max-width: 767.98px) {
+  /* 1. Ocultar los encabezados de la tabla original */
+  .table-responsive-mobile thead {
+    display: none;
   }
 
-  @media (min-width: 992px) {
-    max-width: 850px;
-  }
-}
-
-/* TITULO */
-.admin-container h1 {
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-/* FORMULARIO REACTIVO */
-input.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched {
-  border-color: #dc3545 !important;
-}
-
-small.text-danger {
-  font-size: 0.8rem;
-  margin-top: 3px;
-  display: block;
-}
-
-.form-state-box {
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.75rem;
-}
-
-/* =============================== */
-/*   TABLA RESPONSIVE MOBILE       */
-/* =============================== */
-
-@media (max-width: 767px) {
-  .table-responsive-mobile {
+  /* 2. Convertir tabla y partes en bloques */
+  .table-responsive-mobile table,
+  .table-responsive-mobile tbody,
+  .table-responsive-mobile tr,
+  .table-responsive-mobile td {
+    display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Neutralizar comportamiento de tabla */
+  .table-responsive-mobile table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* 3. Tarjeta (fila) */
+  .table-responsive-mobile tr {
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
   }
 
-  /* Anchos mínimos para evitar compresión */
-  .table-responsive-mobile th:nth-child(1),
-  .table-responsive-mobile td:nth-child(1) {
-    min-width: 160px;
+  /* 4. Celdas dentro de la tarjeta */
+  .table-responsive-mobile td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    min-height: 50px;
+
+    overflow-wrap: anywhere; /* evita que correos largos rompan el layout */
+    /* word-break: break-word; */ /* deja esto comentado salvo que lo necesites */
   }
 
-  .table-responsive-mobile th:nth-child(2),
-  .table-responsive-mobile td:nth-child(2) {
-    min-width: 120px;
+  .table-responsive-mobile td:last-child {
+    border-bottom: 0;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #fcfcfc;
   }
 
-  .table-responsive-mobile th:nth-child(3),
-  .table-responsive-mobile td:nth-child(3) {
-    min-width: 100px;
+  /* 5. Label usando data-label */
+  .table-responsive-mobile td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #555;
+    text-align: left;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
 
-  .table-responsive-mobile th:nth-child(4),
-  .table-responsive-mobile td:nth-child(4) {
-    min-width: 100px;
+  /* Mantener visible "Acciones" y empujar el botón a la derecha */
+  .table-responsive-mobile td[data-label='Acciones']::before {
+    display: inline-block;
+    margin-right: auto;
   }
-
-  .table-responsive-mobile th:nth-child(5),
-  .table-responsive-mobile td:nth-child(5) {
-    min-width: 140px;
-    text-align: left !important;
-  }
-}
-
-@media (min-width: 768px) {
-  tbody tr:hover {
-    background: #fafafa;
-  }
-}
-
-/* BADGES */
-.badge {
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.4rem;
-  font-size: 0.75rem;
-}
-
-/* BOTONES */
-button.btn {
-  min-width: 110px;
-  font-size: 0.8rem;
 }
