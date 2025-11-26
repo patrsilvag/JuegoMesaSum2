@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Subscription } from 'rxjs'; // Necesaria para manejar la desuscripción
 
 import { AuthService } from '../../core/auth.service';
@@ -38,12 +38,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private userSubscription!: Subscription;
 
   /**
-   *   Inyecta los servicios de autenticación y carrito, y se suscribe
-   * inmediatamente al carrito para mantener `cantidadTotal`.
-   * @param auth Servicio de autenticación.
-   * @param cart Servicio de carrito.
+   * Inyecta los servicios necesarios para el navbar:
+   * - `AuthService` para gestionar la sesión del usuario.
+   * - `Cart` para obtener el estado del carrito y calcular `cantidadTotal`.
+   * - `Router` para realizar navegaciones explícitas (por ejemplo, tras logout).
+   *
+   * Además se suscribe al observable del carrito (`carrito$`) para mantener
+   * siempre actualizada la cantidad total de ítems mostrada en el navbar.
+   *
+   * @param auth   Servicio de autenticación.
+   * @param cart   Servicio de carrito.
+   * @param router Servicio de enrutamiento de Angular.
    */
-  constructor(private auth: AuthService, private cart: Cart) {
+  constructor(private auth: AuthService, private cart: Cart, private router: Router) {
     // Suscripción al carrito (se mantiene)
     this.cart.carrito$.subscribe((items) => {
       this.cantidadTotal = items.reduce((acc, i) => acc + i.cantidad, 0);
@@ -77,11 +84,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *   Cierra la sesión del usuario actual delegando en `AuthService.logout`.
-   * @returns Nada (`void`).
+   * Cierra la sesión del usuario actual:
+   * - Delegando en `AuthService.logout` para limpiar credenciales y estado.
+   * - Reseteando la propiedad `usuario` del navbar.
+   * - Redirigiendo explícitamente a la ruta de inicio (`'/'`).
+   *
+   * @returns void
    */
   // Método que llama a AuthService para cerrar la sesión
   logout() {
-    this.auth.logout();
+    this.auth.logout(); // limpia sesión en el servicio
+    this.usuario = null; // opcional, pero deja el navbar consistente al instante
+    this.router.navigate(['/']); // fuerza ir al home
   }
 }
