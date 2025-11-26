@@ -21,12 +21,30 @@ import { NotificationService } from '../../core/notification.service';
   templateUrl: './registro.html',
   styleUrls: ['./registro.scss'],
 })
+
+/**
+ * @description Página de registro de nuevos usuarios. Construye un formulario
+ * con datos personales y credenciales, aplicando validaciones de negocio
+ * (edad mínima, complejidad de clave, coincidencia de claves, etc.).
+ * @usageNotes
+ * - Crea usuarios con rol `'cliente'`.
+ * - Si el correo ya existe, marca el control `correo` con el error `{ existe: true }`.
+ * - Muestra un toast de éxito a través de `NotificationService` al finalizar.
+ */
 export class RegistroComponent implements OnInit {
   form!: FormGroup;
 
   verClave = false;
   verClave2 = false;
-
+  /**
+   * @description Inyecta los servicios necesarios para construir el formulario,
+   * validar reglas personalizadas y persistir el nuevo usuario.
+   * @param fb Factoría de formularios reactivos.
+   * @param validators Servicio de validadores personalizados.
+   * @param userSrv Servicio de dominio para registrar usuarios.
+   * @param err Servicio de mensajes de error (incluye errores de fecha).
+   * @param notifSrv Servicio de notificaciones tipo toast.
+   */
   constructor(
     private fb: FormBuilder,
     private validators: ValidatorsService,
@@ -35,6 +53,11 @@ export class RegistroComponent implements OnInit {
     private notifSrv: NotificationService
   ) {}
 
+  /**
+   * @description Inicializa el `FormGroup` de registro con todos los campos
+   * y validadores necesarios, incluyendo el validador de coincidencia de claves.
+   * @returns Nada (`void`).
+   */
   ngOnInit() {
     this.form = this.fb.group(
       {
@@ -68,20 +91,45 @@ export class RegistroComponent implements OnInit {
     );
   }
 
+  /**
+   * @description Devuelve un control del formulario de registro por nombre.
+   * @param nombre Nombre del control (ej. `'nombre'`, `'correo'`, `'fechaNacimiento'`).
+   * @returns El control correspondiente (no nulo).
+   */
   campo(nombre: string): AbstractControl {
     return this.form.get(nombre)!;
   }
 
+  /**
+   * @description Obtiene el mensaje de error para el campo `fechaNacimiento`,
+   * delegando en `AuthErrorService` la lógica de construcción del mensaje.
+   * @returns Cadena con el mensaje de error o cadena vacía si no hay error relevante.
+   */
   // ✅ NUEVO: Función para centralizar y priorizar la lógica de errores de fecha
   // perfil.ts
   getFechaError(): string {
     return this.err.getFechaErrorMessage(this.campo('fechaNacimiento')); // si lo pones en AuthErrorService
   }
 
+  /**
+   * @description Limpia el formulario de registro.
+   * @returns Nada (`void`).
+   */
   limpiar() {
     this.form.reset();
   }
 
+  /**
+   * @description Envía el formulario de registro. Si el formulario es inválido,
+   * marca todos los campos como tocados y no continúa. Si el registro falla
+   * porque el correo ya existe, marca el control `correo` con un error.
+   * @returns Nada (`void`).
+   * @usageNotes
+   * En caso de éxito:
+   * - Llama a `userSrv.registrarUsuario`.
+   * - Resetea el formulario.
+   * - Muestra un toast indicando que puede iniciar sesión.
+   */
   submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();

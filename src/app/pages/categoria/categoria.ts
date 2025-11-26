@@ -10,6 +10,15 @@ import { Cart } from '../../core/cart';
   templateUrl: './categoria.html',
   styleUrls: ['./categoria.scss'],
 })
+
+/**
+ * @description Página de listado de productos por categoría. Escucha el parámetro
+ * `slug` de la ruta, obtiene los textos de `categoriasData` y filtra `productos`
+ * para mostrar solo los de esa categoría.
+ * @usageNotes
+ * - Se accede típicamente por ruta `/categorias/:slug`.
+ * - Usa `Cart` para añadir productos al carrito con cantidad 1.
+ */
 export class CategoriaComponent implements OnInit {
   slug!: string;
   categoriaActual: any = null;
@@ -164,8 +173,21 @@ export class CategoriaComponent implements OnInit {
     },
   ];
 
+  /**
+   * @description Inyecta la ruta activada para leer el parámetro `slug`
+   * y el servicio de carrito para añadir productos.
+   * @param route Ruta activada con acceso a `params`.
+   * @param cart Servicio de carrito.
+   */
   constructor(private route: ActivatedRoute, private cart: Cart) {}
 
+  /**
+   * @description Se suscribe a los parámetros de la ruta para:
+   * - Actualizar `slug`.
+   * - Calcular `categoriaActual` a partir de `categoriasData`.
+   * - Filtrar `productos` por categoría y quedarse con los 3 primeros.
+   * @returns Nada (`void`).
+   */
   ngOnInit(): void {
     // 🔥 escuchar SIEMPRE los cambios de categoría
     this.route.params.subscribe((params) => {
@@ -178,6 +200,11 @@ export class CategoriaComponent implements OnInit {
     });
   }
 
+  /**
+   * @description Añade un producto al carrito con cantidad 1 usando `Cart.agregar`.
+   * @param p Objeto de producto tal y como está definido en `productos`.
+   * @returns Nada (`void`).
+   */
   agregarProducto(p: any) {
     this.cart.agregar({
       id: p.id,

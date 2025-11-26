@@ -14,6 +14,14 @@ import { Usuario } from '../../core/auth';
   styleUrls: ['./navbar.scss'],
   imports: [CommonModule, RouterModule],
 })
+
+/**
+ * @description Barra de navegación principal. Muestra enlaces de la app,
+ * el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.
+ * @usageNotes
+ * - Se suscribe a `AuthService.usuarioActual$` para reaccionar a login/logout.
+ * - Calcula la cantidad total del carrito escuchando `Cart.carrito$`.
+ */
 export class NavbarComponent implements OnInit, OnDestroy {
   usuario: Usuario | null = null;
   cantidadTotal = 0;
@@ -21,6 +29,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // ⭐️ DECLARACIÓN CORREGIDA: Propiedad para gestionar la suscripción de RxJS
   private userSubscription!: Subscription;
 
+  /**
+   * @description Inyecta los servicios de autenticación y carrito, y se suscribe
+   * inmediatamente al carrito para mantener `cantidadTotal`.
+   * @param auth Servicio de autenticación.
+   * @param cart Servicio de carrito.
+   */
   constructor(private auth: AuthService, private cart: Cart) {
     // Suscripción al carrito (se mantiene)
     this.cart.carrito$.subscribe((items) => {
@@ -28,6 +42,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * @description Hook de inicialización. Se suscribe al observable
+   * `usuarioActual$` para mantener `usuario` sincronizado con el estado
+   * de sesión.
+   * @returns Nada (`void`).
+   */
   // 1. Hook para inicializar y suscribirse al stream de usuario
   ngOnInit(): void {
     // Al suscribirnos a usuarioActual$, el componente recibe el usuario CADA VEZ que cambia (login/logout)
@@ -36,6 +56,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * @description Hook de destrucción. Libera la suscripción a `usuarioActual$`
+   * para evitar fugas de memoria.
+   * @returns Nada (`void`).
+   */
   // 2. Hook para limpiar la suscripción al destruir el componente (buena práctica)
   ngOnDestroy(): void {
     if (this.userSubscription) {
@@ -43,6 +68,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @description Cierra la sesión del usuario actual delegando en `AuthService.logout`.
+   * @returns Nada (`void`).
+   */
   // Método que llama a AuthService para cerrar la sesión
   logout() {
     this.auth.logout();
