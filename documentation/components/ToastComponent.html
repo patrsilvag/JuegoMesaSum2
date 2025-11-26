@@ -138,6 +138,16 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Escucha el estado expuesto por <code>NotificationService</code> y muestra un mensaje
+flotante temporal con estilos según el tipo (<code>success</code>, <code>error</code>, <code>info</code>).</p>
+<p>Debe estar montado en el árbol de la aplicación (por ejemplo, en <code>AppComponent</code>)
+para que cualquier servicio pueda disparar notificaciones globales.</p>
+
+    </p>
 
 
 
@@ -195,8 +205,14 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@if (notification(); as n) {
-&lt;div class&#x3D;&quot;toast-message alert&quot; [class.alert-success]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;&quot; role&#x3D;&quot;alert&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@if (notification as n) {
+&lt;div
+  class&#x3D;&quot;toast-message alert&quot;
+  [class.alert-success]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;&quot;
+  [class.alert-danger]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;error&#x27;&quot;
+  [class.alert-info]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;&quot;
+  role&#x3D;&quot;alert&quot;
+&gt;
   {{ n.message }}
 &lt;/div&gt;
 }
@@ -284,7 +300,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/shared/toast/toast.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/toast/toast.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -322,7 +338,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/toast/toast.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/toast/toast.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -343,16 +359,29 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
-// Asegúrese de que la ruta de importación sea correcta
 import { NotificationService } from &#x27;../../core/notification.service&#x27;;
-
+/**
+ * @description Componente de presentación para notificaciones tipo &quot;toast&quot;.
+ * Escucha el estado expuesto por &#x60;NotificationService&#x60; y muestra un mensaje
+ * flotante temporal con estilos según el tipo (&#x60;success&#x60;, &#x60;error&#x60;, &#x60;info&#x60;).
+ *
+ * @usageNotes
+ * Debe estar montado en el árbol de la aplicación (por ejemplo, en &#x60;AppComponent&#x60;)
+ * para que cualquier servicio pueda disparar notificaciones globales.
+ */
 @Component({
   selector: &#x27;app-toast&#x27;,
   standalone: true,
   imports: [CommonModule],
   template: &#x60;
-    @if (notification(); as n) {
-    &lt;div class&#x3D;&quot;toast-message alert&quot; [class.alert-success]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;&quot; role&#x3D;&quot;alert&quot;&gt;
+    @if (notification as n) {
+    &lt;div
+      class&#x3D;&quot;toast-message alert&quot;
+      [class.alert-success]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;success&#x27;&quot;
+      [class.alert-danger]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;error&#x27;&quot;
+      [class.alert-info]&#x3D;&quot;n.type &#x3D;&#x3D;&#x3D; &#x27;info&#x27;&quot;
+      role&#x3D;&quot;alert&quot;
+    &gt;
       {{ n.message }}
     &lt;/div&gt;
     }
@@ -374,27 +403,13 @@ import { NotificationService } from &#x27;../../core/notification.service&#x27;;
   ],
 })
 
-/**
- * @description Componente de presentación para notificaciones tipo &quot;toast&quot;.
- * Escucha el estado expuesto por &#x60;NotificationService&#x60; y muestra un mensaje
- * flotante temporal con estilos según el tipo (&#x60;success&#x60;, &#x60;error&#x60;, &#x60;info&#x60;).
- * @usageNotes
- * Debe estar montado en el árbol de la aplicación (por ejemplo, en &#x60;AppComponent&#x60;)
- * para que cualquier servicio pueda disparar notificaciones globales.
- */
 export class ToastComponent {
-  /** * ✅ SOLUCIÓN: Usar inject() para inicializar la dependencia
-   * antes de que se usen sus propiedades.
-   */
   /**
    * @description Servicio de notificaciones inyectado mediante la API &#x60;inject&#x60;.
    * Se usa para leer el signal con la notificación actual.
    */
   private notificationSrv &#x3D; inject(NotificationService);
 
-  /** * Ahora, la propiedad &#x27;notification&#x27; puede acceder a &#x27;this.notificationSrv&#x27;
-   * sin problemas de inicialización.
-   */
   /**
    * @description Signal de solo lectura con la notificación actual o &#x60;null&#x60;
    * si no hay nada que mostrar.
@@ -448,8 +463,8 @@ export class ToastComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (notification(); as n) {<div class="toast-message alert" [class.alert-success]="n.type === \'success\'" role="alert">  {{ n.message }}</div>}</div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+        var COMPONENT_TEMPLATE = '<div>@if (notification as n) {<div  class="toast-message alert"  [class.alert-success]="n.type === \'success\'"  [class.alert-danger]="n.type === \'error\'"  [class.alert-info]="n.type === \'info\'"  role="alert">  {{ n.message }}</div>}</div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ToastComponent'};
 </script>

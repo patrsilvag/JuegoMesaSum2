@@ -217,12 +217,15 @@ Evita acceder directamente a <code>localStorage</code>; usa este servicio o <cod
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/user.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/user.service.ts:21</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>para poder delegar operaciones de persistencia y actualización de sesión.
+               cuando se actualiza el perfil o la contraseña.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -231,6 +234,7 @@ Evita acceder directamente a <code>localStorage</code>; usa este servicio o <cod
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -245,6 +249,10 @@ Evita acceder directamente a <code>localStorage</code>; usa este servicio o <cod
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Repositorio de usuarios que encapsula el acceso a <code>localStorage</code>.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>authSrv</td>
@@ -257,6 +265,11 @@ Evita acceder directamente a <code>localStorage</code>; usa este servicio o <cod
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de autenticación usado para sincronizar la sesión
+cuando se actualiza el perfil o la contraseña.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -292,8 +305,8 @@ Evita acceder directamente a <code>localStorage</code>; usa este servicio o <cod
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/core/user.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/core/user.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -371,8 +384,8 @@ o la actualización falló en el repositorio.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="114"
-                                    class="link-to-prism">src/app/core/user.service.ts:114</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/core/user.service.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -448,8 +461,8 @@ el resultado puede no reflejar el último estado guardado.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">src/app/core/user.service.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/core/user.service.ts:85</a></div>
                         </td>
                     </tr>
 
@@ -546,8 +559,8 @@ Normalmente se combina con validaciones en el formulario:</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/core/user.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/core/user.service.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -626,8 +639,8 @@ Para iniciar sesión después del registro, usa <code>AuthService.login</code>.<
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="98"
-                                    class="link-to-prism">src/app/core/user.service.ts:98</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/core/user.service.ts:109</a></div>
                         </td>
                     </tr>
 
@@ -732,10 +745,16 @@ antes de permitir el cambio.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/user.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/user.service.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>cargado inicialmente desde <code>localStorage</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -761,7 +780,19 @@ import { AuthService } from &#x27;./auth.service&#x27;;
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class UserService {
   // 1. CACHE EN MEMORIA: Se carga una sola vez
+  /**
+   * @description Caché en memoria de todos los usuarios registrados,
+   * cargado inicialmente desde &#x60;localStorage&#x60;.
+   */
   private usuariosLista: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) ?? &#x27;[]&#x27;);
+
+  /**
+   * @description Inyecta el repositorio de usuarios y el servicio de autenticación
+   * para poder delegar operaciones de persistencia y actualización de sesión.
+   * @param repo Repositorio de usuarios que encapsula el acceso a &#x60;localStorage&#x60;.
+   * @param authSrv Servicio de autenticación usado para sincronizar la sesión
+   *                cuando se actualiza el perfil o la contraseña.
+   */
   constructor(private repo: AuthRepository, private authSrv: AuthService) {}
 
   /**
@@ -796,7 +827,6 @@ export class UserService {
    * Úsalo desde formularios de edición de perfil.
    * Asume que &#x60;data&#x60; contiene un usuario válido y coherente con el ya almacenado.
    */
-
   actualizarPerfil(data: Usuario): boolean {
     const ok &#x3D; this.repo.actualizar(data);
     if (ok) {

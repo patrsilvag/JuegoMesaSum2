@@ -210,6 +210,8 @@ Todos los métodos devuelven funciones compatibles con la API de validadores de 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>mensajes reutilizables (por ejemplo, cuando las claves no coinciden).</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -218,6 +220,7 @@ Todos los métodos devuelven funciones compatibles con la API de validadores de 
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -232,6 +235,10 @@ Todos los métodos devuelven funciones compatibles con la API de validadores de 
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio centralizado de mensajes de error de autenticación.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -267,8 +274,8 @@ Todos los métodos devuelven funciones compatibles con la API de validadores de 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="78"
-                                    class="link-to-prism">src/app/core/validators.service.ts:78</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/core/validators.service.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -373,8 +380,8 @@ si los valores difieren.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="119"
-                                    class="link-to-prism">src/app/core/validators.service.ts:119</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/core/validators.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -457,8 +464,8 @@ en los límites (por ejemplo, si aún no ha llegado el cumpleaños de este año)
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/core/validators.service.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/core/validators.service.ts:99</a></div>
                         </td>
                     </tr>
 
@@ -509,8 +516,8 @@ evitando falsos positivos por diferencias de horas o milisegundos.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/core/validators.service.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/core/validators.service.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -560,8 +567,8 @@ evitando falsos positivos por diferencias de horas o milisegundos.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/core/validators.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/core/validators.service.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -612,8 +619,8 @@ para construir una política de contraseñas robusta.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/core/validators.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/core/validators.service.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -663,6 +670,11 @@ import { AuthErrorService } from &#x27;./auth-error.service&#x27;;
  */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class ValidatorsService {
+  /**
+   * @description Inyecta el servicio de errores de autenticación para obtener
+   * mensajes reutilizables (por ejemplo, cuando las claves no coinciden).
+   * @param err Servicio centralizado de mensajes de error de autenticación.
+   */
   constructor(private err: AuthErrorService) {}
   /**
    * @description Validador que exige que el valor contenga al menos una letra mayúscula.

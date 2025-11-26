@@ -14,7 +14,19 @@ import { AuthService } from './auth.service';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   // 1. CACHE EN MEMORIA: Se carga una sola vez
+  /**
+   * @description Caché en memoria de todos los usuarios registrados,
+   * cargado inicialmente desde `localStorage`.
+   */
   private usuariosLista: Usuario[] = JSON.parse(localStorage.getItem('usuarios') ?? '[]');
+
+  /**
+   * @description Inyecta el repositorio de usuarios y el servicio de autenticación
+   * para poder delegar operaciones de persistencia y actualización de sesión.
+   * @param repo Repositorio de usuarios que encapsula el acceso a `localStorage`.
+   * @param authSrv Servicio de autenticación usado para sincronizar la sesión
+   *                cuando se actualiza el perfil o la contraseña.
+   */
   constructor(private repo: AuthRepository, private authSrv: AuthService) {}
 
   /**
@@ -49,7 +61,6 @@ export class UserService {
    * Úsalo desde formularios de edición de perfil.
    * Asume que `data` contiene un usuario válido y coherente con el ya almacenado.
    */
-
   actualizarPerfil(data: Usuario): boolean {
     const ok = this.repo.actualizar(data);
     if (ok) {

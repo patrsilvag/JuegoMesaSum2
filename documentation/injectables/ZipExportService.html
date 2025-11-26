@@ -109,7 +109,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >GlobalErrorHandler</li>
+  <li class="breadcrumb-item" >ZipExportService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -133,20 +133,10 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/core/global-error-handler.ts</code>
+            <code>documentation/template-playground/zip-export.service.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>de Angular.
-Registrado en <code>app.config.ts</code> como manejador global.
-Aquí solo se hace <code>console.error</code>, pero se puede extender
-para reportar a servicios externos (Sentry, etc.).</p>
-
-            </p>
 
 
 
@@ -164,7 +154,15 @@ para reportar a servicios externos (Sentry, etc.).</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#handleError" >handleError</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#downloadBlob" >downloadBlob</a>
+                            </li>
+                            <li>
+                                <a href="#exportTemplates" >exportTemplates</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generateReadme" >generateReadme</a>
                             </li>
                         </ul>
                     </td>
@@ -188,24 +186,26 @@ para reportar a servicios externos (Sentry, etc.).</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="handleError"></a>
+                    <a name="downloadBlob"></a>
                     <span class="name">
-                        <span ><b>handleError</b></span>
-                        <a href="#handleError"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>downloadBlob</b></span>
+                        <a href="#downloadBlob"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleError(error: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>downloadBlob(blob: Blob, filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/core/global-error-handler.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">documentation/template-playground/zip-export.service.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -222,14 +222,13 @@ para reportar a servicios externos (Sentry, etc.).</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>error</td>
+                                                <td>blob</td>
                                             <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        <code>Blob</code>
                                             </td>
 
                                             <td>
@@ -237,10 +236,18 @@ para reportar a servicios externos (Sentry, etc.).</p>
                                             </td>
 
 
+                                        </tr>
+                                        <tr>
+                                                <td>filename</td>
                                             <td>
-                                                    <p>Error original lanzado en la aplicación.</p>
-
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -250,9 +257,114 @@ para reportar a servicios externos (Sentry, etc.).</p>
 
                         </div>
                             <div class="io-description">
-                                <p>Nada (<code>void</code>), pero deja trazas en consola/log.</p>
-
+                                
                             </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportTemplates"></a>
+                    <span class="name">
+                        <span ><b>exportTemplates</b></span>
+                        <a href="#exportTemplates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportTemplates(files: any[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="10"
+                                    class="link-to-prism">documentation/template-playground/zip-export.service.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>files</td>
+                                            <td>
+                                                        <code>any[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateReadme"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>generateReadme</b></span>
+                        <a href="#generateReadme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateReadme()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">documentation/template-playground/zip-export.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -263,27 +375,91 @@ para reportar a servicios externos (Sentry, etc.).</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ErrorHandler, Injectable } from &#x27;@angular/core&#x27;;
-/**
- * @description Implementación de &#x60;ErrorHandler&#x60; para capturar errores globales
- * de Angular.
- * @usageNotes
- * Registrado en &#x60;app.config.ts&#x60; como manejador global.
- * Aquí solo se hace &#x60;console.error&#x60;, pero se puede extender
- * para reportar a servicios externos (Sentry, etc.).
- */
-@Injectable()
-export class GlobalErrorHandler implements ErrorHandler {
- 
-  /**
-   * @description Método de Angular llamado cuando ocurre un error no capturado.
-   * @param error Error original lanzado en la aplicación.
-   * @returns Nada (&#x60;void&#x60;), pero deja trazas en consola/log.
-   */
-  handleError(error: any): void {
-    console.error(&#x27;🚨 Error global capturado:&#x27;, error);
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+
+declare const JSZip: any;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ZipExportService {
+
+  exportTemplates(files: any[]) {
+    const zip &#x3D; new JSZip();
+
+    // Add all template files to the ZIP
+    files.forEach(file &#x3D;&gt; {
+      zip.file(file.path, file.content);
+    });
+
+    // Add a README with instructions
+    const readme &#x3D; this.generateReadme();
+    zip.file(&#x27;README.md&#x27;, readme);
+
+    // Generate and download the ZIP file
+    zip.generateAsync({ type: &#x27;blob&#x27; })
+      .then((content: Blob) &#x3D;&gt; {
+        this.downloadBlob(content, &#x27;compodoc-templates.zip&#x27;);
+      });
   }
- 
+
+  private generateReadme(): string {
+    return &#x60;# Compodoc Custom Templates
+
+This ZIP file contains customized templates for Compodoc documentation generation.
+
+## Contents
+
+- **Templates** (\&#x60;.hbs\&#x60; files): Handlebars templates for generating documentation pages
+- **Styles** (\&#x60;.css\&#x60; files): Stylesheets for customizing the appearance
+- **Scripts** (\&#x60;.js\&#x60; files): JavaScript files for additional functionality
+
+## Usage
+
+1. Extract this ZIP file to a directory on your system
+2. Use the \&#x60;--templates\&#x60; flag when running Compodoc to specify the path to your custom templates:
+
+   \&#x60;\&#x60;\&#x60;bash
+   compodoc -p tsconfig.json --templates ./path/to/custom/templates/
+   \&#x60;\&#x60;\&#x60;
+
+## Template Structure
+
+- \&#x60;page.hbs\&#x60; - Main page template
+- \&#x60;partials/\&#x60; - Directory containing partial templates
+- \&#x60;styles/\&#x60; - Directory containing CSS files
+- \&#x60;js/\&#x60; - Directory containing JavaScript files
+
+## Customization Tips
+
+1. **Templates**: Use Handlebars syntax to customize the HTML structure
+2. **Styles**: Modify CSS to change colors, fonts, layout, etc.
+3. **Scripts**: Add custom JavaScript functionality
+
+## Backup
+
+Always keep a backup of your original templates before making changes.
+
+## Documentation
+
+For more information about customizing Compodoc templates, visit:
+https://compodoc.app/guides/template-customization.html
+
+Generated by Compodoc Template Playground
+&#x60;;
+  }
+
+  private downloadBlob(blob: Blob, filename: string) {
+    const url &#x3D; window.URL.createObjectURL(blob);
+    const a &#x3D; document.createElement(&#x27;a&#x27;);
+    a.href &#x3D; url;
+    a.download &#x3D; filename;
+    a.style.display &#x3D; &#x27;none&#x27;;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
 }
 </code></pre>
     </div>
@@ -328,7 +504,7 @@ export class GlobalErrorHandler implements ErrorHandler {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'GlobalErrorHandler.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ZipExportService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -1,11 +1,4 @@
 import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-footer',
-  standalone: true,
-  templateUrl: './footer.html',
-  styleUrls: ['./footer.scss'],
-})
 /**
  * @description Componente de pie de página. Contiene el contenido estático
  * del footer de la aplicación (enlaces, créditos, etc.).
@@ -13,4 +6,11 @@ import { Component } from '@angular/core';
  * Normalmente se incluye una sola vez en el layout principal (por ejemplo,
  * en `AppComponent`).
  */
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  templateUrl: './footer.html',
+  styleUrls: ['./footer.scss'],
+})
+
 export class FooterComponent {}

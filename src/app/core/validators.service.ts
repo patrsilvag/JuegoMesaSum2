@@ -12,6 +12,11 @@ import { AuthErrorService } from './auth-error.service';
  */
 @Injectable({ providedIn: 'root' })
 export class ValidatorsService {
+  /**
+   * @description Inyecta el servicio de errores de autenticación para obtener
+   * mensajes reutilizables (por ejemplo, cuando las claves no coinciden).
+   * @param err Servicio centralizado de mensajes de error de autenticación.
+   */
   constructor(private err: AuthErrorService) {}
   /**
    * @description Validador que exige que el valor contenga al menos una letra mayúscula.

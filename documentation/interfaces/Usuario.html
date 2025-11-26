@@ -262,6 +262,13 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Contraseña del usuario.
+⚠ No debería persistirse en texto plano en un sistema real.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -295,6 +302,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Correo electrónico único usado para autenticación y contacto.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -333,6 +346,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Dirección postal opcional (envíos, facturación, etc.).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -366,6 +385,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Fecha de nacimiento en formato ISO (por ejemplo, <code>YYYY-MM-DD</code>).</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -399,6 +424,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre completo del usuario mostrado en la interfaz.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -432,6 +463,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rol del usuario dentro de la aplicación.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -470,6 +507,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicador de si el usuario está activo o desactivado.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -503,6 +546,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre de usuario (alias) visible en la aplicación.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -511,14 +560,32 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Usuario {
+  /** Nombre completo del usuario mostrado en la interfaz. */
   nombre: string;
+
+  /** Nombre de usuario (alias) visible en la aplicación. */
   usuario: string;
+
+  /** Correo electrónico único usado para autenticación y contacto. */
   correo: string;
+
+  /** Fecha de nacimiento en formato ISO (por ejemplo, &#x60;YYYY-MM-DD&#x60;). */
   fechaNacimiento: string;
+
+  /** Dirección postal opcional (envíos, facturación, etc.). */
   direccion?: string;
+
+  /**
+   * Contraseña del usuario.
+   * ⚠ No debería persistirse en texto plano en un sistema real.
+   */
   clave: string;
+
+  /** Rol del usuario dentro de la aplicación. */
   rol: &#x27;admin&#x27; | &#x27;cliente&#x27;;
-  status?: &#x27;active&#x27; | &#x27;inactive&#x27; /** Indicador de si el usuario está activo o desactivado */;
+
+  /** Indicador de si el usuario está activo o desactivado. */
+  status?: &#x27;active&#x27; | &#x27;inactive&#x27;;
 }
 </code></pre>
     </div>

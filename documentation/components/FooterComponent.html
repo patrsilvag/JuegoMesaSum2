@@ -142,6 +142,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>del footer de la aplicación (enlaces, créditos, etc.).
+Normalmente se incluye una sola vez en el layout principal (por ejemplo,
+en <code>AppComponent</code>).</p>
+
+    </p>
 
 
 
@@ -209,13 +218,6 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-
-@Component({
-  selector: &#x27;app-footer&#x27;,
-  standalone: true,
-  templateUrl: &#x27;./footer.html&#x27;,
-  styleUrls: [&#x27;./footer.scss&#x27;],
-})
 /**
  * @description Componente de pie de página. Contiene el contenido estático
  * del footer de la aplicación (enlaces, créditos, etc.).
@@ -223,6 +225,13 @@
  * Normalmente se incluye una sola vez en el layout principal (por ejemplo,
  * en &#x60;AppComponent&#x60;).
  */
+@Component({
+  selector: &#x27;app-footer&#x27;,
+  standalone: true,
+  templateUrl: &#x27;./footer.html&#x27;,
+  styleUrls: [&#x27;./footer.scss&#x27;],
+})
+
 export class FooterComponent {}
 </code></pre>
     </div>
@@ -273,7 +282,7 @@ export class FooterComponent {}
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><footer  class="bg-primary text-white text-center py-3 mt-4"  role="contentinfo"  aria-label="Pie de página del sitio">  <p class="mb-0">    © 2025 Juegos de Mesa Cuatro Esquinas. Todos los derechos reservados.  </p></footer></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FooterComponent'};
 </script>

@@ -9,6 +9,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
  */
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
+ 
   /**
    * @description Método de Angular llamado cuando ocurre un error no capturado.
    * @param error Error original lanzado en la aplicación.
@@ -17,4 +18,5 @@ export class GlobalErrorHandler implements ErrorHandler {
   handleError(error: any): void {
     console.error('🚨 Error global capturado:', error);
   }
+ 
 }

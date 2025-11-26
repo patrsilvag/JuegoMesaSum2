@@ -3,14 +3,9 @@ import { BehaviorSubject } from 'rxjs';
 import { Usuario } from './auth';
 import { AuthRepository } from './auth.repository';
 import { AuthErrorService } from './auth-error.service';
+
 /**
- * @description Tipo de resultado devuelto por `AuthService.login`.
- * Representa tanto éxito (`ok: true`) como error (`ok: false`).
- * @usageNotes
- * Úsalo para tipar el flujo de login en componentes.
- * ```ts
- * const resultado: LoginResultado = this.auth.login(email, clave);
- * ```
+ * @description Tipo de resultado devuelto por AuthService.login
  */
 export type LoginResultado = { ok: true; usuario: Usuario } | { ok: false; mensaje: string };
 
@@ -24,7 +19,16 @@ export type LoginResultado = { ok: true; usuario: Usuario } | { ok: false; mensa
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  /**
+   * @description Fuente de verdad para el usuario actualmente autenticado.
+   * Emite `null` si no hay sesión activa.
+   */
   private usuarioActual = new BehaviorSubject<Usuario | null>(null);
+
+  /**
+   * @description Observable que permite a los componentes suscribirse
+   * a los cambios de sesión del usuario.
+   */
   usuarioActual$ = this.usuarioActual.asObservable();
 
   /**
@@ -108,7 +112,7 @@ export class AuthService {
 
   /**
    * @description Cierra la sesión del usuario actual y limpia la información persistida.
-   * @returns Nada (`void`).
+   * @returns Nada (`void`). // Compodoc debería reconocer esto, si no, usa @returns {void}
    * @usageNotes
    * Úsalo desde botones de "Cerrar sesión" o guards cuando invalida sesión.
    */
