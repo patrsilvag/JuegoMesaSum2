@@ -109,10 +109,29 @@
         </div>
 
         <div class="reglas" *ngIf="fcClave('nuevaClave').touched">
-          <span [class.ok]="!fcClave('nuevaClave').errors?.['minlength']">Mín. 6</span>
-          <span [class.ok]="!fcClave('nuevaClave').errors?.['maxlength']">Máx. 18</span>
-          <span [class.ok]="!fcClave('nuevaClave').errors?.['uppercase']">Mayúscula</span>
-          <span [class.ok]="!fcClave('nuevaClave').errors?.['number']">Número</span>
+          <span
+            [class.ok]="fcClave('nuevaClave').value && !fcClave('nuevaClave').errors?.['minlength']"
+          >
+            Mín. 6
+          </span>
+
+          <span
+            [class.ok]="fcClave('nuevaClave').value && !fcClave('nuevaClave').errors?.['maxlength']"
+          >
+            Máx. 18
+          </span>
+
+          <span
+            [class.ok]="fcClave('nuevaClave').value && !fcClave('nuevaClave').errors?.['uppercase']"
+          >
+            Mayúscula
+          </span>
+
+          <span
+            [class.ok]="fcClave('nuevaClave').value && !fcClave('nuevaClave').errors?.['number']"
+          >
+            Número
+          </span>
         </div>
       </div>
 

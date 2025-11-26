@@ -29,7 +29,10 @@
       formControlName="correo"
       placeholder="Ej: PSilva@gmail.com"
     />
-    <small *ngIf="campo('correo').touched && campo('correo').invalid && !campo('correo').errors?.['existe']" class="error">
+    <small
+      *ngIf="campo('correo').touched && campo('correo').invalid && !campo('correo').errors?.['existe']"
+      class="error"
+    >
       Ingresa un correo válido.
     </small>
     <small *ngIf="campo('correo').errors?.['existe']" class="error">
@@ -45,10 +48,16 @@
 
     <!-- REGLAS -->
     <div class="reglas" *ngIf="campo('clave').touched">
-      <span [class.ok]="!campo('clave').errors?.['minlength']">Mín. 6</span>
-      <span [class.ok]="!campo('clave').errors?.['maxlength']">Máx. 18</span>
-      <span [class.ok]="!campo('clave').errors?.['uppercase']">Mayúscula</span>
-      <span [class.ok]="!campo('clave').errors?.['number']">Número</span>
+      <span [class.ok]="campo('clave').value && !campo('clave').errors?.['minlength']">
+        Mín. 6
+      </span>
+      <span [class.ok]="campo('clave').value && !campo('clave').errors?.['maxlength']">
+        Máx. 18
+      </span>
+      <span [class.ok]="campo('clave').value && !campo('clave').errors?.['uppercase']">
+        Mayúscula
+      </span>
+      <span [class.ok]="campo('clave').value && !campo('clave').errors?.['number']"> Número </span>
     </div>
 
     <!-- REPETIR CLAVE -->
@@ -63,7 +72,7 @@
     </div>
 
     <small *ngIf="form.errors?.['noCoinciden'] && campo('repetirClave').touched" class="error">
-    {{ form.errors?.['noCoinciden'] }}
+      {{ form.errors?.['noCoinciden'] }}
     </small>
 
     <!-- FECHA -->
@@ -76,7 +85,7 @@
       "
       class="error"
     >
-        {{ getFechaError() }} 
+      {{ getFechaError() }}
     </small>
 
     <!-- DIRECCIÓN -->
