@@ -141,7 +141,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>de Angular.
+                <p>Implementación de <code>ErrorHandler</code> para capturar errores globales de Angular.
 Registrado en <code>app.config.ts</code> como manejador global.
 Aquí solo se hace <code>console.error</code>, pero se puede extender
 para reportar a servicios externos (Sentry, etc.).</p>
@@ -204,14 +204,16 @@ para reportar a servicios externos (Sentry, etc.).</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/core/global-error-handler.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/core/global-error-handler.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de Angular llamado cuando ocurre un error no capturado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -265,8 +267,7 @@ para reportar a servicios externos (Sentry, etc.).</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ErrorHandler, Injectable } from &#x27;@angular/core&#x27;;
 /**
- * @description Implementación de &#x60;ErrorHandler&#x60; para capturar errores globales
- * de Angular.
+ * Implementación de &#x60;ErrorHandler&#x60; para capturar errores globales de Angular.
  * @usageNotes
  * Registrado en &#x60;app.config.ts&#x60; como manejador global.
  * Aquí solo se hace &#x60;console.error&#x60;, pero se puede extender
@@ -276,7 +277,7 @@ para reportar a servicios externos (Sentry, etc.).</p>
 export class GlobalErrorHandler implements ErrorHandler {
  
   /**
-   * @description Método de Angular llamado cuando ocurre un error no capturado.
+   * Método de Angular llamado cuando ocurre un error no capturado.
    * @param error Error original lanzado en la aplicación.
    * @returns Nada (&#x60;void&#x60;), pero deja trazas en consola/log.
    */

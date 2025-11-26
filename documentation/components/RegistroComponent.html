@@ -142,6 +142,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>  Página de registro de nuevos usuarios. Construye un formulario
+con datos personales y credenciales, aplicando validaciones de negocio
+(edad mínima, complejidad de clave, coincidencia de claves, etc.).</p>
+<ul>
+<li>Crea usuarios con rol <code>&#39;cliente&#39;</code>.</li>
+<li>Si el correo ya existe, marca el control <code>correo</code> con el error <code>{ existe: true }</code>.</li>
+<li>Muestra un toast de éxito a través de <code>NotificationService</code> al finalizar.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -280,13 +294,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/registro/registro.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/registro/registro.ts:49</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>validar reglas personalizadas y persistir el nuevo usuario.</p>
+                            <div class="io-description"><p>  Inyecta los servicios necesarios para construir el formulario,
+validar reglas personalizadas y persistir el nuevo usuario.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -418,14 +433,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="99"
-                                    class="link-to-prism">src/app/pages/registro/registro.ts:99</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/pages/registro/registro.ts:110</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Devuelve un control del formulario de registro por nombre.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -491,15 +508,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="110"
-                                    class="link-to-prism">src/app/pages/registro/registro.ts:110</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/pages/registro/registro.ts:121</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>delegando en <code>AuthErrorService</code> la lógica de construcción del mensaje.</p>
+                        <div class="io-description"><p>  Obtiene el mensaje de error para el campo <code>fechaNacimiento</code>,
+delegando en <code>AuthErrorService</code> la lógica de construcción del mensaje.</p>
 </div>
 
                         <div class="io-description">
@@ -534,14 +552,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="118"
-                                    class="link-to-prism">src/app/pages/registro/registro.ts:118</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/pages/registro/registro.ts:129</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Limpia el formulario de registro.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -575,15 +595,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/pages/registro/registro.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/pages/registro/registro.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>y validadores necesarios, incluyendo el validador de coincidencia de claves.</p>
+                        <div class="io-description"><p>  Inicializa el <code>FormGroup</code> de registro con todos los campos
+y validadores necesarios, incluyendo el validador de coincidencia de claves.</p>
 </div>
 
                         <div class="io-description">
@@ -618,15 +639,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="133"
-                                    class="link-to-prism">src/app/pages/registro/registro.ts:133</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/pages/registro/registro.ts:144</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>marca todos los campos como tocados y no continúa. Si el registro falla
+                        <div class="io-description"><p>  Envía el formulario de registro. Si el formulario es inválido,
+marca todos los campos como tocados y no continúa. Si el registro falla
 porque el correo ya existe, marca el control <code>correo</code> con un error.
 En caso de éxito:</p>
 <ul>
@@ -673,10 +695,17 @@ En caso de éxito:</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/registro/registro.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/registro/registro.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo que agrupa todos los campos del registro
+(datos personales y credenciales).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -704,10 +733,17 @@ En caso de éxito:</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/registro/registro.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/registro/registro.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el campo de contraseña (<code>clave</code>) se muestra en texto
+plano o enmascarado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -735,10 +771,17 @@ En caso de éxito:</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/registro/registro.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/registro/registro.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el campo de confirmación de contraseña (<code>repetirClave</code>)
+se muestra en texto plano o enmascarado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -763,17 +806,8 @@ import { UserService } from &#x27;../../core/user.service&#x27;;
 import { AuthErrorService } from &#x27;../../core/auth-error.service&#x27;;
 import { Usuario } from &#x27;../../core/auth&#x27;;
 import { NotificationService } from &#x27;../../core/notification.service&#x27;;
-
-@Component({
-  selector: &#x27;app-registro&#x27;,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: &#x27;./registro.html&#x27;,
-  styleUrls: [&#x27;./registro.scss&#x27;],
-})
-
 /**
- * @description Página de registro de nuevos usuarios. Construye un formulario
+ *   Página de registro de nuevos usuarios. Construye un formulario
  * con datos personales y credenciales, aplicando validaciones de negocio
  * (edad mínima, complejidad de clave, coincidencia de claves, etc.).
  * @usageNotes
@@ -781,13 +815,33 @@ import { NotificationService } from &#x27;../../core/notification.service&#x27;;
  * - Si el correo ya existe, marca el control &#x60;correo&#x60; con el error &#x60;{ existe: true }&#x60;.
  * - Muestra un toast de éxito a través de &#x60;NotificationService&#x60; al finalizar.
  */
+@Component({
+  selector: &#x27;app-registro&#x27;,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: &#x27;./registro.html&#x27;,
+  styleUrls: [&#x27;./registro.scss&#x27;],
+})
 export class RegistroComponent implements OnInit {
+  /**
+   * Formulario reactivo que agrupa todos los campos del registro
+   * (datos personales y credenciales).
+   */
   form!: FormGroup;
 
+  /**
+   * Indica si el campo de contraseña (&#x60;clave&#x60;) se muestra en texto
+   * plano o enmascarado.
+   */
   verClave &#x3D; false;
+
+  /**
+   * Indica si el campo de confirmación de contraseña (&#x60;repetirClave&#x60;)
+   * se muestra en texto plano o enmascarado.
+   */
   verClave2 &#x3D; false;
   /**
-   * @description Inyecta los servicios necesarios para construir el formulario,
+   *   Inyecta los servicios necesarios para construir el formulario,
    * validar reglas personalizadas y persistir el nuevo usuario.
    * @param fb Factoría de formularios reactivos.
    * @param validators Servicio de validadores personalizados.
@@ -804,7 +858,7 @@ export class RegistroComponent implements OnInit {
   ) {}
 
   /**
-   * @description Inicializa el &#x60;FormGroup&#x60; de registro con todos los campos
+   *   Inicializa el &#x60;FormGroup&#x60; de registro con todos los campos
    * y validadores necesarios, incluyendo el validador de coincidencia de claves.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -842,7 +896,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve un control del formulario de registro por nombre.
+   *   Devuelve un control del formulario de registro por nombre.
    * @param nombre Nombre del control (ej. &#x60;&#x27;nombre&#x27;&#x60;, &#x60;&#x27;correo&#x27;&#x60;, &#x60;&#x27;fechaNacimiento&#x27;&#x60;).
    * @returns El control correspondiente (no nulo).
    */
@@ -851,7 +905,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Obtiene el mensaje de error para el campo &#x60;fechaNacimiento&#x60;,
+   *   Obtiene el mensaje de error para el campo &#x60;fechaNacimiento&#x60;,
    * delegando en &#x60;AuthErrorService&#x60; la lógica de construcción del mensaje.
    * @returns Cadena con el mensaje de error o cadena vacía si no hay error relevante.
    */
@@ -862,7 +916,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Limpia el formulario de registro.
+   *   Limpia el formulario de registro.
    * @returns Nada (&#x60;void&#x60;).
    */
   limpiar() {
@@ -870,7 +924,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Envía el formulario de registro. Si el formulario es inválido,
+   *   Envía el formulario de registro. Si el formulario es inválido,
    * marca todos los campos como tocados y no continúa. Si el registro falla
    * porque el correo ya existe, marca el control &#x60;correo&#x60; con un error.
    * @returns Nada (&#x60;void&#x60;).
@@ -1119,7 +1173,7 @@ label {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="registro-container">  <h2 class="text-center mb-4">Formulario de Registro</h2>  <form [formGroup]="form" (ngSubmit)="submit()" class="registro-form">    <!-- NOMBRE -->    <label>Nombre completo:</label>    <input      type="text"      class="form-control"      formControlName="nombre"      placeholder="Ej: Patricio Silva"    />    <small *ngIf="campo(\'nombre\').touched && campo(\'nombre\').invalid" class="error">      Ingresa un nombre válido.    </small>    <!-- USUARIO -->    <label>Nombre de usuario:</label>    <input type="text" class="form-control" formControlName="usuario" placeholder="Ej: PSilva" />    <small *ngIf="campo(\'usuario\').touched && campo(\'usuario\').invalid" class="error">      Debe tener al menos 3 caracteres.    </small>    <!-- CORREO -->    <label>Correo electrónico:</label>    <input      type="email"      class="form-control"      formControlName="correo"      placeholder="Ej: PSilva@gmail.com"    />    <small *ngIf="campo(\'correo\').touched && campo(\'correo\').invalid && !campo(\'correo\').errors?.[\'existe\']" class="error">      Ingresa un correo válido.    </small>    <small *ngIf="campo(\'correo\').errors?.[\'existe\']" class="error">      Este correo ya se encuentra registrado.    </small>    <!-- CLAVE -->    <label>Clave de ingreso:</label>    <div class="input-group password-group">      <input [type]="verClave ? \'text\' : \'password\'" class="form-control" formControlName="clave" />      <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>    </div>    <!-- REGLAS -->    <div class="reglas" *ngIf="campo(\'clave\').touched">      <span [class.ok]="!campo(\'clave\').errors?.[\'minlength\']">Mín. 6</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'maxlength\']">Máx. 18</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'uppercase\']">Mayúscula</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'number\']">Número</span>    </div>    <!-- REPETIR CLAVE -->    <label>Repetir clave:</label>    <div class="input-group password-group">      <input        [type]="verClave2 ? \'text\' : \'password\'"        formControlName="repetirClave"        class="form-control"      />      <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>    </div>    <small *ngIf="form.errors?.[\'noCoinciden\'] && campo(\'repetirClave\').touched" class="error">    {{ form.errors?.[\'noCoinciden\'] }}    </small>    <!-- FECHA -->    <label>Fecha de nacimiento:</label>    <input type="date" formControlName="fechaNacimiento" class="form-control" />    <small      *ngIf="        campo(\'fechaNacimiento\').errors &&        (campo(\'fechaNacimiento\').dirty || campo(\'fechaNacimiento\').touched)      "      class="error"    >        {{ getFechaError() }}     </small>    <!-- DIRECCIÓN -->    <label>Dirección de despacho (opcional):</label>    <input type="text" formControlName="direccion" class="form-control" />    <!-- BOTONES -->    <div class="botones">      <button type="button" class="btn btn-outline-secondary" (click)="limpiar()">Limpiar</button>      <button type="submit" class="btn btn-primary">Registrar</button>    </div>  </form></section></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegistroComponent'};
 </script>

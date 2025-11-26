@@ -3,7 +3,7 @@ import { HomeComponent } from './pages/home/home';
 import { AuthGuard } from './core/guards/auth.guard';
 import { RoleGuard } from './core/guards/role.guard';
 /**
- * @description Conjunto de rutas principales de la aplicación.
+ *   Conjunto de rutas principales de la aplicación.
  * Define navegación pública, protegida por autenticación y restringida por rol.
  * @usageNotes
  * Se registra en `app.config.ts` a través de `provideRouter(routes)`.

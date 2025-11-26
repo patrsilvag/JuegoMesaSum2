@@ -3,7 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Cart, CartItem } from '../../core/cart';
-
+/**
+ * Página del carrito de compras. Muestra los productos añadidos,
+ * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
+ * @usageNotes
+ * - Se apoya en el servicio `Cart` para la lógica de negocio (totales, envío, etc.).
+ * - Usa un formulario reactivo sencillo (`cuponForm`) para introducir el código de cupón.
+ */
 @Component({
   selector: 'app-carrito',
   standalone: true,
@@ -11,23 +17,26 @@ import { Cart, CartItem } from '../../core/cart';
   templateUrl: './carrito.html',
   styleUrl: './carrito.scss',
 })
-
-/**
- * @description Página del carrito de compras. Muestra los productos añadidos,
- * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
- * @usageNotes
- * - Se apoya en el servicio `Cart` para la lógica de negocio (totales, envío, etc.).
- * - Usa un formulario reactivo sencillo (`cuponForm`) para introducir el código de cupón.
- */
 export class CarritoComponent implements OnInit {
+  /**
+   * Lista actual de ítems en el carrito, mantenida sincronizada
+   * con el observable `cart.carrito$`.
+   */
   carritoLista: CartItem[] = [];
 
-  // Reactive Form
+  /**
+   * Formulario reactivo para ingresar el código de cupón de descuento.
+   */
   cuponForm!: FormGroup;
+
+  /**
+   * Mensaje asociado al resultado de aplicar el cupón
+   * (éxito, error o `null` si no hay mensaje).
+   */
   mensajeCupon: string | null = null;
 
   /**
-   * @description Inyecta el servicio de carrito y el `FormBuilder` para el formulario
+   *   Inyecta el servicio de carrito y el `FormBuilder` para el formulario
    * del cupón.
    * @param cart Servicio de carrito que mantiene el estado global de los ítems.
    * @param fb Factoría de formularios reactivos para construir `cuponForm`.
@@ -35,7 +44,7 @@ export class CarritoComponent implements OnInit {
   constructor(public cart: Cart, private fb: FormBuilder) {}
 
   /**
-   * @description Inicializa el formulario de cupón y se suscribe al observable
+   *   Inicializa el formulario de cupón y se suscribe al observable
    * `carrito$` para mantener `carritoLista` sincronizado.
    * @returns Nada (`void`).
    */
@@ -52,7 +61,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Aplica un cupón de descuento si el formulario es válido
+   *   Aplica un cupón de descuento si el formulario es válido
    * y el código coincide con uno soportado (actualmente `DESCUENTO10`).
    * @returns Nada (`void`).
    * @usageNotes
@@ -81,7 +90,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Limpia el formulario de cupón y borra el mensaje asociado.
+   *   Limpia el formulario de cupón y borra el mensaje asociado.
    * @returns Nada (`void`).
    */
   limpiarCupon() {
@@ -94,7 +103,7 @@ export class CarritoComponent implements OnInit {
   // ===================================================
 
   /**
-   * @description Aumenta en 1 la cantidad del producto con el id dado.
+   *   Aumenta en 1 la cantidad del producto con el id dado.
    * @param id Identificador del producto dentro del carrito.
    * @returns Nada (`void`).
    */
@@ -103,7 +112,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Disminuye en 1 la cantidad del producto con el id dado.
+   *   Disminuye en 1 la cantidad del producto con el id dado.
    * @param id Identificador del producto dentro del carrito.
    * @returns Nada (`void`).
    */
@@ -112,7 +121,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Elimina completamente un producto del carrito.
+   *   Elimina completamente un producto del carrito.
    * @param id Identificador del producto.
    * @returns Nada (`void`).
    */
@@ -121,7 +130,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Vacía por completo el carrito y limpia el estado del cupón.
+   *   Vacía por completo el carrito y limpia el estado del cupón.
    * @returns Nada (`void`).
    */
   limpiarCarrito() {
@@ -133,7 +142,7 @@ export class CarritoComponent implements OnInit {
   //  CÁLCULOS
   // ===================================================
   /**
-   * @description Calcula el subtotal sin descuentos ni envío usando los datos
+   *   Calcula el subtotal sin descuentos ni envío usando los datos
    * actuales de `carritoLista`.
    * @returns El subtotal numérico original.
    */
@@ -142,7 +151,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el total actual calculado por el servicio `Cart`
+   *   Devuelve el total actual calculado por el servicio `Cart`
    * (puede incluir descuentos).
    * @returns Total numérico.
    */
@@ -151,7 +160,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el costo de envío calculado por el servicio `Cart`.
+   *   Devuelve el costo de envío calculado por el servicio `Cart`.
    * @returns Coste numérico del envío.
    */
   envio() {
@@ -159,7 +168,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el total final, sumando subtotal + envío (y descuentos
+   *   Devuelve el total final, sumando subtotal + envío (y descuentos
    * aplicados) según la lógica del servicio `Cart`.
    * @returns Total final numérico.
    */

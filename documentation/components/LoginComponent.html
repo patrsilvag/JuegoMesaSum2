@@ -142,6 +142,18 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Página de inicio de sesión. Gestiona un formulario reactivo con correo y contraseña, delegando la autenticación en <code>AuthService</code>.</p>
+<ul>
+<li>El mensaje de error de login se expone en <code>errorLogin</code>.</li>
+<li>Tras un login exitoso se navega a la ruta raíz (<code>&#39;/&#39;</code>).</li>
+<li>El formulario define los campos <code>correo</code> y <code>clave</code>.</li>
+</ul>
+
+    </p>
 
 
 
@@ -266,13 +278,13 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/login/login.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/login/login.ts:40</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>de correo y contraseña.</p>
+                            <div class="io-description"><p>Inicializa el formulario de login con validación básica de correo y contraseña.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -388,14 +400,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/pages/login/login.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/pages/login/login.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Devuelve un control del formulario de login por nombre.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -461,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/pages/login/login.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/pages/login/login.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -516,10 +530,17 @@ Este método debería llamarse desde el submit del formulario en la plantilla.</
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/login/login.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/login/login.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error a mostrar si la autenticación falla.
+Es una cadena vacía si no hay error.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -542,10 +563,17 @@ Este método debería llamarse desde el submit del formulario en la plantilla.</
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/login/login.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/login/login.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo que gestiona los campos de
+login: <code>correo</code> y <code>clave</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -573,10 +601,17 @@ Este método debería llamarse desde el submit del formulario en la plantilla.</
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/login/login.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/login/login.ts:34</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Bandera para controlar la visibilidad de la contraseña.
+Por defecto es <code>false</code> (clave oculta).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -592,7 +627,13 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from &#x27;@a
 import { Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { AuthService, LoginResultado } from &#x27;../../core/auth.service&#x27;;
 import { AuthErrorService } from &#x27;../../core/auth-error.service&#x27;;
-
+/**
+ * Página de inicio de sesión. Gestiona un formulario reactivo con correo y contraseña, delegando la autenticación en &#x60;AuthService&#x60;.
+ * @usageNotes
+ * - El mensaje de error de login se expone en &#x60;errorLogin&#x60;.
+ * - Tras un login exitoso se navega a la ruta raíz (&#x60;&#x27;/&#x27;&#x60;).
+ * - El formulario define los campos &#x60;correo&#x60; y &#x60;clave&#x60;.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: true,
@@ -600,21 +641,28 @@ import { AuthErrorService } from &#x27;../../core/auth-error.service&#x27;;
   styleUrls: [&#x27;./login.scss&#x27;],
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
 })
-/**
- * @description Página de inicio de sesión. Gestiona un formulario reactivo
- * con correo y contraseña, delegando la autenticación en &#x60;AuthService&#x60;.
- * @usageNotes
- * - El mensaje de error de login se expone en &#x60;errorLogin&#x60;.
- * - Tras un login exitoso se navega a la ruta raíz (&#x60;&#x27;/&#x27;&#x60;).
- * - El formulario define los campos &#x60;correo&#x60; y &#x60;clave&#x60;.
- */
+
 export class LoginComponent {
-  form!: FormGroup;
+  /**
+   * Formulario reactivo que gestiona los campos de
+   * login: &#x60;correo&#x60; y &#x60;clave&#x60;.
+   * @type {FormGroup}
+   */
+  form!: FormGroup; // &lt;-- Documentación añadida aquí
+  /**
+   * Bandera para controlar la visibilidad de la contraseña.
+   * Por defecto es &#x60;false&#x60; (clave oculta).
+   * @type {boolean}
+   */
   verClave &#x3D; false;
+  /**
+   * Mensaje de error a mostrar si la autenticación falla.
+   * Es una cadena vacía si no hay error.
+   * @type {string}
+   */
   errorLogin &#x3D; &#x27;&#x27;;
   /**
-   * @description Inicializa el formulario de login con validación básica
-   * de correo y contraseña.
+   * Inicializa el formulario de login con validación básica de correo y contraseña.
    * @param fb Factoría para construir el formulario reactivo.
    * @param authSrv Servicio responsable de autenticar al usuario.
    * @param err Servicio centralizado de mensajes de error de autenticación.
@@ -633,7 +681,7 @@ export class LoginComponent {
   }
 
   /**
-   * @description Devuelve un control del formulario de login por nombre.
+   * Devuelve un control del formulario de login por nombre.
    * @param nombre Nombre del control (por ejemplo, &#x60;&#x27;correo&#x27;&#x60; o &#x60;&#x27;clave&#x27;&#x60;).
    * @returns El control de formulario correspondiente (no nulo).
    */
@@ -764,7 +812,7 @@ export class LoginComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="form-container">  <h2 class="form-title">Iniciar sesión</h2>  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>    <!-- CORREO (antes usuario, ahora login por correo) -->    <div class="form-group">      <label>Correo electrónico:</label>      <input        type="email"        class="form-control"        formControlName="correo"        placeholder="Ej: usuario@gmail.com"      />      <small *ngIf="campo(\'correo\').touched && campo(\'correo\').invalid" class="error">        Ingresa un correo válido.      </small>    </div>    <!-- CONTRASEÑA -->    <div class="form-group">      <label>Contraseña:</label>      <div class="password-group">        <input          [type]="verClave ? \'text\' : \'password\'"          class="form-control"          formControlName="clave"        />        <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>      </div>      <small *ngIf="campo(\'clave\').touched && campo(\'clave\').invalid" class="error">        La contraseña es obligatoria.      </small>    </div>    <!-- ERROR GENERAL -->    <p *ngIf="errorLogin" class="error">      {{ errorLogin }}    </p>    <!-- BOTÓN LOGIN -->    <button type="submit" class="btn-primary mt-3">Ingresar</button>    <!-- LINKS -->    <p class="text-center">      <a routerLink="/recuperar" class="link-button">¿Olvidaste tu contraseña?</a>    </p>    <p class="text-center">      <a routerLink="/registro" class="link-button">¿No tienes cuenta? Regístrate</a>    </p>  </form></section></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>

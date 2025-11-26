@@ -1,16 +1,24 @@
 import { Injectable, signal } from '@angular/core';
-
+/**
+ * Modelo de notificación mostrada en los toasts.
+ *
+ * @usageNotes
+ * Se usa internamente por `NotificationService` y componentes de presentación
+ * como `ToastComponent`.
+ */
 interface Notification {
+  /** Mensaje de texto que se mostrará en el toast. */
   message: string;
+
+  /** Tipo de notificación (por ejemplo: 'success', 'error' o 'info'). */
   type: 'success' | 'error' | 'info';
 }
 
 /**
- * @description Servicio para gestionar notificaciones tipo "toast" en la UI.
- * Utiliza signals de Angular para exponer el estado actual de la notificación.
- * @usageNotes
- * - Úsalo junto con `ToastComponent` para mostrar mensajes temporales.
- * - Diseñado principalmente para mensajes de éxito o error de acciones de usuario.
+ * Servicio para gestionar notificaciones tipo "toast" en la UI.
+ *
+ * Utiliza signals de Angular para exponer el estado actual de la notificación
+ * y ofrece métodos de alto nivel para mostrar mensajes temporales.
  */
 
 @Injectable({
@@ -18,14 +26,14 @@ interface Notification {
 })
 export class NotificationService {
   /**
-   * @description Signal con la notificación actual o `null` si no hay nada que mostrar.
+   *   Signal con la notificación actual o `null` si no hay nada que mostrar.
    * @usageNotes
    * Accedido típicamente desde componentes de presentación (por ej. `ToastComponent`).
    */
   readonly currentNotification = signal<Notification | null>(null);
 
   /**
-   * @description Muestra un mensaje de éxito que desaparece automáticamente
+   *   Muestra un mensaje de éxito que desaparece automáticamente
    * después de un tiempo.
    * @param message Mensaje a mostrar.
    * @param duration Duración en milisegundos antes de ocultar el mensaje

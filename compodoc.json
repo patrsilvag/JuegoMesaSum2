@@ -1,0 +1,5 @@
+{
+  "tsconfig": "tsconfig.app.json",
+  "output": "documentation",
+  "exclude": ["documentation/template-playground/**"]
+}

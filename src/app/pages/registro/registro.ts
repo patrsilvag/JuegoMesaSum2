@@ -13,17 +13,8 @@ import { UserService } from '../../core/user.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { Usuario } from '../../core/auth';
 import { NotificationService } from '../../core/notification.service';
-
-@Component({
-  selector: 'app-registro',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './registro.html',
-  styleUrls: ['./registro.scss'],
-})
-
 /**
- * @description Página de registro de nuevos usuarios. Construye un formulario
+ *   Página de registro de nuevos usuarios. Construye un formulario
  * con datos personales y credenciales, aplicando validaciones de negocio
  * (edad mínima, complejidad de clave, coincidencia de claves, etc.).
  * @usageNotes
@@ -31,13 +22,33 @@ import { NotificationService } from '../../core/notification.service';
  * - Si el correo ya existe, marca el control `correo` con el error `{ existe: true }`.
  * - Muestra un toast de éxito a través de `NotificationService` al finalizar.
  */
+@Component({
+  selector: 'app-registro',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './registro.html',
+  styleUrls: ['./registro.scss'],
+})
 export class RegistroComponent implements OnInit {
+  /**
+   * Formulario reactivo que agrupa todos los campos del registro
+   * (datos personales y credenciales).
+   */
   form!: FormGroup;
 
+  /**
+   * Indica si el campo de contraseña (`clave`) se muestra en texto
+   * plano o enmascarado.
+   */
   verClave = false;
+
+  /**
+   * Indica si el campo de confirmación de contraseña (`repetirClave`)
+   * se muestra en texto plano o enmascarado.
+   */
   verClave2 = false;
   /**
-   * @description Inyecta los servicios necesarios para construir el formulario,
+   *   Inyecta los servicios necesarios para construir el formulario,
    * validar reglas personalizadas y persistir el nuevo usuario.
    * @param fb Factoría de formularios reactivos.
    * @param validators Servicio de validadores personalizados.
@@ -54,7 +65,7 @@ export class RegistroComponent implements OnInit {
   ) {}
 
   /**
-   * @description Inicializa el `FormGroup` de registro con todos los campos
+   *   Inicializa el `FormGroup` de registro con todos los campos
    * y validadores necesarios, incluyendo el validador de coincidencia de claves.
    * @returns Nada (`void`).
    */
@@ -92,7 +103,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve un control del formulario de registro por nombre.
+   *   Devuelve un control del formulario de registro por nombre.
    * @param nombre Nombre del control (ej. `'nombre'`, `'correo'`, `'fechaNacimiento'`).
    * @returns El control correspondiente (no nulo).
    */
@@ -101,7 +112,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Obtiene el mensaje de error para el campo `fechaNacimiento`,
+   *   Obtiene el mensaje de error para el campo `fechaNacimiento`,
    * delegando en `AuthErrorService` la lógica de construcción del mensaje.
    * @returns Cadena con el mensaje de error o cadena vacía si no hay error relevante.
    */
@@ -112,7 +123,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Limpia el formulario de registro.
+   *   Limpia el formulario de registro.
    * @returns Nada (`void`).
    */
   limpiar() {
@@ -120,7 +131,7 @@ export class RegistroComponent implements OnInit {
   }
 
   /**
-   * @description Envía el formulario de registro. Si el formulario es inválido,
+   *   Envía el formulario de registro. Si el formulario es inválido,
    * marca todos los campos como tocados y no continúa. Si el registro falla
    * porque el correo ya existe, marca el control `correo` con un error.
    * @returns Nada (`void`).

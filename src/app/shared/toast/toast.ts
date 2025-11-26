@@ -15,7 +15,7 @@ import { NotificationService } from '../../core/notification.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    @if (notification as n) {
+    @if (notification(); as n) {
     <div
       class="toast-message alert"
       [class.alert-success]="n.type === 'success'"
@@ -43,7 +43,6 @@ import { NotificationService } from '../../core/notification.service';
     `,
   ],
 })
-
 export class ToastComponent {
   /**
    * @description Servicio de notificaciones inyectado mediante la API `inject`.

@@ -12,17 +12,8 @@ import { UserService } from '../../core/user.service';
 import { ValidatorsService } from '../../core/validators.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { NotificationService } from '../../core/notification.service';
-
-@Component({
-  selector: 'app-recuperar',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './recuperar.html',
-  styleUrls: ['./recuperar.scss'],
-})
-
 /**
- * @description Flujo de recuperación de contraseña en tres pasos:
+ * Flujo de recuperación de contraseña en tres pasos:
  * 1) Validar correo, 2) Validar código, 3) Establecer nueva clave.
  * Gestiona tres formularios independientes para cada paso.
  * @usageNotes
@@ -30,21 +21,60 @@ import { NotificationService } from '../../core/notification.service';
  * - Usa `UserService` para localizar al usuario y cambiar la contraseña.
  * - Usa `NotificationService` para informar del éxito al finalizar.
  */
+@Component({
+  selector: 'app-recuperar',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './recuperar.html',
+  styleUrls: ['./recuperar.scss'],
+})
 export class RecuperarComponent {
-  paso = 1;
+  /**
+   * Paso actual del flujo de recuperación:
+   * 1 = validar correo, 2 = validar código, 3 = cambiar clave.
+   */
+  paso: number = 1;
 
-  codigoGenerado = '';
-  correoValidado = '';
+  /**
+   * Código de verificación generado (simulado) para el usuario.
+   */
+  codigoGenerado: string = '';
 
-  verClave = false;
-  verClave2 = false;
+  /**
+   * Correo electrónico del usuario que ha pasado la validación
+   * del paso 1.
+   */
+  correoValidado: string = '';
 
+  /**
+   * Indica si la primera contraseña (`clave`) se muestra en texto
+   * plano o enmascarada.
+   */
+  verClave: boolean = false;
+
+  /**
+   * Indica si la confirmación de contraseña (`clave2`) se muestra
+   * en texto plano o enmascarada.
+   */
+  verClave2: boolean = false;
+
+  /**
+   * Formulario del paso 1: captura y valida el correo electrónico.
+   */
   formCorreo!: FormGroup;
+
+  /**
+   * Formulario del paso 2: captura y valida el código numérico de 6 dígitos.
+   */
   formCodigo!: FormGroup;
+
+  /**
+   * Formulario del paso 3: captura y valida la nueva contraseña y su confirmación.
+   */
   formClave!: FormGroup;
 
   /**
-   * @description Inyecta dependencias para construir formularios, acceder a usuarios,
+   * Inyecta dependencias para construir formularios, acceder a usuarios,
    * aplicar validadores personalizados y mostrar notificaciones.
    * @param fb Factoría de formularios reactivos.
    * @param userSrv Servicio de usuarios para buscar y actualizar claves.
@@ -61,7 +91,7 @@ export class RecuperarComponent {
   ) {}
 
   /**
-   * @description Inicializa los tres formularios:
+   * Inicializa los tres formularios:
    * - `formCorreo` con campo `correo`.
    * - `formCodigo` con campo `codigo` numérico de 6 dígitos.
    * - `formClave` con los campos `clave` y `clave2` y validadores de complejidad.
@@ -103,7 +133,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Devuelve un control del formulario de cambio de clave (`formClave`).
+   * Devuelve un control del formulario de cambio de clave (`formClave`).
    * @param c Nombre del control (`'clave'` o `'clave2'`).
    * @returns El control correspondiente (no nulo).
    */
@@ -113,7 +143,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 1: valida el formulario de correo, comprueba si el usuario
+   * Paso 1: valida el formulario de correo, comprueba si el usuario
    * existe y, si es así, genera un código (simulado) y avanza al paso 2.
    * @returns Nada (`void`).
    * @usageNotes
@@ -147,7 +177,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 2: valida el formulario de código e intenta comprobar
+   * Paso 2: valida el formulario de código e intenta comprobar
    * que el código introducido coincida con el código generado.
    * @returns Nada (`void`).
    * @usageNotes
@@ -174,7 +204,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 3: valida el formulario de nueva clave y, si es correcto,
+   * Paso 3: valida el formulario de nueva clave y, si es correcto,
    * actualiza la contraseña del usuario usando `UserService`.
    * @returns Nada (`void`).
    * @usageNotes

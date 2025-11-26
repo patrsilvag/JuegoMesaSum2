@@ -141,7 +141,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Gestiona el estado de sesión en memoria y en <code>localStorage</code>.</p>
+                <p>Servicio de alto nivel para autenticación de usuarios.
+Gestiona el estado de sesión en memoria y en <code>localStorage</code>.</p>
 <ul>
 <li>Inyéctalo en guards y componentes que necesiten saber quién está logueado.</li>
 <li>Usa <code>usuarioActual$</code> para reaccionar a cambios de sesión.</li>
@@ -228,6 +229,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Inicializa el servicio cargando el usuario persistido (si existe).</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -316,7 +319,8 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Normalmente solo se invoca desde el constructor.</p>
+                        <div class="io-description"><p>Carga el usuario actual desde <code>localStorage</code> y actualiza el <code>BehaviorSubject</code>.
+Normalmente solo se invoca desde el constructor.</p>
 </div>
 
                         <div class="io-description">
@@ -359,7 +363,8 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Para observar cambios en tiempo real, usa mejor <code>usuarioActual$</code>.</p>
+                        <div class="io-description"><p>Devuelve el usuario actualmente autenticado.
+Para observar cambios en tiempo real, usa mejor <code>usuarioActual$</code>.</p>
 </div>
 
                         <div class="io-description">
@@ -404,7 +409,8 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>y actualiza el estado observable.</p>
+                        <div class="io-description"><p>Persiste o limpia la sesión de usuario en <code>localStorage</code>
+y actualiza el estado observable.</p>
 </div>
 
                             <div class="io-description">
@@ -479,7 +485,8 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><ul>
+                        <div class="io-description"><p>Intenta autenticar al usuario con correo y clave.</p>
+<ul>
 <li><code>{ ok: true, usuario }</code> si las credenciales son correctas.</li>
 <li><code>{ ok: false, mensaje }</code> si las credenciales son inválidas o hay un error.</li>
 </ul>
@@ -631,7 +638,8 @@ if (!res.ok) {
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Emite <code>null</code> si no hay sesión activa.</p>
+                    <div class="io-description"><p>Fuente de verdad para el usuario actualmente autenticado.
+Emite <code>null</code> si no hay sesión activa.</p>
 </div>
                 </td>
             </tr>
@@ -668,7 +676,8 @@ if (!res.ok) {
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>a los cambios de sesión del usuario.</p>
+                    <div class="io-description"><p>Observable que permite a los componentes suscribirse
+a los cambios de sesión del usuario.</p>
 </div>
                 </td>
             </tr>
@@ -688,12 +697,12 @@ import { AuthRepository } from &#x27;./auth.repository&#x27;;
 import { AuthErrorService } from &#x27;./auth-error.service&#x27;;
 
 /**
- * @description Tipo de resultado devuelto por AuthService.login
+ * Tipo de resultado devuelto por AuthService.login
  */
 export type LoginResultado &#x3D; { ok: true; usuario: Usuario } | { ok: false; mensaje: string };
 
 /**
- * @description Servicio de alto nivel para autenticación de usuarios.
+ * Servicio de alto nivel para autenticación de usuarios.
  * Gestiona el estado de sesión en memoria y en &#x60;localStorage&#x60;.
  * @usageNotes
  * - Inyéctalo en guards y componentes que necesiten saber quién está logueado.
@@ -703,19 +712,19 @@ export type LoginResultado &#x3D; { ok: true; usuario: Usuario } | { ok: false; 
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class AuthService {
   /**
-   * @description Fuente de verdad para el usuario actualmente autenticado.
+   * Fuente de verdad para el usuario actualmente autenticado.
    * Emite &#x60;null&#x60; si no hay sesión activa.
    */
   private usuarioActual &#x3D; new BehaviorSubject&lt;Usuario | null&gt;(null);
 
   /**
-   * @description Observable que permite a los componentes suscribirse
+   * Observable que permite a los componentes suscribirse
    * a los cambios de sesión del usuario.
    */
   usuarioActual$ &#x3D; this.usuarioActual.asObservable();
 
   /**
-   * @description Inicializa el servicio cargando el usuario persistido (si existe).
+   * Inicializa el servicio cargando el usuario persistido (si existe).
    * @param repo Repositorio de usuarios (acceso a almacenamiento).
    * @param err Servicio de mensajes de error para autenticación.
    */
@@ -724,7 +733,7 @@ export class AuthService {
   }
 
   /**
-   * @description Carga el usuario actual desde &#x60;localStorage&#x60; y actualiza el &#x60;BehaviorSubject&#x60;.
+   * Carga el usuario actual desde &#x60;localStorage&#x60; y actualiza el &#x60;BehaviorSubject&#x60;.
    * @returns Nada (&#x60;void&#x60;).
    * @usageNotes
    * Normalmente solo se invoca desde el constructor.
@@ -735,7 +744,7 @@ export class AuthService {
   }
 
   /**
-   * @description Persiste o limpia la sesión de usuario en &#x60;localStorage&#x60;
+   * Persiste o limpia la sesión de usuario en &#x60;localStorage&#x60;
    * y actualiza el estado observable.
    * @param u Usuario autenticado o &#x60;null&#x60; para cerrar sesión.
    * @returns Nada (&#x60;void&#x60;).
@@ -750,7 +759,7 @@ export class AuthService {
   }
 
   /**
-   * @description Devuelve el usuario actualmente autenticado.
+   * Devuelve el usuario actualmente autenticado.
    * @returns El usuario actual o &#x60;null&#x60; si no hay sesión.
    * @usageNotes
    * Para observar cambios en tiempo real, usa mejor &#x60;usuarioActual$&#x60;.
@@ -760,7 +769,7 @@ export class AuthService {
   }
 
   /**
-   * @description Intenta autenticar al usuario con correo y clave.
+   * Intenta autenticar al usuario con correo y clave.
    * @param correo Correo electrónico del usuario.
    * @param clave Contraseña en texto plano.
    * @returns

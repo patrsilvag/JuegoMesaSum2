@@ -142,6 +142,18 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Panel de administración para listar y filtrar usuarios,
+así como cambiar su estado activo/inactivo.</p>
+<ul>
+<li>Se apoya en <code>AdminService</code> para cargar, filtrar y actualizar usuarios.</li>
+<li>Usa un formulario reactivo <code>filtroForm</code> con campos <code>correo</code>, <code>rol</code> y <code>estado</code>.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -283,12 +295,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/admin/admin.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/admin/admin.ts:45</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Inyecta el <code>FormBuilder</code> y el servicio de administración.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -371,15 +385,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/pages/admin/admin.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:81</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>de usuarios, usando <code>AdminService.filtrarUsuarios</code>.</p>
+                        <div class="io-description"><p>Aplica los filtros actuales del formulario sobre la lista
+de usuarios, usando <code>AdminService.filtrarUsuarios</code>.</p>
 </div>
 
                         <div class="io-description">
@@ -414,15 +429,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/pages/admin/admin.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:60</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>desde <code>AdminService</code> y configura una suscripción a <code>valueChanges</code> para
+                        <div class="io-description"><p>Inicializa el formulario de filtros, carga la lista de usuarios
+desde <code>AdminService</code> y configura una suscripción a <code>valueChanges</code> para
 filtrar automáticamente.</p>
 </div>
 
@@ -458,14 +474,16 @@ filtrar automáticamente.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/pages/admin/admin.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:89</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Resetea todos los campos del formulario de filtrado.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -499,15 +517,16 @@ filtrar automáticamente.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="81"
-                                    class="link-to-prism">src/app/pages/admin/admin.ts:81</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/pages/admin/admin.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p><code>AdminService.toggleEstado</code> y vuelve a aplicar los filtros para refrescar
+                        <div class="io-description"><p>Cambia el estado de un usuario (activo/inactivo) usando
+<code>AdminService.toggleEstado</code> y vuelve a aplicar los filtros para refrescar
 la vista.</p>
 </div>
 
@@ -585,10 +604,17 @@ la vista.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/admin/admin.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/admin/admin.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Bandera interna para habilitar/deshabilitar información
+de depuración en la plantilla.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -616,10 +642,17 @@ la vista.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/admin/admin.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/admin/admin.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error a mostrar en la vista cuando ocurre
+algún problema al cargar o filtrar usuarios. <code>null</code> si no hay error.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -642,10 +675,18 @@ la vista.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/admin/admin.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/admin/admin.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p> Formulario reactivo que contiene los campos de filtrado:
+<code>correo</code>, <code>rol</code> y <code>estado</code>.
+ @type {FormGroup}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -673,10 +714,17 @@ la vista.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/admin/admin.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/admin/admin.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de usuarios cargados desde <code>AdminService</code>
+antes de aplicar cualquier filtro.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -704,10 +752,17 @@ la vista.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/admin/admin.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/admin/admin.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de usuarios resultante de aplicar los filtros del
+formulario sobre <code>usuarios</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -721,7 +776,13 @@ la vista.</p>
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
 import { AdminService } from &#x27;./admin.service&#x27;;
-
+/**
+ * Panel de administración para listar y filtrar usuarios,
+ * así como cambiar su estado activo/inactivo.
+ * @usageNotes
+ * - Se apoya en &#x60;AdminService&#x60; para cargar, filtrar y actualizar usuarios.
+ * - Usa un formulario reactivo &#x60;filtroForm&#x60; con campos &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
+ */
 @Component({
   selector: &#x27;app-admin&#x27;,
   templateUrl: &#x27;./admin.html&#x27;,
@@ -729,30 +790,43 @@ import { AdminService } from &#x27;./admin.service&#x27;;
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
 })
-
-/**
- * @description Panel de administración para listar y filtrar usuarios,
- * así como cambiar su estado activo/inactivo.
- * @usageNotes
- * - Se apoya en &#x60;AdminService&#x60; para cargar, filtrar y actualizar usuarios.
- * - Usa un formulario reactivo &#x60;filtroForm&#x60; con campos &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
- */
 export class AdminComponent implements OnInit {
+  /**
+   *  Formulario reactivo que contiene los campos de filtrado:
+   * &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
+   *  @type {FormGroup} 
+   */
   filtroForm!: FormGroup;
+  /**
+   * Lista completa de usuarios cargados desde &#x60;AdminService&#x60;
+   * antes de aplicar cualquier filtro.
+   */
   usuarios: any[] &#x3D; [];
+  /**
+   * Lista de usuarios resultante de aplicar los filtros del
+   * formulario sobre &#x60;usuarios&#x60;.
+   */
   usuariosFiltrados: any[] &#x3D; [];
+  /**
+   * Mensaje de error a mostrar en la vista cuando ocurre
+   * algún problema al cargar o filtrar usuarios. &#x60;null&#x60; si no hay error.
+   */
   error: string | null &#x3D; null;
+  /**
+   * Bandera interna para habilitar/deshabilitar información
+   * de depuración en la plantilla.
+   */
   debug &#x3D; false;
 
   /**
-   * @description Inyecta el &#x60;FormBuilder&#x60; y el servicio de administración.
+   * Inyecta el &#x60;FormBuilder&#x60; y el servicio de administración.
    * @param fb Factoría para construir el formulario de filtros.
    * @param adminSrv Servicio que encapsula la lógica sobre usuarios administrables.
    */
   constructor(private fb: FormBuilder, private adminSrv: AdminService) {}
 
   /**
-   * @description Inicializa el formulario de filtros, carga la lista de usuarios
+   * Inicializa el formulario de filtros, carga la lista de usuarios
    * desde &#x60;AdminService&#x60; y configura una suscripción a &#x60;valueChanges&#x60; para
    * filtrar automáticamente.
    * @returns Nada (&#x60;void&#x60;).
@@ -774,7 +848,7 @@ export class AdminComponent implements OnInit {
   }
 
   /**
-   * @description Aplica los filtros actuales del formulario sobre la lista
+   * Aplica los filtros actuales del formulario sobre la lista
    * de usuarios, usando &#x60;AdminService.filtrarUsuarios&#x60;.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -783,7 +857,7 @@ export class AdminComponent implements OnInit {
   }
 
   /**
-   * @description Resetea todos los campos del formulario de filtrado.
+   * Resetea todos los campos del formulario de filtrado.
    * @returns Nada (&#x60;void&#x60;).
    */
   resetFiltro() {
@@ -791,7 +865,7 @@ export class AdminComponent implements OnInit {
   }
 
   /**
-   * @description Cambia el estado de un usuario (activo/inactivo) usando
+   * Cambia el estado de un usuario (activo/inactivo) usando
    * &#x60;AdminService.toggleEstado&#x60; y vuelve a aplicar los filtros para refrescar
    * la vista.
    * @param usuario Objeto usuario tal y como lo devuelve &#x60;AdminService&#x60;.
@@ -1029,7 +1103,7 @@ button.btn {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!-- Cleaned Mobile-First Admin HTML --><div class="admin-wrapper">  <section class="admin-container">    <h1 class="h4 mb-3">Panel de administración</h1>    <!-- ERROR GENERAL -->    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>    <!-- FORMULARIO REACTIVO -->    <form [formGroup]="filtroForm" class="row g-3 mb-4">      <!-- CORREO -->      <div class="col-12 col-md-4">        <input type="text" class="form-control" placeholder="Filtrar por correo" formControlName="correo" />        <small class="text-danger" *ngIf="filtroForm.get(\'correo\')?.invalid && filtroForm.get(\'correo\')?.touched">Formato de correo inválido</small>      </div>      <!-- ROL -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="rol">          <option value="">Rol (todos)</option>          <option value="admin">Administrador</option>          <option value="cliente">Cliente</option>        </select>      </div>      <!-- ESTADO -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="estado">          <option value="">Estado (todos)</option>          <option value="active">Activo</option>          <option value="inactive">Inactivo</option>        </select>      </div>      <!-- LIMPIAR -->      <div class="col-12 col-md-2">        <button type="button" class="btn btn-secondary w-100" (click)="resetFiltro()">Limpiar</button>      </div>          </form>    <!-- TABLA -->    <div class="card shadow-sm" *ngIf="usuariosFiltrados.length > 0">      <div class="card-body p-0">        <div class="table-responsive-mobile">          <table class="table table-hover align-middle mb-0">            <thead class="table-dark">              <tr>                <th>Correo</th>                <th>Usuario</th>                <th>Rol</th>                <th>Estado</th>                <th class="text-end">Acciones</th>              </tr>            </thead>            <tbody>              <tr *ngFor="let u of usuariosFiltrados">                <td>{{ u.correo }}</td>                <td>{{ u.usuario }}</td>                <td>{{ u.rol }}</td>                <td>                  <span class="badge" [class.text-bg-success]="u.status === \'active\'" [class.text-bg-secondary]="u.status === \'inactive\'">                    {{ u.status === \'active\' ? \'Activo\' : \'Inactivo\' }}                  </span>                </td>                <td class="text-end">                  <button class="btn btn-sm" [class.btn-outline-danger]="u.status === \'active\'" [class.btn-outline-success]="u.status === \'inactive\'" (click)="toggleEstado(u)">                    {{ u.status === \'active\' ? \'Desactivar\' : \'Activar\' }}                  </button>                </td>              </tr>            </tbody>          </table>        </div>      </div>    </div>    <!-- SIN RESULTADOS -->    <div *ngIf="usuariosFiltrados.length === 0" class="alert alert-info text-center">      No hay usuarios que coincidan con el filtro.    </div>  </section></div></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AdminComponent'};
 </script>

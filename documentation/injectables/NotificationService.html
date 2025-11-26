@@ -141,11 +141,9 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Utiliza signals de Angular para exponer el estado actual de la notificación.</p>
-<ul>
-<li>Úsalo junto con <code>ToastComponent</code> para mostrar mensajes temporales.</li>
-<li>Diseñado principalmente para mensajes de éxito o error de acciones de usuario.</li>
-</ul>
+                <p>Servicio para gestionar notificaciones tipo &quot;toast&quot; en la UI.</p>
+<p>Utiliza signals de Angular para exponer el estado actual de la notificación
+y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
 
             </p>
 
@@ -220,8 +218,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/core/notification.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/core/notification.service.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -329,13 +327,14 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/core/notification.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/core/notification.service.ts:33</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Accedido típicamente desde componentes de presentación (por ej. <code>ToastComponent</code>).</p>
+                    <div class="io-description"><p>  Signal con la notificación actual o <code>null</code> si no hay nada que mostrar.
+Accedido típicamente desde componentes de presentación (por ej. <code>ToastComponent</code>).</p>
 </div>
                 </td>
             </tr>
@@ -349,18 +348,26 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, signal } from &#x27;@angular/core&#x27;;
-
+/**
+ * Modelo de notificación mostrada en los toasts.
+ *
+ * @usageNotes
+ * Se usa internamente por &#x60;NotificationService&#x60; y componentes de presentación
+ * como &#x60;ToastComponent&#x60;.
+ */
 interface Notification {
+  /** Mensaje de texto que se mostrará en el toast. */
   message: string;
+
+  /** Tipo de notificación (por ejemplo: &#x27;success&#x27;, &#x27;error&#x27; o &#x27;info&#x27;). */
   type: &#x27;success&#x27; | &#x27;error&#x27; | &#x27;info&#x27;;
 }
 
 /**
- * @description Servicio para gestionar notificaciones tipo &quot;toast&quot; en la UI.
- * Utiliza signals de Angular para exponer el estado actual de la notificación.
- * @usageNotes
- * - Úsalo junto con &#x60;ToastComponent&#x60; para mostrar mensajes temporales.
- * - Diseñado principalmente para mensajes de éxito o error de acciones de usuario.
+ * Servicio para gestionar notificaciones tipo &quot;toast&quot; en la UI.
+ *
+ * Utiliza signals de Angular para exponer el estado actual de la notificación
+ * y ofrece métodos de alto nivel para mostrar mensajes temporales.
  */
 
 @Injectable({
@@ -368,14 +375,14 @@ interface Notification {
 })
 export class NotificationService {
   /**
-   * @description Signal con la notificación actual o &#x60;null&#x60; si no hay nada que mostrar.
+   *   Signal con la notificación actual o &#x60;null&#x60; si no hay nada que mostrar.
    * @usageNotes
    * Accedido típicamente desde componentes de presentación (por ej. &#x60;ToastComponent&#x60;).
    */
   readonly currentNotification &#x3D; signal&lt;Notification | null&gt;(null);
 
   /**
-   * @description Muestra un mensaje de éxito que desaparece automáticamente
+   *   Muestra un mensaje de éxito que desaparece automáticamente
    * después de un tiempo.
    * @param message Mensaje a mostrar.
    * @param duration Duración en milisegundos antes de ocultar el mensaje

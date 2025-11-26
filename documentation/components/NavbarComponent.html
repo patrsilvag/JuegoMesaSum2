@@ -142,6 +142,18 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>  Barra de navegación principal. Muestra enlaces de la app,
+el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.</p>
+<ul>
+<li>Se suscribe a <code>AuthService.usuarioActual$</code> para reaccionar a login/logout.</li>
+<li>Calcula la cantidad total del carrito escuchando <code>Cart.carrito$</code>.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -276,13 +288,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/navbar/navbar.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/navbar/navbar.ts:38</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>inmediatamente al carrito para mantener <code>cantidadTotal</code>.</p>
+                            <div class="io-description"><p>  Inyecta los servicios de autenticación y carrito, y se suscribe
+inmediatamente al carrito para mantener <code>cantidadTotal</code>.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -366,14 +379,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:84</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Cierra la sesión del usuario actual delegando en <code>AuthService.logout</code>.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -407,15 +422,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>para evitar fugas de memoria.</p>
+                        <div class="io-description"><p>  Hook de destrucción. Libera la suscripción a <code>usuarioActual$</code>
+para evitar fugas de memoria.</p>
 </div>
 
                         <div class="io-description">
@@ -450,15 +466,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/shared/navbar/navbar.ts:60</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p><code>usuarioActual$</code> para mantener <code>usuario</code> sincronizado con el estado
+                        <div class="io-description"><p>  Hook de inicialización. Se suscribe al observable
+<code>usuarioActual$</code> para mantener <code>usuario</code> sincronizado con el estado
 de sesión.</p>
 </div>
 
@@ -504,10 +521,16 @@ de sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/navbar/navbar.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shared/navbar/navbar.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cantidad total de ítems en el carrito, calculada a partir de <code>cart.carrito$</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -531,10 +554,17 @@ de sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/navbar/navbar.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/navbar/navbar.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Suscripción al stream <code>usuarioActual$</code> de <code>AuthService</code> usada
+para mantener <code>usuario</code> sincronizado y poder desuscribir en <code>ngOnDestroy</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -562,10 +592,16 @@ de sesión.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/shared/navbar/navbar.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/navbar/navbar.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario actualmente autenticado. <code>null</code> si no hay sesión iniciada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -583,7 +619,13 @@ import { Subscription } from &#x27;rxjs&#x27;; // Necesaria para manejar la desu
 import { AuthService } from &#x27;../../core/auth.service&#x27;;
 import { Cart } from &#x27;../../core/cart&#x27;;
 import { Usuario } from &#x27;../../core/auth&#x27;;
-
+/**
+ *   Barra de navegación principal. Muestra enlaces de la app,
+ * el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.
+ * @usageNotes
+ * - Se suscribe a &#x60;AuthService.usuarioActual$&#x60; para reaccionar a login/logout.
+ * - Calcula la cantidad total del carrito escuchando &#x60;Cart.carrito$&#x60;.
+ */
 @Component({
   selector: &#x27;app-navbar&#x27;,
   standalone: true,
@@ -591,23 +633,25 @@ import { Usuario } from &#x27;../../core/auth&#x27;;
   styleUrls: [&#x27;./navbar.scss&#x27;],
   imports: [CommonModule, RouterModule],
 })
-
-/**
- * @description Barra de navegación principal. Muestra enlaces de la app,
- * el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.
- * @usageNotes
- * - Se suscribe a &#x60;AuthService.usuarioActual$&#x60; para reaccionar a login/logout.
- * - Calcula la cantidad total del carrito escuchando &#x60;Cart.carrito$&#x60;.
- */
 export class NavbarComponent implements OnInit, OnDestroy {
+  /**
+   * Usuario actualmente autenticado. &#x60;null&#x60; si no hay sesión iniciada.
+   */
   usuario: Usuario | null &#x3D; null;
+
+  /**
+   * Cantidad total de ítems en el carrito, calculada a partir de &#x60;cart.carrito$&#x60;.
+   */
   cantidadTotal &#x3D; 0;
 
-  // ⭐️ DECLARACIÓN CORREGIDA: Propiedad para gestionar la suscripción de RxJS
+  /**
+   * Suscripción al stream &#x60;usuarioActual$&#x60; de &#x60;AuthService&#x60; usada
+   * para mantener &#x60;usuario&#x60; sincronizado y poder desuscribir en &#x60;ngOnDestroy&#x60;.
+   */
   private userSubscription!: Subscription;
 
   /**
-   * @description Inyecta los servicios de autenticación y carrito, y se suscribe
+   *   Inyecta los servicios de autenticación y carrito, y se suscribe
    * inmediatamente al carrito para mantener &#x60;cantidadTotal&#x60;.
    * @param auth Servicio de autenticación.
    * @param cart Servicio de carrito.
@@ -620,7 +664,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Hook de inicialización. Se suscribe al observable
+   *   Hook de inicialización. Se suscribe al observable
    * &#x60;usuarioActual$&#x60; para mantener &#x60;usuario&#x60; sincronizado con el estado
    * de sesión.
    * @returns Nada (&#x60;void&#x60;).
@@ -634,7 +678,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Hook de destrucción. Libera la suscripción a &#x60;usuarioActual$&#x60;
+   *   Hook de destrucción. Libera la suscripción a &#x60;usuarioActual$&#x60;
    * para evitar fugas de memoria.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -646,7 +690,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Cierra la sesión del usuario actual delegando en &#x60;AuthService.logout&#x60;.
+   *   Cierra la sesión del usuario actual delegando en &#x60;AuthService.logout&#x60;.
    * @returns Nada (&#x60;void&#x60;).
    */
   // Método que llama a AuthService para cerrar la sesión
@@ -788,7 +832,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><nav class="navbar navbar-expand-lg navbar-dark bg-primary">  <div class="container">    <a class="navbar-brand" routerLink="/">      🎲 Cuatro Esquinas    </a>    <button      class="navbar-toggler"      type="button"      data-bs-toggle="collapse"      data-bs-target="#menu"    >      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="menu">      <ul class="navbar-nav ms-auto align-items-lg-center">        <li class="nav-item">          <a class="nav-link" routerLink="/" routerLinkActive="active">            Inicio          </a>        </li>        <li class="nav-item dropdown">          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">            Categorías          </a>          <ul class="dropdown-menu">            <li><a class="dropdown-item" routerLink="/categorias/estrategia">Estrategia</a></li>            <li><a class="dropdown-item" routerLink="/categorias/infantiles">Infantiles</a></li>            <li><a class="dropdown-item" routerLink="/categorias/amigos">Amigos</a></li>            <li><a class="dropdown-item" routerLink="/categorias/cartas">Cartas</a></li>          </ul>        </li>        <ng-container *ngIf="!usuario">          <li class="nav-item">            <a class="nav-link" routerLink="/login">Iniciar sesión</a>          </li>          <li class="nav-item">            <a class="nav-link" routerLink="/registro">Registrarse</a>          </li>        </ng-container>        <ng-container *ngIf="usuario">          <li class="nav-item dropdown">            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">              👋 Hola, <strong>{{ usuario.usuario }}</strong>            </a>            <ul class="dropdown-menu dropdown-menu-end">                            <li>                <a class="dropdown-item" routerLink="/perfil">Mi perfil</a>              </li>              <ng-container *ngIf="usuario.rol === \'admin\'">                <li>                  <a class="dropdown-item" routerLink="/admin">                    <i class="bi bi-gear"></i> Panel Admin                  </a>                </li>              </ng-container>              <li><hr class="dropdown-divider" /></li>              <li>                <button class="dropdown-item" (click)="logout()">                  Cerrar sesión                </button>              </li>            </ul>          </li>        </ng-container>        <li class="nav-item ms-lg-3">          <a routerLink="/carrito" class="btn btn-outline-light position-relative">            <i class="bi bi-cart"></i> Carrito            <span              *ngIf="cantidadTotal > 0"              class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle"              style="font-size: 0.7rem"            >              {{ cantidadTotal }}            </span>          </a>        </li>      </ul>    </div>  </div></nav></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
 </script>

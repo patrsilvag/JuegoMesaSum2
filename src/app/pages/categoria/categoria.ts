@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Cart } from '../../core/cart';
-
+/**
+ *   Página de listado de productos por categoría. Escucha el parámetro
+ * `slug` de la ruta, obtiene los textos de `categoriasData` y filtra `productos`
+ * para mostrar solo los de esa categoría.
+ * @usageNotes
+ * - Se accede típicamente por ruta `/categorias/:slug`.
+ * - Usa `Cart` para añadir productos al carrito con cantidad 1.
+ */
 @Component({
   selector: 'app-categoria',
   standalone: true,
@@ -10,20 +17,29 @@ import { Cart } from '../../core/cart';
   templateUrl: './categoria.html',
   styleUrls: ['./categoria.scss'],
 })
-
-/**
- * @description Página de listado de productos por categoría. Escucha el parámetro
- * `slug` de la ruta, obtiene los textos de `categoriasData` y filtra `productos`
- * para mostrar solo los de esa categoría.
- * @usageNotes
- * - Se accede típicamente por ruta `/categorias/:slug`.
- * - Usa `Cart` para añadir productos al carrito con cantidad 1.
- */
 export class CategoriaComponent implements OnInit {
+  /**
+   * Identificador de la categoría actual obtenido desde el parámetro
+   * `slug` de la ruta (por ejemplo: `'amigos'`, `'cartas'`, etc.).
+   */
   slug!: string;
-  categoriaActual: any = null;
-  productosFiltrados: any[] = [];
 
+  /**
+   * Metadatos de la categoría actual (título y subtítulo) tomados
+   * desde `categoriasData`. Es `null` si el `slug` no existe.
+   */
+  categoriaActual: any = null;
+
+  /**
+   * Lista de productos filtrados por la categoría actual. Normalmente
+   * contiene como máximo los 3 primeros productos de esa categoría.
+   */
+  productosFiltrados: any[] = [];
+  /**
+   * Diccionario estático de metadatos por categoría. La clave es el `slug`
+   * de la ruta (por ejemplo: `'amigos'`, `'cartas'`, `'estrategia'`, `'infantiles'`)
+   * y el valor contiene el título y subtítulo que se muestran en la vista.
+   */
   categoriasData: any = {
     amigos: {
       titulo: 'Juegos para Amigos',
@@ -42,7 +58,12 @@ export class CategoriaComponent implements OnInit {
       subtitulo: 'Aprendizaje y diversión para los más pequeños',
     },
   };
-
+  /**
+   * Catálogo estático de productos disponibles en la tienda, incluyendo
+   * su id, nombre, categoría, precio, si tiene descuento y metadatos
+   * de imagen y descripción. Se filtra por `categoria` según el `slug`
+   * de la ruta.
+   */
   productos = [
     // Estrategia
     {
@@ -174,7 +195,7 @@ export class CategoriaComponent implements OnInit {
   ];
 
   /**
-   * @description Inyecta la ruta activada para leer el parámetro `slug`
+   *   Inyecta la ruta activada para leer el parámetro `slug`
    * y el servicio de carrito para añadir productos.
    * @param route Ruta activada con acceso a `params`.
    * @param cart Servicio de carrito.
@@ -182,7 +203,7 @@ export class CategoriaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cart: Cart) {}
 
   /**
-   * @description Se suscribe a los parámetros de la ruta para:
+   *   Se suscribe a los parámetros de la ruta para:
    * - Actualizar `slug`.
    * - Calcular `categoriaActual` a partir de `categoriasData`.
    * - Filtrar `productos` por categoría y quedarse con los 3 primeros.
@@ -201,7 +222,7 @@ export class CategoriaComponent implements OnInit {
   }
 
   /**
-   * @description Añade un producto al carrito con cantidad 1 usando `Cart.agregar`.
+   *   Añade un producto al carrito con cantidad 1 usando `Cart.agregar`.
    * @param p Objeto de producto tal y como está definido en `productos`.
    * @returns Nada (`void`).
    */

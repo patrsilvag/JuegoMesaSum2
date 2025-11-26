@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 /**
- * @description Guard que restringe el acceso a rutas solo a usuarios autenticados.
+ *   Guard que restringe el acceso a rutas solo a usuarios autenticados.
  * @returns `true` si hay un usuario autenticado; `false` y redirige a `/login` en caso contrario.
  * @usageNotes
  * Asigna esta función en `canActivate` de las rutas que requieran sesión.

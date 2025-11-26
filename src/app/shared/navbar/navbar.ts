@@ -6,7 +6,13 @@ import { Subscription } from 'rxjs'; // Necesaria para manejar la desuscripción
 import { AuthService } from '../../core/auth.service';
 import { Cart } from '../../core/cart';
 import { Usuario } from '../../core/auth';
-
+/**
+ *   Barra de navegación principal. Muestra enlaces de la app,
+ * el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.
+ * @usageNotes
+ * - Se suscribe a `AuthService.usuarioActual$` para reaccionar a login/logout.
+ * - Calcula la cantidad total del carrito escuchando `Cart.carrito$`.
+ */
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -14,23 +20,25 @@ import { Usuario } from '../../core/auth';
   styleUrls: ['./navbar.scss'],
   imports: [CommonModule, RouterModule],
 })
-
-/**
- * @description Barra de navegación principal. Muestra enlaces de la app,
- * el usuario autenticado (si existe) y la cantidad total de ítems en el carrito.
- * @usageNotes
- * - Se suscribe a `AuthService.usuarioActual$` para reaccionar a login/logout.
- * - Calcula la cantidad total del carrito escuchando `Cart.carrito$`.
- */
 export class NavbarComponent implements OnInit, OnDestroy {
+  /**
+   * Usuario actualmente autenticado. `null` si no hay sesión iniciada.
+   */
   usuario: Usuario | null = null;
+
+  /**
+   * Cantidad total de ítems en el carrito, calculada a partir de `cart.carrito$`.
+   */
   cantidadTotal = 0;
 
-  // ⭐️ DECLARACIÓN CORREGIDA: Propiedad para gestionar la suscripción de RxJS
+  /**
+   * Suscripción al stream `usuarioActual$` de `AuthService` usada
+   * para mantener `usuario` sincronizado y poder desuscribir en `ngOnDestroy`.
+   */
   private userSubscription!: Subscription;
 
   /**
-   * @description Inyecta los servicios de autenticación y carrito, y se suscribe
+   *   Inyecta los servicios de autenticación y carrito, y se suscribe
    * inmediatamente al carrito para mantener `cantidadTotal`.
    * @param auth Servicio de autenticación.
    * @param cart Servicio de carrito.
@@ -43,7 +51,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Hook de inicialización. Se suscribe al observable
+   *   Hook de inicialización. Se suscribe al observable
    * `usuarioActual$` para mantener `usuario` sincronizado con el estado
    * de sesión.
    * @returns Nada (`void`).
@@ -57,7 +65,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Hook de destrucción. Libera la suscripción a `usuarioActual$`
+   *   Hook de destrucción. Libera la suscripción a `usuarioActual$`
    * para evitar fugas de memoria.
    * @returns Nada (`void`).
    */
@@ -69,7 +77,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * @description Cierra la sesión del usuario actual delegando en `AuthService.logout`.
+   *   Cierra la sesión del usuario actual delegando en `AuthService.logout`.
    * @returns Nada (`void`).
    */
   // Método que llama a AuthService para cerrar la sesión

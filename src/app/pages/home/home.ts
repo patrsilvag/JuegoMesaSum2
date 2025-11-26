@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
+/**
+ * Página de inicio. Muestra el listado de categorías disponibles
+ * y enlaza a las rutas de detalle de categoría.
+ * @usageNotes
+ * Se usa como ruta raíz (`path: ''`). Cada elemento de `categorias` debe tener
+ * al menos `nombre`, `slug` (usado en `/categorias/:slug`) e `imagen`.
+ */
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -8,16 +14,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-/**
- * @description Página de inicio. Muestra el listado de categorías disponibles
- * y enlaza a las rutas de detalle de categoría.
- * @usageNotes
- * Se usa como ruta raíz (`path: ''`). Cada elemento de `categorias` debe tener
- * al menos `nombre`, `slug` (usado en `/categorias/:slug`) e `imagen`.
- */
+
 export class HomeComponent {
   /**
-   * @description Listado de categorías visibles en la portada con los datos
+   * Listado de categorías visibles en la portada con los datos
    * necesarios para construir las tarjetas de navegación.
    */
   categorias = [

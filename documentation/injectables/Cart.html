@@ -141,10 +141,12 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>y totales de la compra.</p>
+                <p>Servicio de carrito. Gestiona productos, cantidades, descuentos
+y totales de la compra.</p>
 <ul>
-<li>Expone un observable <code>carrito$</code> para reaccionar a cambios.</li>
-<li>Contiene lógica de subtotal, descuento y envío.</li>
+<li>Expone el observable <code>carrito$</code> para reaccionar a cambios en la UI.</li>
+<li>Ofrece métodos para agregar, sumar, restar y eliminar ítems.</li>
+<li>Implementa lógica de subtotal, descuento, envío y total final.</li>
 </ul>
 
             </p>
@@ -251,14 +253,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/core/cart.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/core/cart.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Agrega un producto al carrito o incrementa su cantidad si ya existe.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -324,14 +328,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/core/cart.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/core/cart.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Aplica un porcentaje de descuento sobre el total actual.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -397,15 +403,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/app/core/cart.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/core/cart.ts:154</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>La lógica concreta (umbral, monto) está codificada en el método.</p>
+                        <div class="io-description"><p>  Calcula el costo de envío en función del subtotal.
+La lógica concreta (umbral, monto) está codificada en el método.</p>
 </div>
 
                         <div class="io-description">
@@ -440,14 +447,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="105"
-                                    class="link-to-prism">src/app/core/cart.ts:105</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/core/cart.ts:131</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Limpia el carrito y elimina todos los ítems.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -481,14 +490,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="95"
-                                    class="link-to-prism">src/app/core/cart.ts:95</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/core/cart.ts:121</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Elimina por completo un producto del carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -553,15 +564,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="80"
-                                    class="link-to-prism">src/app/core/cart.ts:80</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/core/cart.ts:106</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina el ítem si la cantidad llega a 0.</p>
+                        <div class="io-description"><p>  Decrementa en 1 la cantidad de un ítem del carrito.
+Elimina el ítem si la cantidad llega a 0.</p>
 </div>
 
                             <div class="io-description">
@@ -627,14 +639,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/core/cart.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/core/cart.ts:90</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Incrementa en 1 la cantidad de un ítem del carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -699,14 +713,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="115"
-                                    class="link-to-prism">src/app/core/cart.ts:115</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/core/cart.ts:141</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Calcula el subtotal (sin envío) del carrito.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
@@ -740,14 +756,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="138"
-                                    class="link-to-prism">src/app/core/cart.ts:138</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/core/cart.ts:164</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Calcula el total final incluyendo envío.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
@@ -791,10 +809,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/cart.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/core/cart.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable público del carrito. Se suscribe la UI para reaccionar
+a cambios en la lista de productos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -823,10 +848,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/core/cart.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/core/cart.ts:55</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Porcentaje de descuento global aplicado al total del carrito.
+Se establece mediante <code>aplicarDescuento</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -855,10 +887,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/core/cart.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/core/cart.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fuente interna de datos del carrito. Mantiene la lista actual
+de ítems y emite cambios a través de un <code>BehaviorSubject</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -872,34 +911,60 @@
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
 /**
- * @description Item dentro del carrito de compras.
- * @usageNotes
- * Se usa para representar una línea de producto en el carrito.
- */
-export interface CartItem {
-  id: string;
-  nombre: string;
-  precio: number;
-  imagen: string;
-  cantidad: number;
-}
-/**
- * @description Servicio de carrito. Gestiona productos, cantidades
+ *   Servicio de carrito. Gestiona productos, cantidades
  * y totales de la compra.
  * @usageNotes
  * - Expone un observable &#x60;carrito$&#x60; para reaccionar a cambios.
  * - Contiene lógica de subtotal, descuento y envío.
  */
+export interface CartItem {
+  /** Identificador único del producto en el carrito. */
+  id: string;
+
+  /** Nombre legible del producto. */
+  nombre: string;
+
+  /** Precio unitario del producto. */
+  precio: number;
+
+  /** Ruta de la imagen que se muestra en el carrito. */
+  imagen: string;
+
+  /** Cantidad de unidades de este producto en el carrito. */
+  cantidad: number;
+}
+
+/**
+ * Servicio de carrito. Gestiona productos, cantidades, descuentos
+ * y totales de la compra.
+ *
+ * @usageNotes
+ * - Expone el observable &#x60;carrito$&#x60; para reaccionar a cambios en la UI.
+ * - Ofrece métodos para agregar, sumar, restar y eliminar ítems.
+ * - Implementa lógica de subtotal, descuento, envío y total final.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class Cart {
+  /**
+   * Fuente interna de datos del carrito. Mantiene la lista actual
+   * de ítems y emite cambios a través de un &#x60;BehaviorSubject&#x60;.
+   */
   private items &#x3D; new BehaviorSubject&lt;CartItem[]&gt;([]);
+
+  /**
+   * Observable público del carrito. Se suscribe la UI para reaccionar
+   * a cambios en la lista de productos.
+   */
   carrito$ &#x3D; this.items.asObservable();
 
-  // 🔹 DESCUENTO GLOBAL (porcentaje)
+  /**
+   * Porcentaje de descuento global aplicado al total del carrito.
+   * Se establece mediante &#x60;aplicarDescuento&#x60;.
+   */
   private descuento &#x3D; 0;
 
   /**
-   * @description Aplica un porcentaje de descuento sobre el total actual.
+   *   Aplica un porcentaje de descuento sobre el total actual.
    * @param porcentaje Porcentaje de descuento (0–100).
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -908,7 +973,7 @@ export class Cart {
     this.descuento &#x3D; porcentaje;
   }
   /**
-   * @description Agrega un producto al carrito o incrementa su cantidad si ya existe.
+   *   Agrega un producto al carrito o incrementa su cantidad si ya existe.
    * @param p Producto a agregar.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -927,7 +992,7 @@ export class Cart {
   }
 
   /**
-   * @description Incrementa en 1 la cantidad de un ítem del carrito.
+   *   Incrementa en 1 la cantidad de un ítem del carrito.
    * @param id Identificador del producto.
    */
   // 🔹 Sumar cantidad
@@ -942,7 +1007,7 @@ export class Cart {
   }
 
   /**
-   * @description Decrementa en 1 la cantidad de un ítem del carrito.
+   *   Decrementa en 1 la cantidad de un ítem del carrito.
    * Elimina el ítem si la cantidad llega a 0.
    * @param id Identificador del producto.
    */
@@ -958,7 +1023,7 @@ export class Cart {
   }
 
   /**
-   * @description Elimina por completo un producto del carrito.
+   *   Elimina por completo un producto del carrito.
    * @param id Identificador del producto a quitar.
    */
   // 🔹 Eliminar producto
@@ -968,7 +1033,7 @@ export class Cart {
   }
 
   /**
-   * @description Limpia el carrito y elimina todos los ítems.
+   *   Limpia el carrito y elimina todos los ítems.
    * @returns Nada (&#x60;void&#x60;).
    */
   // 🔹 Limpiar carrito (resetea descuento también)
@@ -978,7 +1043,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el subtotal (sin envío) del carrito.
+   *   Calcula el subtotal (sin envío) del carrito.
    * @returns Monto numérico del subtotal.
    */
   // 🔹 Total general (YA INCLUYE DESCUENTO)
@@ -989,7 +1054,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el costo de envío en función del subtotal.
+   *   Calcula el costo de envío en función del subtotal.
    * @returns &#x60;0&#x60; si se alcanza el umbral de envío gratis; en otro caso el costo fijo.
    * @usageNotes
    * La lógica concreta (umbral, monto) está codificada en el método.
@@ -1001,7 +1066,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el total final incluyendo envío.
+   *   Calcula el total final incluyendo envío.
    * @returns Monto total de la compra.
    */
   // 🔹 Total final con envío incluido

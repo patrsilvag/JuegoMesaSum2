@@ -14,7 +14,13 @@ import { AuthService } from '../../core/auth.service';
 import { AuthErrorService } from '../../core/auth-error.service';
 import { NotificationService } from '../../core/notification.service'; // <-- NUEVA IMPORTACIÓN
 import { Usuario } from '../../core/auth';
-
+/**
+ * Página de perfil de usuario. Permite editar datos personales y cambiar la contraseña del usuario actualmente autenticado.
+ * @usageNotes
+ * - Requiere que `AuthService` tenga un usuario actual; si no lo hay, no se inicializan los formularios.
+ * - Usa dos formularios: `formDatos` (datos personales) y `formClave` (cambio de contraseña).
+ * - Muestra notificaciones de éxito vía `NotificationService`.
+ */
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -22,29 +28,39 @@ import { Usuario } from '../../core/auth';
   styleUrls: ['./perfil.scss'],
   imports: [CommonModule, ReactiveFormsModule],
 })
-
-/**
- * @description Página de perfil de usuario. Permite editar datos personales
- * y cambiar la contraseña del usuario actualmente autenticado.
- * @usageNotes
- * - Requiere que `AuthService` tenga un usuario actual; si no lo hay, no se inicializan los formularios.
- * - Usa dos formularios: `formDatos` (datos personales) y `formClave` (cambio de contraseña).
- * - Muestra notificaciones de éxito vía `NotificationService`.
- */
 export class PerfilComponent implements OnInit {
+  /**
+   * Usuario actualmente autenticado. `null` si no hay sesión activa.
+   */
   usuario!: Usuario | null;
-  // mensajeExito = false; // <-- ELIMINADO
-
-  verActual = false;
-  verNueva = false;
-  verRepetir = false;
-
-  formDatos!: FormGroup;
-  formClave!: FormGroup;
 
   /**
-   * @description Inyecta servicios para construir formularios, validar reglas,
-   * actualizar usuarios y gestionar sesión y mensajes de error.
+   * Indica si la contraseña actual debe mostrarse en texto plano
+   * en el formulario de cambio de clave.
+   */
+  verActual = false;
+
+  /**
+   * Indica si la nueva contraseña debe mostrarse en texto plano.
+   */
+  verNueva = false;
+
+  /**
+   * Indica si el campo de repetición de contraseña debe mostrarse en texto plano.
+   */
+  verRepetir = false;
+
+  /**
+   * Formulario reactivo para los datos personales del usuario.
+   */
+  formDatos!: FormGroup;
+
+  /**
+   * Formulario reactivo para el cambio de contraseña.
+   */
+  formClave!: FormGroup;
+  /**
+   * Inyecta servicios para construir formularios, validar reglas, actualizar usuarios y gestionar sesión y mensajes de error.
    * @param fb Factoría de formularios reactivos.
    * @param validators Servicio de validadores personalizados (fecha, claves, etc.).
    * @param userSrv Servicio de usuarios para actualizar datos y contraseña.
@@ -62,7 +78,7 @@ export class PerfilComponent implements OnInit {
   ) {}
 
   /**
-   * @description Carga el usuario actual desde `AuthService` y construye:
+   * Carga el usuario actual desde `AuthService` y construye:
    * - `formDatos` con los campos personales.
    * - `formClave` para cambio de contraseña con validadores de complejidad
    *   y coincidencia de claves.
@@ -111,7 +127,7 @@ export class PerfilComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve un control del formulario de datos personales.
+   * Devuelve un control del formulario de datos personales.
    * @param fechaNacimiento Nombre del control (no solo fecha; p. ej. `'nombre'`, `'usuario'`, etc.).
    * @returns El control correspondiente (no nulo).
    */
@@ -120,7 +136,7 @@ export class PerfilComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve un control del formulario de cambio de contraseña.
+   * Devuelve un control del formulario de cambio de contraseña.
    * @param nombre Nombre del control (p. ej. `'claveActual'`, `'nuevaClave'`, `'repetirClave'`).
    * @returns El control correspondiente (no nulo).
    */
@@ -129,7 +145,7 @@ export class PerfilComponent implements OnInit {
   }
 
   /**
-   * @description Obtiene el mensaje de error asociado al campo `fechaNacimiento`
+   * Obtiene el mensaje de error asociado al campo `fechaNacimiento`
    * del formulario de datos personales.
    * @returns Cadena con el mensaje de error o cadena vacía si no hay error relevante.
    */
@@ -139,7 +155,7 @@ export class PerfilComponent implements OnInit {
   }
 
   /**
-   * @description Guarda los datos personales del usuario. Si el formulario es inválido,
+   * Guarda los datos personales del usuario. Si el formulario es inválido,
    * marca todos los campos como tocados. En caso contrario:
    * - Fusiona los datos actuales del usuario con `formDatos`.
    * - Llama a `userSrv.actualizarPerfil`.
@@ -176,7 +192,7 @@ export class PerfilComponent implements OnInit {
   }
 
   /**
-   * @description Cambia la contraseña del usuario actual.
+   * Cambia la contraseña del usuario actual.
    * Flujo:
    * 1. Valida que `formClave` sea válido.
    * 2. Comprueba la contraseña actual con `userSrv.validarClaveActual`.

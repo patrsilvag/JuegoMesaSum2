@@ -137,6 +137,19 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Servicio de administración de usuarios.</p>
+<p>Expone operaciones simples para:</p>
+<ul>
+<li>Cargar una lista de usuarios administrables.</li>
+<li>Filtrar usuarios según distintos criterios.</li>
+<li>Alternar el estado activo/inactivo de un usuario.</li>
+</ul>
+
+            </p>
 
 
 
@@ -185,10 +198,18 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app/pages/admin/admin.service.ts:4</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/pages/admin/admin.service.ts:11</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del servicio de administración.
+Actualmente no inyecta dependencias, pero se mantiene
+para facilitar futuras extensiones.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -218,19 +239,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="7"
-                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:7</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:24</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista completa de usuarios administrables.</p>
+<p>(<code>correo</code>, <code>usuario</code>, <code>rol</code>, <code>status</code>).</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>{}</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Arreglo de usuarios con sus campos básicos
+(<code>correo</code>, <code>usuario</code>, <code>rol</code>, <code>status</code>).</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -255,14 +284,22 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:42</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Aplica filtros sobre una lista de usuarios.</p>
+<p>Criterios soportados:</p>
+<ul>
+<li><code>correo</code>: hace un <code>includes</code> sobre el campo <code>correo</code>.</li>
+<li><code>rol</code>: compara igualdad exacta contra <code>u.rol</code>.</li>
+<li><code>estado</code>: compara igualdad exacta contra <code>u.status</code>.</li>
+</ul>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -273,6 +310,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -287,6 +325,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista completa de usuarios a filtrar.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>filtros</td>
@@ -299,6 +341,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Objeto con posibles campos <code>correo</code>, <code>rol</code> y <code>estado</code>.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -308,7 +354,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Nueva lista con los usuarios que cumplen todos los filtros.</p>
+
                             </div>
                 </td>
             </tr>
@@ -334,14 +381,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/pages/admin/admin.service.ts:58</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna el estado de un usuario entre <code>&#39;active&#39;</code> e <code>&#39;inactive&#39;</code>.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -352,6 +401,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -366,6 +416,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Objeto de usuario cuyo campo <code>status</code> será modificado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -375,7 +429,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>El mismo objeto de usuario con el <code>status</code> actualizado.</p>
+
                             </div>
                 </td>
             </tr>
@@ -388,18 +443,46 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-
+/**
+ * Servicio de administración de usuarios.
+ *
+ * Expone operaciones simples para:
+ * - Cargar una lista de usuarios administrables.
+ * - Filtrar usuarios según distintos criterios.
+ * - Alternar el estado activo/inactivo de un usuario.
+ */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class AdminService {
+  /**
+   * Constructor del servicio de administración.
+   * Actualmente no inyecta dependencias, pero se mantiene
+   * para facilitar futuras extensiones.
+   */
   constructor() {}
-
+  /**
+   * Carga la lista completa de usuarios administrables.
+   *
+   * @returns Arreglo de usuarios con sus campos básicos
+   * (&#x60;correo&#x60;, &#x60;usuario&#x60;, &#x60;rol&#x60;, &#x60;status&#x60;).
+   */
   cargarUsuarios() {
     return [
       { correo: &#x27;admin@site.com&#x27;, usuario: &#x27;Admin&#x27;, rol: &#x27;admin&#x27;, status: &#x27;active&#x27; },
       { correo: &#x27;user@site.com&#x27;, usuario: &#x27;User&#x27;, rol: &#x27;cliente&#x27;, status: &#x27;inactive&#x27; },
     ];
   }
-
+  /**
+   * Aplica filtros sobre una lista de usuarios.
+   *
+   * Criterios soportados:
+   * - &#x60;correo&#x60;: hace un &#x60;includes&#x60; sobre el campo &#x60;correo&#x60;.
+   * - &#x60;rol&#x60;: compara igualdad exacta contra &#x60;u.rol&#x60;.
+   * - &#x60;estado&#x60;: compara igualdad exacta contra &#x60;u.status&#x60;.
+   *
+   * @param lista Lista completa de usuarios a filtrar.
+   * @param filtros Objeto con posibles campos &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
+   * @returns Nueva lista con los usuarios que cumplen todos los filtros.
+   */
   filtrarUsuarios(lista: any[], filtros: any) {
     const { correo, rol, estado } &#x3D; filtros;
 
@@ -410,7 +493,12 @@ export class AdminService {
         (estado ? u.status &#x3D;&#x3D;&#x3D; estado : true)
     );
   }
-
+  /**
+   * Alterna el estado de un usuario entre &#x60;&#x27;active&#x27;&#x60; e &#x60;&#x27;inactive&#x27;&#x60;.
+   *
+   * @param usuario Objeto de usuario cuyo campo &#x60;status&#x60; será modificado.
+   * @returns El mismo objeto de usuario con el &#x60;status&#x60; actualizado.
+   */
   toggleEstado(usuario: any) {
     usuario.status &#x3D; usuario.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27; ? &#x27;inactive&#x27; : &#x27;active&#x27;;
     return usuario;

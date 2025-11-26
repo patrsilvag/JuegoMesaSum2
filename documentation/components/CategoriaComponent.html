@@ -142,6 +142,19 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>  Página de listado de productos por categoría. Escucha el parámetro
+<code>slug</code> de la ruta, obtiene los textos de <code>categoriasData</code> y filtra <code>productos</code>
+para mostrar solo los de esa categoría.</p>
+<ul>
+<li>Se accede típicamente por ruta <code>/categorias/:slug</code>.</li>
+<li>Usa <code>Cart</code> para añadir productos al carrito con cantidad 1.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -277,13 +290,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/app/pages/categoria/categoria.ts:174</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">src/app/pages/categoria/categoria.ts:195</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>y el servicio de carrito para añadir productos.</p>
+                            <div class="io-description"><p>  Inyecta la ruta activada para leer el parámetro <code>slug</code>
+y el servicio de carrito para añadir productos.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -367,14 +381,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="208"
-                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:208</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:229</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Añade un producto al carrito con cantidad 1 usando <code>Cart.agregar</code>.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -440,15 +456,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="191"
-                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:191</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">src/app/pages/categoria/categoria.ts:212</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><ul>
+                        <div class="io-description"><p>  Se suscribe a los parámetros de la ruta para:</p>
+<ul>
 <li>Actualizar <code>slug</code>.</li>
 <li>Calcular <code>categoriaActual</code> a partir de <code>categoriasData</code>.</li>
 <li>Filtrar <code>productos</code> por categoría y quedarse con los 3 primeros.</li>
@@ -497,10 +514,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/categoria/categoria.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/categoria/categoria.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Metadatos de la categoría actual (título y subtítulo) tomados
+desde <code>categoriasData</code>. Es <code>null</code> si el <code>slug</code> no existe.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -545,10 +569,18 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/categoria/categoria.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/categoria/categoria.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Diccionario estático de metadatos por categoría. La clave es el <code>slug</code>
+de la ruta (por ejemplo: <code>&#39;amigos&#39;</code>, <code>&#39;cartas&#39;</code>, <code>&#39;estrategia&#39;</code>, <code>&#39;infantiles&#39;</code>)
+y el valor contiene el título y subtítulo que se muestran en la vista.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -704,10 +736,19 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/categoria/categoria.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/pages/categoria/categoria.ts:67</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Catálogo estático de productos disponibles en la tienda, incluyendo
+su id, nombre, categoría, precio, si tiene descuento y metadatos
+de imagen y descripción. Se filtra por <code>categoria</code> según el <code>slug</code>
+de la ruta.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -735,10 +776,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/categoria/categoria.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/categoria/categoria.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de productos filtrados por la categoría actual. Normalmente
+contiene como máximo los 3 primeros productos de esa categoría.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -761,10 +809,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/categoria/categoria.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/categoria/categoria.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Identificador de la categoría actual obtenido desde el parámetro
+<code>slug</code> de la ruta (por ejemplo: <code>&#39;amigos&#39;</code>, <code>&#39;cartas&#39;</code>, etc.).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -778,7 +833,14 @@
 import { ActivatedRoute, RouterLink } from &#x27;@angular/router&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Cart } from &#x27;../../core/cart&#x27;;
-
+/**
+ *   Página de listado de productos por categoría. Escucha el parámetro
+ * &#x60;slug&#x60; de la ruta, obtiene los textos de &#x60;categoriasData&#x60; y filtra &#x60;productos&#x60;
+ * para mostrar solo los de esa categoría.
+ * @usageNotes
+ * - Se accede típicamente por ruta &#x60;/categorias/:slug&#x60;.
+ * - Usa &#x60;Cart&#x60; para añadir productos al carrito con cantidad 1.
+ */
 @Component({
   selector: &#x27;app-categoria&#x27;,
   standalone: true,
@@ -786,20 +848,29 @@ import { Cart } from &#x27;../../core/cart&#x27;;
   templateUrl: &#x27;./categoria.html&#x27;,
   styleUrls: [&#x27;./categoria.scss&#x27;],
 })
-
-/**
- * @description Página de listado de productos por categoría. Escucha el parámetro
- * &#x60;slug&#x60; de la ruta, obtiene los textos de &#x60;categoriasData&#x60; y filtra &#x60;productos&#x60;
- * para mostrar solo los de esa categoría.
- * @usageNotes
- * - Se accede típicamente por ruta &#x60;/categorias/:slug&#x60;.
- * - Usa &#x60;Cart&#x60; para añadir productos al carrito con cantidad 1.
- */
 export class CategoriaComponent implements OnInit {
+  /**
+   * Identificador de la categoría actual obtenido desde el parámetro
+   * &#x60;slug&#x60; de la ruta (por ejemplo: &#x60;&#x27;amigos&#x27;&#x60;, &#x60;&#x27;cartas&#x27;&#x60;, etc.).
+   */
   slug!: string;
-  categoriaActual: any &#x3D; null;
-  productosFiltrados: any[] &#x3D; [];
 
+  /**
+   * Metadatos de la categoría actual (título y subtítulo) tomados
+   * desde &#x60;categoriasData&#x60;. Es &#x60;null&#x60; si el &#x60;slug&#x60; no existe.
+   */
+  categoriaActual: any &#x3D; null;
+
+  /**
+   * Lista de productos filtrados por la categoría actual. Normalmente
+   * contiene como máximo los 3 primeros productos de esa categoría.
+   */
+  productosFiltrados: any[] &#x3D; [];
+  /**
+   * Diccionario estático de metadatos por categoría. La clave es el &#x60;slug&#x60;
+   * de la ruta (por ejemplo: &#x60;&#x27;amigos&#x27;&#x60;, &#x60;&#x27;cartas&#x27;&#x60;, &#x60;&#x27;estrategia&#x27;&#x60;, &#x60;&#x27;infantiles&#x27;&#x60;)
+   * y el valor contiene el título y subtítulo que se muestran en la vista.
+   */
   categoriasData: any &#x3D; {
     amigos: {
       titulo: &#x27;Juegos para Amigos&#x27;,
@@ -818,7 +889,12 @@ export class CategoriaComponent implements OnInit {
       subtitulo: &#x27;Aprendizaje y diversión para los más pequeños&#x27;,
     },
   };
-
+  /**
+   * Catálogo estático de productos disponibles en la tienda, incluyendo
+   * su id, nombre, categoría, precio, si tiene descuento y metadatos
+   * de imagen y descripción. Se filtra por &#x60;categoria&#x60; según el &#x60;slug&#x60;
+   * de la ruta.
+   */
   productos &#x3D; [
     // Estrategia
     {
@@ -950,7 +1026,7 @@ export class CategoriaComponent implements OnInit {
   ];
 
   /**
-   * @description Inyecta la ruta activada para leer el parámetro &#x60;slug&#x60;
+   *   Inyecta la ruta activada para leer el parámetro &#x60;slug&#x60;
    * y el servicio de carrito para añadir productos.
    * @param route Ruta activada con acceso a &#x60;params&#x60;.
    * @param cart Servicio de carrito.
@@ -958,7 +1034,7 @@ export class CategoriaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private cart: Cart) {}
 
   /**
-   * @description Se suscribe a los parámetros de la ruta para:
+   *   Se suscribe a los parámetros de la ruta para:
    * - Actualizar &#x60;slug&#x60;.
    * - Calcular &#x60;categoriaActual&#x60; a partir de &#x60;categoriasData&#x60;.
    * - Filtrar &#x60;productos&#x60; por categoría y quedarse con los 3 primeros.
@@ -977,7 +1053,7 @@ export class CategoriaComponent implements OnInit {
   }
 
   /**
-   * @description Añade un producto al carrito con cantidad 1 usando &#x60;Cart.agregar&#x60;.
+   *   Añade un producto al carrito con cantidad 1 usando &#x60;Cart.agregar&#x60;.
    * @param p Objeto de producto tal y como está definido en &#x60;productos&#x60;.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -1151,7 +1227,7 @@ export class CategoriaComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="bg-light border-bottom py-3">  <div class="container">    <h1 class="h4 mb-0">      {{ categoriaActual?.titulo }}    </h1>  </div></section><main class="container my-5">  <h2 class="text-center mb-4">{{ categoriaActual?.subtitulo }}</h2>  <!-- LISTA DE PRODUCTOS -->  <div class="row g-4 justify-content-center">    @for (p of productosFiltrados; track p.id) {      <div class="col-12 col-sm-6 col-md-4 col-lg-3">        <div class="producto-card h-100 shadow-sm">          <!-- Imagen -->          <img             [src]="p.imagen"             [alt]="p.alt"             loading="lazy"           />          <!-- Contenido -->          <div class="contenido text-center p-3">            <h3 class="fw-bold fs-6">{{ p.nombre }}</h3>            <p class="descripcion mb-2">              {{ p.desc }}            </p>            <p class="precio fw-bold text-primary mb-1">              Precio: $ {{ p.precio | number }}            </p>            @if (p.descuento) {              <p class="descuento text-success fw-bold mb-2">Descuento disponible</p>            }            <button               class="btn btn-primary btn-sm w-100"              (click)="agregarProducto(p)"            >              Agregar            </button>          </div> <!-- /contenido -->        </div> <!-- /producto-card -->      </div>    }  </div>  <div class="text-center mt-5">    <a class="btn btn-primary" routerLink="/">← Volver al inicio</a>  </div></main></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoriaComponent'};
 </script>

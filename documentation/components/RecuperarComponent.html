@@ -142,6 +142,22 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Flujo de recuperación de contraseña en tres pasos:</p>
+<ol>
+<li>Validar correo, 2) Validar código, 3) Establecer nueva clave.
+Gestiona tres formularios independientes para cada paso.</li>
+</ol>
+<ul>
+<li>La propiedad <code>paso</code> controla qué parte del flujo se muestra (1, 2 o 3).</li>
+<li>Usa <code>UserService</code> para localizar al usuario y cambiar la contraseña.</li>
+<li>Usa <code>NotificationService</code> para informar del éxito al finalizar.</li>
+</ul>
+
+    </p>
 
 
 
@@ -289,13 +305,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:74</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>aplicar validadores personalizados y mostrar notificaciones.</p>
+                            <div class="io-description"><p>Inyecta dependencias para construir formularios, acceder a usuarios,
+aplicar validadores personalizados y mostrar notificaciones.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -427,15 +444,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="188"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:188</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="218"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:218</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>actualiza la contraseña del usuario usando <code>UserService</code>.</p>
+                        <div class="io-description"><p>Paso 3: valida el formulario de nueva clave y, si es correcto,
+actualiza la contraseña del usuario usando <code>UserService</code>.</p>
 <ul>
 <li>En éxito, muestra un toast de confirmación, reinicia todos los formularios
 y vuelve a <code>paso = 1</code>.</li>
@@ -475,15 +493,16 @@ y vuelve a <code>paso = 1</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:156</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>existe y, si es así, genera un código (simulado) y avanza al paso 2.</p>
+                        <div class="io-description"><p>Paso 1: valida el formulario de correo, comprueba si el usuario
+existe y, si es así, genera un código (simulado) y avanza al paso 2.</p>
 <ul>
 <li>Si el correo no existe, se marca el control <code>correo</code> con el error <code>noExiste</code>.</li>
 <li>El código actual está simulado como <code>&#39;123456&#39;</code>.</li>
@@ -522,14 +541,16 @@ y vuelve a <code>paso = 1</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:111</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:141</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Devuelve un control del formulario de cambio de clave (<code>formClave</code>).</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -595,15 +616,16 @@ y vuelve a <code>paso = 1</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><ul>
+                        <div class="io-description"><p>Inicializa los tres formularios:</p>
+<ul>
 <li><code>formCorreo</code> con campo <code>correo</code>.</li>
 <li><code>formCodigo</code> con campo <code>codigo</code> numérico de 6 dígitos.</li>
 <li><code>formClave</code> con los campos <code>clave</code> y <code>clave2</code> y validadores de complejidad.</li>
@@ -642,15 +664,16 @@ y vuelve a <code>paso = 1</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="160"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:160</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="190"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.ts:190</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>que el código introducido coincida con el código generado.
+                        <div class="io-description"><p>Paso 2: valida el formulario de código e intenta comprobar
+que el código introducido coincida con el código generado.
 Si el código no coincide, se establece un error en el formulario <code>formCodigo</code>
 con la clave <code>incorrecto</code>.</p>
 </div>
@@ -697,10 +720,16 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Código de verificación generado (simulado) para el usuario.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -728,10 +757,17 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:47</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Correo electrónico del usuario que ha pasado la validación
+del paso 1.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -754,10 +790,16 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:74</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario del paso 3: captura y valida la nueva contraseña y su confirmación.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -780,10 +822,16 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:69</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario del paso 2: captura y valida el código numérico de 6 dígitos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -806,10 +854,16 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:64</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario del paso 1: captura y valida el correo electrónico.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -837,10 +891,17 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Paso actual del flujo de recuperación:
+1 = validar correo, 2 = validar código, 3 = cambiar clave.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -857,7 +918,7 @@ con la clave <code>incorrecto</code>.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>unknown</code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
@@ -868,10 +929,17 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:53</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si la primera contraseña (<code>clave</code>) se muestra en texto
+plano o enmascarada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -888,7 +956,7 @@ con la clave <code>incorrecto</code>.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>unknown</code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
@@ -899,10 +967,17 @@ con la clave <code>incorrecto</code>.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/recuperar/recuperar.ts:59</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si la confirmación de contraseña (<code>clave2</code>) se muestra
+en texto plano o enmascarada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -926,17 +1001,8 @@ import { UserService } from &#x27;../../core/user.service&#x27;;
 import { ValidatorsService } from &#x27;../../core/validators.service&#x27;;
 import { AuthErrorService } from &#x27;../../core/auth-error.service&#x27;;
 import { NotificationService } from &#x27;../../core/notification.service&#x27;;
-
-@Component({
-  selector: &#x27;app-recuperar&#x27;,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: &#x27;./recuperar.html&#x27;,
-  styleUrls: [&#x27;./recuperar.scss&#x27;],
-})
-
 /**
- * @description Flujo de recuperación de contraseña en tres pasos:
+ * Flujo de recuperación de contraseña en tres pasos:
  * 1) Validar correo, 2) Validar código, 3) Establecer nueva clave.
  * Gestiona tres formularios independientes para cada paso.
  * @usageNotes
@@ -944,21 +1010,60 @@ import { NotificationService } from &#x27;../../core/notification.service&#x27;;
  * - Usa &#x60;UserService&#x60; para localizar al usuario y cambiar la contraseña.
  * - Usa &#x60;NotificationService&#x60; para informar del éxito al finalizar.
  */
+@Component({
+  selector: &#x27;app-recuperar&#x27;,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: &#x27;./recuperar.html&#x27;,
+  styleUrls: [&#x27;./recuperar.scss&#x27;],
+})
 export class RecuperarComponent {
-  paso &#x3D; 1;
+  /**
+   * Paso actual del flujo de recuperación:
+   * 1 &#x3D; validar correo, 2 &#x3D; validar código, 3 &#x3D; cambiar clave.
+   */
+  paso: number &#x3D; 1;
 
-  codigoGenerado &#x3D; &#x27;&#x27;;
-  correoValidado &#x3D; &#x27;&#x27;;
+  /**
+   * Código de verificación generado (simulado) para el usuario.
+   */
+  codigoGenerado: string &#x3D; &#x27;&#x27;;
 
-  verClave &#x3D; false;
-  verClave2 &#x3D; false;
+  /**
+   * Correo electrónico del usuario que ha pasado la validación
+   * del paso 1.
+   */
+  correoValidado: string &#x3D; &#x27;&#x27;;
 
+  /**
+   * Indica si la primera contraseña (&#x60;clave&#x60;) se muestra en texto
+   * plano o enmascarada.
+   */
+  verClave: boolean &#x3D; false;
+
+  /**
+   * Indica si la confirmación de contraseña (&#x60;clave2&#x60;) se muestra
+   * en texto plano o enmascarada.
+   */
+  verClave2: boolean &#x3D; false;
+
+  /**
+   * Formulario del paso 1: captura y valida el correo electrónico.
+   */
   formCorreo!: FormGroup;
+
+  /**
+   * Formulario del paso 2: captura y valida el código numérico de 6 dígitos.
+   */
   formCodigo!: FormGroup;
+
+  /**
+   * Formulario del paso 3: captura y valida la nueva contraseña y su confirmación.
+   */
   formClave!: FormGroup;
 
   /**
-   * @description Inyecta dependencias para construir formularios, acceder a usuarios,
+   * Inyecta dependencias para construir formularios, acceder a usuarios,
    * aplicar validadores personalizados y mostrar notificaciones.
    * @param fb Factoría de formularios reactivos.
    * @param userSrv Servicio de usuarios para buscar y actualizar claves.
@@ -975,7 +1080,7 @@ export class RecuperarComponent {
   ) {}
 
   /**
-   * @description Inicializa los tres formularios:
+   * Inicializa los tres formularios:
    * - &#x60;formCorreo&#x60; con campo &#x60;correo&#x60;.
    * - &#x60;formCodigo&#x60; con campo &#x60;codigo&#x60; numérico de 6 dígitos.
    * - &#x60;formClave&#x60; con los campos &#x60;clave&#x60; y &#x60;clave2&#x60; y validadores de complejidad.
@@ -1017,7 +1122,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Devuelve un control del formulario de cambio de clave (&#x60;formClave&#x60;).
+   * Devuelve un control del formulario de cambio de clave (&#x60;formClave&#x60;).
    * @param c Nombre del control (&#x60;&#x27;clave&#x27;&#x60; o &#x60;&#x27;clave2&#x27;&#x60;).
    * @returns El control correspondiente (no nulo).
    */
@@ -1027,7 +1132,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 1: valida el formulario de correo, comprueba si el usuario
+   * Paso 1: valida el formulario de correo, comprueba si el usuario
    * existe y, si es así, genera un código (simulado) y avanza al paso 2.
    * @returns Nada (&#x60;void&#x60;).
    * @usageNotes
@@ -1061,7 +1166,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 2: valida el formulario de código e intenta comprobar
+   * Paso 2: valida el formulario de código e intenta comprobar
    * que el código introducido coincida con el código generado.
    * @returns Nada (&#x60;void&#x60;).
    * @usageNotes
@@ -1088,7 +1193,7 @@ export class RecuperarComponent {
   }
 
   /**
-   * @description Paso 3: valida el formulario de nueva clave y, si es correcto,
+   * Paso 3: valida el formulario de nueva clave y, si es correcto,
    * actualiza la contraseña del usuario usando &#x60;UserService&#x60;.
    * @returns Nada (&#x60;void&#x60;).
    * @usageNotes
@@ -1362,7 +1467,7 @@ export class RecuperarComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="form-container">  <div class="container recuperar-container">    <!-- ============================       PASO 1 — INGRESAR CORREO  ============================= -->    <div *ngIf="paso === 1" class="form-block">      <h2 class="text-center mb-3">Recuperar contraseña</h2>      <form [formGroup]="formCorreo" novalidate>        <label>Correo electrónico</label>        <input type="email" class="form-control" formControlName="correo" />        <small          *ngIf="        formCorreo.get(\'correo\')?.invalid &&        (formCorreo.get(\'correo\')?.dirty || formCorreo.get(\'correo\')?.touched) &&        !formCorreo.get(\'correo\')?.errors?.[\'noExiste\']"          class="error"        >          Debes ingresar un correo válido.        </small>        <small          *ngIf="formCorreo.get(\'correo\')?.errors?.[\'noExiste\'] &&            (formCorreo.get(\'correo\')?.dirty || formCorreo.get(\'correo\')?.touched)"          class="error"        >          El correo no está registrado.        </small>        <button type="button" class="btn-primary mt-3" (click)="enviarCorreo()">          Enviar código        </button>      </form>    </div>    <!-- ============================       PASO 2 — VALIDAR CÓDIGO  ============================= -->    <div *ngIf="paso === 2" class="form-block">      <h2 class="text-center mb-3">Verifica tu código</h2>      <p class="text-center">        Ingresa el código enviado a: <strong>{{ correoValidado }}</strong>      </p>      <form [formGroup]="formCodigo" novalidate>        <label>Código</label>        <input type="text" class="form-control" formControlName="codigo" />        <small          *ngIf="            formCodigo.get(\'codigo\')?.errors &&            (formCodigo.get(\'codigo\')?.dirty || formCodigo.get(\'codigo\')?.touched)          "          class="error"        >          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'required\']">            Debes ingresar el código.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'pattern\']">            Solo se permiten números.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'minlength\']">            El código debe tener 6 dígitos.          </span>          <span *ngIf="formCodigo.get(\'codigo\')?.errors?.[\'maxlength\']">            El código debe tener 6 dígitos.          </span>        </small>        <small *ngIf="formCodigo.errors?.[\'incorrecto\']" class="error">          {{ formCodigo.errors?.[\'incorrecto\'] }}        </small>        <button type="button" class="btn-primary mt-3" (click)="verificarCodigo()">          Validar código        </button>        <p class="mt-3 text-center">          <a style="cursor: pointer" (click)="paso = 1">← Cambiar correo</a>        </p>      </form>    </div>    <!-- ============================     PASO 3 — NUEVA CONTRASEÑA============================= -->    <div *ngIf="paso === 3" class="form-block">      <h2 class="text-center mb-3">Nueva contraseña</h2>      <form [formGroup]="formClave" novalidate>        <!-- NUEVA CLAVE -->        <label>Nueva contraseña</label>        <div class="password-group">          <input            [type]="verClave ? \'text\' : \'password\'"            class="form-control"            formControlName="clave"          />          <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>        </div>        <!-- ERRORES DE LA NUEVA CLAVE -->        ...        <div class="reglas" *ngIf="formClave.get(\'clave\')?.touched">          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'minlength\']">Mín. 6</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'maxlength\']">Máx. 18</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'uppercase\']">Mayúscula</span>          <span [class.ok]="!formClave.get(\'clave\')?.errors?.[\'number\']">Número</span>        </div>        ...        <!-- REPETIR CLAVE -->        <label class="mt-2">Repetir contraseña</label>        <div class="password-group">          <input            [type]="verClave2 ? \'text\' : \'password\'"            class="form-control"            formControlName="clave2"          />          <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>        </div>        <!-- ERROR: CONTRASEÑAS NO COINCIDEN -->        <small          *ngIf="formClave.errors?.[\'noCoinciden\'] && formClave.get(\'clave2\')?.touched"          class="error"        >          {{ formClave.errors?.[\'noCoinciden\'] }}        </small>        <small *ngIf="formClave.errors?.[\'error\']" class="error">          {{ formClave.errors?.[\'error\'] }}        </small>        <button type="button" class="btn-primary mt-3" (click)="actualizarClave()">          Guardar nueva contraseña        </button>        <p class="mt-3 text-center">          <a style="cursor: pointer" (click)="paso = 2">← Volver</a>        </p>      </form>    </div>  </div></section></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RecuperarComponent'};
 </script>

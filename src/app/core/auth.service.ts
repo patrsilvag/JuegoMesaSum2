@@ -5,12 +5,12 @@ import { AuthRepository } from './auth.repository';
 import { AuthErrorService } from './auth-error.service';
 
 /**
- * @description Tipo de resultado devuelto por AuthService.login
+ * Tipo de resultado devuelto por AuthService.login
  */
 export type LoginResultado = { ok: true; usuario: Usuario } | { ok: false; mensaje: string };
 
 /**
- * @description Servicio de alto nivel para autenticación de usuarios.
+ * Servicio de alto nivel para autenticación de usuarios.
  * Gestiona el estado de sesión en memoria y en `localStorage`.
  * @usageNotes
  * - Inyéctalo en guards y componentes que necesiten saber quién está logueado.
@@ -20,19 +20,19 @@ export type LoginResultado = { ok: true; usuario: Usuario } | { ok: false; mensa
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   /**
-   * @description Fuente de verdad para el usuario actualmente autenticado.
+   * Fuente de verdad para el usuario actualmente autenticado.
    * Emite `null` si no hay sesión activa.
    */
   private usuarioActual = new BehaviorSubject<Usuario | null>(null);
 
   /**
-   * @description Observable que permite a los componentes suscribirse
+   * Observable que permite a los componentes suscribirse
    * a los cambios de sesión del usuario.
    */
   usuarioActual$ = this.usuarioActual.asObservable();
 
   /**
-   * @description Inicializa el servicio cargando el usuario persistido (si existe).
+   * Inicializa el servicio cargando el usuario persistido (si existe).
    * @param repo Repositorio de usuarios (acceso a almacenamiento).
    * @param err Servicio de mensajes de error para autenticación.
    */
@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   /**
-   * @description Carga el usuario actual desde `localStorage` y actualiza el `BehaviorSubject`.
+   * Carga el usuario actual desde `localStorage` y actualiza el `BehaviorSubject`.
    * @returns Nada (`void`).
    * @usageNotes
    * Normalmente solo se invoca desde el constructor.
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   /**
-   * @description Persiste o limpia la sesión de usuario en `localStorage`
+   * Persiste o limpia la sesión de usuario en `localStorage`
    * y actualiza el estado observable.
    * @param u Usuario autenticado o `null` para cerrar sesión.
    * @returns Nada (`void`).
@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   /**
-   * @description Devuelve el usuario actualmente autenticado.
+   * Devuelve el usuario actualmente autenticado.
    * @returns El usuario actual o `null` si no hay sesión.
    * @usageNotes
    * Para observar cambios en tiempo real, usa mejor `usuarioActual$`.
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   /**
-   * @description Intenta autenticar al usuario con correo y clave.
+   * Intenta autenticar al usuario con correo y clave.
    * @param correo Correo electrónico del usuario.
    * @param clave Contraseña en texto plano.
    * @returns

@@ -138,6 +138,18 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Página del carrito de compras. Muestra los productos añadidos,
+permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.</p>
+<ul>
+<li>Se apoya en el servicio <code>Cart</code> para la lógica de negocio (totales, envío, etc.).</li>
+<li>Usa un formulario reactivo sencillo (<code>cuponForm</code>) para introducir el código de cupón.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -299,13 +311,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/carrito/carrito.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/carrito/carrito.ts:36</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>del cupón.</p>
+                            <div class="io-description"><p>  Inyecta el servicio de carrito y el <code>FormBuilder</code> para el formulario
+del cupón.</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -389,15 +402,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:75</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>y el código coincide con uno soportado (actualmente <code>DESCUENTO10</code>).</p>
+                        <div class="io-description"><p>  Aplica un cupón de descuento si el formulario es válido
+y el código coincide con uno soportado (actualmente <code>DESCUENTO10</code>).</p>
 <ul>
 <li>Si el formulario es inválido, se marcan todos los campos y se muestra
 un mensaje en <code>mensajeCupon</code>.</li>
@@ -437,14 +451,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="157"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:157</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:166</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Devuelve el costo de envío calculado por el servicio <code>Cart</code>.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -478,14 +494,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:136</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Vacía por completo el carrito y limpia el estado del cupón.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -519,14 +537,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:96</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Limpia el formulario de cupón y borra el mensaje asociado.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -560,15 +580,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:51</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p><code>carrito$</code> para mantener <code>carritoLista</code> sincronizado.</p>
+                        <div class="io-description"><p>  Inicializa el formulario de cupón y se suscribe al observable
+<code>carrito$</code> para mantener <code>carritoLista</code> sincronizado.</p>
 </div>
 
                         <div class="io-description">
@@ -603,14 +624,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="119"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:119</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:128</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Elimina completamente un producto del carrito.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -676,14 +699,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="110"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:110</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:119</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Disminuye en 1 la cantidad del producto con el id dado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -749,15 +774,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="140"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:140</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:149</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>actuales de <code>carritoLista</code>.</p>
+                        <div class="io-description"><p>  Calcula el subtotal sin descuentos ni envío usando los datos
+actuales de <code>carritoLista</code>.</p>
 </div>
 
                         <div class="io-description">
@@ -792,14 +818,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="101"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:101</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:110</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>  Aumenta en 1 la cantidad del producto con el id dado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -865,15 +893,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="149"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:149</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:158</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>(puede incluir descuentos).</p>
+                        <div class="io-description"><p>  Devuelve el total actual calculado por el servicio <code>Cart</code>
+(puede incluir descuentos).</p>
 </div>
 
                         <div class="io-description">
@@ -908,15 +937,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="166"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:166</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:175</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>aplicados) según la lógica del servicio <code>Cart</code>.</p>
+                        <div class="io-description"><p>  Devuelve el total final, sumando subtotal + envío (y descuentos
+aplicados) según la lógica del servicio <code>Cart</code>.</p>
 </div>
 
                         <div class="io-description">
@@ -961,10 +991,17 @@ un mensaje en <code>mensajeCupon</code>.</li>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/carrito/carrito.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/carrito/carrito.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista actual de ítems en el carrito, mantenida sincronizada
+con el observable <code>cart.carrito$</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -988,7 +1025,7 @@ un mensaje en <code>mensajeCupon</code>.</li>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/carrito/carrito.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/carrito/carrito.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -1019,10 +1056,16 @@ un mensaje en <code>mensajeCupon</code>.</li>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/carrito/carrito.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/carrito/carrito.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo para ingresar el código de cupón de descuento.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1050,10 +1093,17 @@ un mensaje en <code>mensajeCupon</code>.</li>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/carrito/carrito.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/carrito/carrito.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje asociado al resultado de aplicar el cupón
+(éxito, error o <code>null</code> si no hay mensaje).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1068,7 +1118,13 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
 import { Cart, CartItem } from &#x27;../../core/cart&#x27;;
-
+/**
+ * Página del carrito de compras. Muestra los productos añadidos,
+ * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
+ * @usageNotes
+ * - Se apoya en el servicio &#x60;Cart&#x60; para la lógica de negocio (totales, envío, etc.).
+ * - Usa un formulario reactivo sencillo (&#x60;cuponForm&#x60;) para introducir el código de cupón.
+ */
 @Component({
   selector: &#x27;app-carrito&#x27;,
   standalone: true,
@@ -1076,23 +1132,26 @@ import { Cart, CartItem } from &#x27;../../core/cart&#x27;;
   templateUrl: &#x27;./carrito.html&#x27;,
   styleUrl: &#x27;./carrito.scss&#x27;,
 })
-
-/**
- * @description Página del carrito de compras. Muestra los productos añadidos,
- * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
- * @usageNotes
- * - Se apoya en el servicio &#x60;Cart&#x60; para la lógica de negocio (totales, envío, etc.).
- * - Usa un formulario reactivo sencillo (&#x60;cuponForm&#x60;) para introducir el código de cupón.
- */
 export class CarritoComponent implements OnInit {
+  /**
+   * Lista actual de ítems en el carrito, mantenida sincronizada
+   * con el observable &#x60;cart.carrito$&#x60;.
+   */
   carritoLista: CartItem[] &#x3D; [];
 
-  // Reactive Form
+  /**
+   * Formulario reactivo para ingresar el código de cupón de descuento.
+   */
   cuponForm!: FormGroup;
+
+  /**
+   * Mensaje asociado al resultado de aplicar el cupón
+   * (éxito, error o &#x60;null&#x60; si no hay mensaje).
+   */
   mensajeCupon: string | null &#x3D; null;
 
   /**
-   * @description Inyecta el servicio de carrito y el &#x60;FormBuilder&#x60; para el formulario
+   *   Inyecta el servicio de carrito y el &#x60;FormBuilder&#x60; para el formulario
    * del cupón.
    * @param cart Servicio de carrito que mantiene el estado global de los ítems.
    * @param fb Factoría de formularios reactivos para construir &#x60;cuponForm&#x60;.
@@ -1100,7 +1159,7 @@ export class CarritoComponent implements OnInit {
   constructor(public cart: Cart, private fb: FormBuilder) {}
 
   /**
-   * @description Inicializa el formulario de cupón y se suscribe al observable
+   *   Inicializa el formulario de cupón y se suscribe al observable
    * &#x60;carrito$&#x60; para mantener &#x60;carritoLista&#x60; sincronizado.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -1117,7 +1176,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Aplica un cupón de descuento si el formulario es válido
+   *   Aplica un cupón de descuento si el formulario es válido
    * y el código coincide con uno soportado (actualmente &#x60;DESCUENTO10&#x60;).
    * @returns Nada (&#x60;void&#x60;).
    * @usageNotes
@@ -1146,7 +1205,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Limpia el formulario de cupón y borra el mensaje asociado.
+   *   Limpia el formulario de cupón y borra el mensaje asociado.
    * @returns Nada (&#x60;void&#x60;).
    */
   limpiarCupon() {
@@ -1159,7 +1218,7 @@ export class CarritoComponent implements OnInit {
   // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
 
   /**
-   * @description Aumenta en 1 la cantidad del producto con el id dado.
+   *   Aumenta en 1 la cantidad del producto con el id dado.
    * @param id Identificador del producto dentro del carrito.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -1168,7 +1227,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Disminuye en 1 la cantidad del producto con el id dado.
+   *   Disminuye en 1 la cantidad del producto con el id dado.
    * @param id Identificador del producto dentro del carrito.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -1177,7 +1236,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Elimina completamente un producto del carrito.
+   *   Elimina completamente un producto del carrito.
    * @param id Identificador del producto.
    * @returns Nada (&#x60;void&#x60;).
    */
@@ -1186,7 +1245,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Vacía por completo el carrito y limpia el estado del cupón.
+   *   Vacía por completo el carrito y limpia el estado del cupón.
    * @returns Nada (&#x60;void&#x60;).
    */
   limpiarCarrito() {
@@ -1198,7 +1257,7 @@ export class CarritoComponent implements OnInit {
   //  CÁLCULOS
   // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
   /**
-   * @description Calcula el subtotal sin descuentos ni envío usando los datos
+   *   Calcula el subtotal sin descuentos ni envío usando los datos
    * actuales de &#x60;carritoLista&#x60;.
    * @returns El subtotal numérico original.
    */
@@ -1207,7 +1266,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el total actual calculado por el servicio &#x60;Cart&#x60;
+   *   Devuelve el total actual calculado por el servicio &#x60;Cart&#x60;
    * (puede incluir descuentos).
    * @returns Total numérico.
    */
@@ -1216,7 +1275,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el costo de envío calculado por el servicio &#x60;Cart&#x60;.
+   *   Devuelve el costo de envío calculado por el servicio &#x60;Cart&#x60;.
    * @returns Coste numérico del envío.
    */
   envio() {
@@ -1224,7 +1283,7 @@ export class CarritoComponent implements OnInit {
   }
 
   /**
-   * @description Devuelve el total final, sumando subtotal + envío (y descuentos
+   *   Devuelve el total final, sumando subtotal + envío (y descuentos
    * aplicados) según la lógica del servicio &#x60;Cart&#x60;.
    * @returns Total final numérico.
    */
@@ -1417,7 +1476,7 @@ export class CarritoComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!-- Encabezado --><section class="bg-light border-bottom py-3">  <div class="container">    <h1 class="h4 mb-0">🛒 Carrito de Compras</h1>  </div></section><main class="container my-4">  <!-- Carrito vacío -->  <div class="alert alert-info text-center" *ngIf="carritoLista.length === 0">    Tu carrito está vacío.  </div>  <!-- Carrito con productos -->  <div class="row gy-4" *ngIf="carritoLista.length > 0">    <!-- LISTA UNIFICADA (Mobile → Cards / Desktop → Tabla con Grid) -->    <div class="col-12 col-lg-8">      <div class="carrito-lista">                <div class="carrito-item" *ngFor="let p of carritoLista">          <!-- PRODUCTO -->          <div class="col-producto">            <img [src]="p.imagen" [alt]="p.nombre" />            <span class="nombre">{{ p.nombre }}</span>          </div>          <!-- PRECIO -->          <div class="col-precio">            $ {{ p.precio | number }}          </div>          <!-- CANTIDAD -->          <div class="col-cantidad">            <button (click)="restar(p.id)">−</button>            <span>{{ p.cantidad }}</span>            <button (click)="sumar(p.id)">+</button>          </div>          <!-- SUBTOTAL -->          <div class="col-subtotal">            $ {{ p.cantidad * p.precio | number }}          </div>          <!-- ACCIONES -->          <div class="col-acciones">            <button class="btn-eliminar" (click)="quitar(p.id)">              Eliminar            </button>          </div>        </div>      </div>    </div>    <!-- RESUMEN + FORMULARIO REACTIVO -->    <div class="col-12 col-lg-4">      <form class="resumen-box" [formGroup]="cuponForm" (ngSubmit)="aplicarCupon()">        <h3>Resumen</h3>        <!-- SUBTOTAL ORIGINAL -->        <div class="linea">          <span>Subtotal:</span>          <strong>$ {{ subtotalOriginal() | number }}</strong>        </div>        <!-- DESCUENTO -->        <div class="linea" *ngIf="subtotalOriginal() !== total()">          <span>Descuento:</span>          <strong class="text-success">            - $ {{ subtotalOriginal() - total() | number }}          </strong>        </div>        <!-- SUBTOTAL CON DESCUENTO -->        <div class="linea">          <span>Subtotal con descuento:</span>          <strong>$ {{ total() | number }}</strong>        </div>        <!-- ENVÍO -->        <div class="linea">          <span>Envío:</span>          <strong>$ {{ envio() | number }}</strong>        </div>        <hr />        <!-- INPUT CUPÓN -->        <div>          <input            type="text"            class="form-control"            formControlName="codigoDescuento"            placeholder="Ingresa tu cupón"          />          <small class="text-danger"            *ngIf="cuponForm.get(\'codigoDescuento\')?.invalid && cuponForm.get(\'codigoDescuento\')?.touched">            Debe tener al menos 4 caracteres.          </small>        </div>        <!-- BOTONES -->        <div class="row g-2 mt-1">          <div class="col-6">            <button class="btn btn-primary w-100" type="submit" [disabled]="cuponForm.invalid">              Aplicar            </button>          </div>          <div class="col-6">            <button class="btn btn-secondary w-100" type="button" (click)="limpiarCupon()">              Limpiar            </button>          </div>        </div>        <!-- MENSAJE DEL CUPÓN -->        <div *ngIf="mensajeCupon" class="alert alert-info mt-2">          {{ mensajeCupon }}        </div>        <hr />        <!-- TOTAL FINAL -->        <div class="linea total-final">          <strong>Total:</strong>          <strong>$ {{ totalFinal() | number }}</strong>        </div>        <!-- VACIAR -->        <button class="btn-vaciar" type="button" (click)="limpiarCarrito()">          Vaciar carrito        </button>      </form>    </div>  </div>  <!-- Botón volver -->  <div class="text-center mt-4">    <a routerLink="/" class="btn btn-primary">      ← Seguir comprando    </a>  </div></main></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CarritoComponent'};
 </script>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 /**
- * @description Servicio centralizado para construir mensajes de error
+ *   Servicio centralizado para construir mensajes de error
  * relacionados con autenticación y formularios de usuario.
  * @usageNotes
  * Inyéctalo en componentes, validadores o servicios que necesiten
@@ -17,7 +17,7 @@ export class AuthErrorService {
   // ============================
 
   /**
-   * @description Mensaje genérico para credenciales inválidas.
+   *   Mensaje genérico para credenciales inválidas.
    * @returns Texto listo para mostrar al usuario.
    */
   credencialesInvalidas(): string {
@@ -25,7 +25,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje para cuando no existe un usuario con el correo dado.
+   *   Mensaje para cuando no existe un usuario con el correo dado.
    * @returns Cadena explicando que el correo no está registrado.
    */
   usuarioNoExiste(): string {
@@ -33,7 +33,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje para contraseña actual incorrecta.
+   *   Mensaje para contraseña actual incorrecta.
    * @returns Texto de error para credencial incorrecta.
    */
   claveIncorrecta(): string {
@@ -41,7 +41,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje para cuando las contraseñas nuevas no coinciden.
+   *   Mensaje para cuando las contraseñas nuevas no coinciden.
    * @returns Texto de error indicando la discrepancia.
    */
   clavesNoCoinciden(): string {
@@ -49,7 +49,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje para código de verificación inválido o expirado.
+   *   Mensaje para código de verificación inválido o expirado.
    * @returns Texto genérico de código inválido.
    */
   codigoInvalido(): string {
@@ -57,7 +57,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje para formularios con campos inválidos en general.
+   *   Mensaje para formularios con campos inválidos en general.
    * @returns Texto genérico de campos inválidos.
    */
   camposInvalidos(): string {
@@ -65,7 +65,7 @@ export class AuthErrorService {
   }
 
   /**
-   * @description Mensaje genérico para errores inesperados no controlados.
+   *   Mensaje genérico para errores inesperados no controlados.
    * @returns Cadena estándar de error inesperado.
    */
   errorInesperado(): string {
@@ -76,7 +76,7 @@ export class AuthErrorService {
   // NUEVO: Lógica de error para Fecha de Nacimiento
   // ============================
   /**
-   * @description Genera un mensaje de error específico para un control de fecha
+   *   Genera un mensaje de error específico para un control de fecha
    * (por ejemplo, fecha de nacimiento).
    * @param control Control de formulario que contiene el valor y los errores.
    * @returns Mensaje de error de fecha o cadena vacía si no hay error relevante.
@@ -102,7 +102,7 @@ export class AuthErrorService {
   // Mapeo basado en códigos
   // ============================
   /**
-   * @description Devuelve el mensaje legible asociado a un código de error de negocio.
+   *   Devuelve el mensaje legible asociado a un código de error de negocio.
    * @param codigo Código simbólico de error (p. ej. `'USUARIO_NO_EXISTE'`).
    * @returns Mensaje listo para mostrar en la interfaz.
    */

@@ -2,34 +2,60 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 /**
- * @description Item dentro del carrito de compras.
- * @usageNotes
- * Se usa para representar una línea de producto en el carrito.
- */
-export interface CartItem {
-  id: string;
-  nombre: string;
-  precio: number;
-  imagen: string;
-  cantidad: number;
-}
-/**
- * @description Servicio de carrito. Gestiona productos, cantidades
+ *   Servicio de carrito. Gestiona productos, cantidades
  * y totales de la compra.
  * @usageNotes
  * - Expone un observable `carrito$` para reaccionar a cambios.
  * - Contiene lógica de subtotal, descuento y envío.
  */
+export interface CartItem {
+  /** Identificador único del producto en el carrito. */
+  id: string;
+
+  /** Nombre legible del producto. */
+  nombre: string;
+
+  /** Precio unitario del producto. */
+  precio: number;
+
+  /** Ruta de la imagen que se muestra en el carrito. */
+  imagen: string;
+
+  /** Cantidad de unidades de este producto en el carrito. */
+  cantidad: number;
+}
+
+/**
+ * Servicio de carrito. Gestiona productos, cantidades, descuentos
+ * y totales de la compra.
+ *
+ * @usageNotes
+ * - Expone el observable `carrito$` para reaccionar a cambios en la UI.
+ * - Ofrece métodos para agregar, sumar, restar y eliminar ítems.
+ * - Implementa lógica de subtotal, descuento, envío y total final.
+ */
 @Injectable({ providedIn: 'root' })
 export class Cart {
+  /**
+   * Fuente interna de datos del carrito. Mantiene la lista actual
+   * de ítems y emite cambios a través de un `BehaviorSubject`.
+   */
   private items = new BehaviorSubject<CartItem[]>([]);
+
+  /**
+   * Observable público del carrito. Se suscribe la UI para reaccionar
+   * a cambios en la lista de productos.
+   */
   carrito$ = this.items.asObservable();
 
-  // 🔹 DESCUENTO GLOBAL (porcentaje)
+  /**
+   * Porcentaje de descuento global aplicado al total del carrito.
+   * Se establece mediante `aplicarDescuento`.
+   */
   private descuento = 0;
 
   /**
-   * @description Aplica un porcentaje de descuento sobre el total actual.
+   *   Aplica un porcentaje de descuento sobre el total actual.
    * @param porcentaje Porcentaje de descuento (0–100).
    * @returns Nada (`void`).
    */
@@ -38,7 +64,7 @@ export class Cart {
     this.descuento = porcentaje;
   }
   /**
-   * @description Agrega un producto al carrito o incrementa su cantidad si ya existe.
+   *   Agrega un producto al carrito o incrementa su cantidad si ya existe.
    * @param p Producto a agregar.
    * @returns Nada (`void`).
    */
@@ -57,7 +83,7 @@ export class Cart {
   }
 
   /**
-   * @description Incrementa en 1 la cantidad de un ítem del carrito.
+   *   Incrementa en 1 la cantidad de un ítem del carrito.
    * @param id Identificador del producto.
    */
   // 🔹 Sumar cantidad
@@ -72,7 +98,7 @@ export class Cart {
   }
 
   /**
-   * @description Decrementa en 1 la cantidad de un ítem del carrito.
+   *   Decrementa en 1 la cantidad de un ítem del carrito.
    * Elimina el ítem si la cantidad llega a 0.
    * @param id Identificador del producto.
    */
@@ -88,7 +114,7 @@ export class Cart {
   }
 
   /**
-   * @description Elimina por completo un producto del carrito.
+   *   Elimina por completo un producto del carrito.
    * @param id Identificador del producto a quitar.
    */
   // 🔹 Eliminar producto
@@ -98,7 +124,7 @@ export class Cart {
   }
 
   /**
-   * @description Limpia el carrito y elimina todos los ítems.
+   *   Limpia el carrito y elimina todos los ítems.
    * @returns Nada (`void`).
    */
   // 🔹 Limpiar carrito (resetea descuento también)
@@ -108,7 +134,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el subtotal (sin envío) del carrito.
+   *   Calcula el subtotal (sin envío) del carrito.
    * @returns Monto numérico del subtotal.
    */
   // 🔹 Total general (YA INCLUYE DESCUENTO)
@@ -119,7 +145,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el costo de envío en función del subtotal.
+   *   Calcula el costo de envío en función del subtotal.
    * @returns `0` si se alcanza el umbral de envío gratis; en otro caso el costo fijo.
    * @usageNotes
    * La lógica concreta (umbral, monto) está codificada en el método.
@@ -131,7 +157,7 @@ export class Cart {
   }
 
   /**
-   * @description Calcula el total final incluyendo envío.
+   *   Calcula el total final incluyendo envío.
    * @returns Monto total de la compra.
    */
   // 🔹 Total final con envío incluido
