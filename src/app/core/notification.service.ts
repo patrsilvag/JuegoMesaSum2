@@ -33,28 +33,38 @@ export class NotificationService {
   readonly currentNotification = signal<Notification | null>(null);
 
   /**
-   *   Muestra un mensaje de éxito que desaparece automáticamente
-   * después de un tiempo.
+   * Muestra una notificación del tipo indicado que desaparece automáticamente.
    * @param message Mensaje a mostrar.
-   * @param duration Duración en milisegundos antes de ocultar el mensaje
-   * (por defecto 2500 ms).
-   * @returns Nada (`void`).
-   * @usageNotes
-   * ```ts
-   * this.notificationService.showSuccess('Operación realizada con éxito');
-   * ```
+   * @param type Tipo de notificación.
+   * @param duration Duración en ms antes de ocultar (por defecto 2200).
    */
-  /**
-   * Muestra un mensaje de éxito que desaparece automáticamente después de 2.5s.
-   */
-  showSuccess(message: string, duration: number = 2500): void {
-    this.currentNotification.set({ message, type: 'success' });
+  private show(
+    message: string,
+    type: Notification['type'],
+    duration: number = 2200
+  ): void {
+    this.currentNotification.set({ message, type });
 
     setTimeout(() => {
-      // Limpiar solo si sigue siendo el mismo mensaje (evita limpiar un mensaje nuevo)
+      // Solo limpia si sigue siendo el mismo mensaje (evita borrar uno nuevo).
       if (this.currentNotification()?.message === message) {
         this.currentNotification.set(null);
       }
     }, duration);
+  }
+
+  /** Atajo para mensajes de éxito. */
+  showSuccess(message: string, duration?: number): void {
+    this.show(message, 'success', duration);
+  }
+
+  /** Atajo para mensajes de error. */
+  showError(message: string, duration?: number): void {
+    this.show(message, 'error', duration);
+  }
+
+  /** Atajo para mensajes informativos. */
+  showInfo(message: string, duration?: number): void {
+    this.show(message, 'info', duration);
   }
 }

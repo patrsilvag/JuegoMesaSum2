@@ -6,7 +6,6 @@
 </section>
 
 <main class="container my-4">
-
   <!-- Carrito vacío -->
   <div class="alert alert-info text-center" *ngIf="carritoLista.length === 0">
     Tu carrito está vacío.
@@ -14,13 +13,10 @@
 
   <!-- Carrito con productos -->
   <div class="row gy-4" *ngIf="carritoLista.length > 0">
-
     <!-- LISTA UNIFICADA (Mobile → Cards / Desktop → Tabla con Grid) -->
     <div class="col-12 col-lg-8">
       <div class="carrito-lista">
-        
         <div class="carrito-item" *ngFor="let p of carritoLista">
-
           <!-- PRODUCTO -->
           <div class="col-producto">
             <img [src]="p.imagen" [alt]="p.nombre" />
@@ -28,9 +24,7 @@
           </div>
 
           <!-- PRECIO -->
-          <div class="col-precio">
-            $ {{ p.precio | number }}
-          </div>
+          <div class="col-precio">$ {{ p.precio | number }}</div>
 
           <!-- CANTIDAD -->
           <div class="col-cantidad">
@@ -40,26 +34,19 @@
           </div>
 
           <!-- SUBTOTAL -->
-          <div class="col-subtotal">
-            $ {{ p.cantidad * p.precio | number }}
-          </div>
+          <div class="col-subtotal">$ {{ p.cantidad * p.precio | number }}</div>
 
           <!-- ACCIONES -->
           <div class="col-acciones">
-            <button class="btn-eliminar" (click)="quitar(p.id)">
-              Eliminar
-            </button>
+            <button class="btn-eliminar" (click)="quitar(p.id)">Eliminar</button>
           </div>
-
         </div>
-
       </div>
     </div>
 
     <!-- RESUMEN + FORMULARIO REACTIVO -->
     <div class="col-12 col-lg-4">
       <form class="resumen-box" [formGroup]="cuponForm" (ngSubmit)="aplicarCupon()">
-
         <h3>Resumen</h3>
 
         <!-- SUBTOTAL ORIGINAL -->
@@ -71,9 +58,7 @@
         <!-- DESCUENTO -->
         <div class="linea" *ngIf="subtotalOriginal() !== total()">
           <span>Descuento:</span>
-          <strong class="text-success">
-            - $ {{ subtotalOriginal() - total() | number }}
-          </strong>
+          <strong class="text-success"> - $ {{ subtotalOriginal() - total() | number }} </strong>
         </div>
 
         <!-- SUBTOTAL CON DESCUENTO -->
@@ -98,8 +83,12 @@
             formControlName="codigoDescuento"
             placeholder="Ingresa tu cupón"
           />
-          <small class="text-danger"
-            *ngIf="cuponForm.get('codigoDescuento')?.invalid && cuponForm.get('codigoDescuento')?.touched">
+          <small
+            class="text-danger"
+            *ngIf="
+              cuponForm.get('codigoDescuento')?.invalid && cuponForm.get('codigoDescuento')?.touched
+            "
+          >
             Debe tener al menos 4 caracteres.
           </small>
         </div>
@@ -118,11 +107,6 @@
           </div>
         </div>
 
-        <!-- MENSAJE DEL CUPÓN -->
-        <div *ngIf="mensajeCupon" class="alert alert-info mt-2">
-          {{ mensajeCupon }}
-        </div>
-
         <hr />
 
         <!-- TOTAL FINAL -->
@@ -132,20 +116,13 @@
         </div>
 
         <!-- VACIAR -->
-        <button class="btn-vaciar" type="button" (click)="limpiarCarrito()">
-          Vaciar carrito
-        </button>
-
+        <button class="btn-vaciar" type="button" (click)="limpiarCarrito()">Vaciar carrito</button>
       </form>
     </div>
-
   </div>
 
   <!-- Botón volver -->
   <div class="text-center mt-4">
-    <a routerLink="/" class="btn btn-primary">
-      ← Seguir comprando
-    </a>
+    <a routerLink="/" class="btn btn-primary"> ← Seguir comprando </a>
   </div>
-
 </main>

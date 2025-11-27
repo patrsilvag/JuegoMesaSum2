@@ -208,3 +208,24 @@
     background: #999;
   }
 }
+
+/* ===================================== */
+/*   TOAST DEL CUPÓN                     */
+/* ===================================== */
+
+.cupon-toast {
+  position: fixed;
+  top: 80px;        // un poco bajo el navbar fijo
+  right: 20px;
+  z-index: 1060;    // por encima del resto del contenido
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* En pantallas pequeñas, que ocupe casi todo el ancho */
+@media (max-width: 576px) {
+  .cupon-toast {
+    left: 10px;
+    right: 10px;
+  }
+}

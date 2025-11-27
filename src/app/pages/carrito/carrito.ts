@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Cart, CartItem } from '../../core/cart';
+import { NotificationService } from '../../core/notification.service';
 /**
  * Página del carrito de compras. Muestra los productos añadidos,
  * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
@@ -30,18 +31,12 @@ export class CarritoComponent implements OnInit {
   cuponForm!: FormGroup;
 
   /**
-   * Mensaje asociado al resultado de aplicar el cupón
-   * (éxito, error o `null` si no hay mensaje).
-   */
-  mensajeCupon: string | null = null;
-
-  /**
    *   Inyecta el servicio de carrito y el `FormBuilder` para el formulario
    * del cupón.
    * @param cart Servicio de carrito que mantiene el estado global de los ítems.
    * @param fb Factoría de formularios reactivos para construir `cuponForm`.
    */
-  constructor(public cart: Cart, private fb: FormBuilder) {}
+  constructor(public cart: Cart, private fb: FormBuilder, private notifSrv: NotificationService) {}
 
   /**
    *   Inicializa el formulario de cupón y se suscribe al observable
@@ -66,7 +61,7 @@ export class CarritoComponent implements OnInit {
    * @returns Nada (`void`).
    * @usageNotes
    * - Si el formulario es inválido, se marcan todos los campos y se muestra
-   *   un mensaje en `mensajeCupon`.
+   *   un mensaje `.
    * - Si el código es válido, se llama a `cart.aplicarDescuento(10)`.
    */
   // ===================================================
@@ -75,7 +70,7 @@ export class CarritoComponent implements OnInit {
   aplicarCupon() {
     if (this.cuponForm.invalid) {
       this.cuponForm.markAllAsTouched();
-      this.mensajeCupon = 'Código inválido o demasiado corto.';
+      this.notifSrv.showError('Código inválido o demasiado corto.');
       return;
     }
 
@@ -83,9 +78,9 @@ export class CarritoComponent implements OnInit {
 
     if (codigo === 'DESCUENTO10') {
       this.cart.aplicarDescuento(10);
-      this.mensajeCupon = 'Cupón aplicado correctamente (10% OFF).';
+      this.notifSrv.showSuccess('Cupón aplicado correctamente (10% OFF).');
     } else {
-      this.mensajeCupon = 'Cupón no válido.';
+      this.notifSrv.showError('Cupón no válido.');
     }
   }
 
@@ -95,7 +90,6 @@ export class CarritoComponent implements OnInit {
    */
   limpiarCupon() {
     this.cuponForm.reset();
-    this.mensajeCupon = null;
   }
 
   // ===================================================
