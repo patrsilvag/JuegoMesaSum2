@@ -785,7 +785,7 @@ export class AuthService {
    */
   login(correo: string, clave: string): LoginResultado {
     try {
-      const email &#x3D; correo.trim().toLowerCase();
+      const email &#x3D; correo.trim();
       const pass &#x3D; clave.trim();
 
       const usuario &#x3D; this.repo.login(email, pass);

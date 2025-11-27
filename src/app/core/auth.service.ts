@@ -93,7 +93,7 @@ export class AuthService {
    */
   login(correo: string, clave: string): LoginResultado {
     try {
-      const email = correo.trim().toLowerCase();
+      const email = correo.trim();
       const pass = clave.trim();
 
       const usuario = this.repo.login(email, pass);
