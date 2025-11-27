@@ -149,8 +149,8 @@
         <p>Panel de administración para listar y filtrar usuarios,
 así como cambiar su estado activo/inactivo.</p>
 <ul>
-<li>Se apoya en <code>AdminService</code> para cargar, filtrar y actualizar usuarios.</li>
-<li>Usa un formulario reactivo <code>filtroForm</code> con campos <code>correo</code>, <code>rol</code> y <code>estado</code>.</li>
+<li>Se apoya en AdminService para cargar, filtrar y actualizar usuarios.</li>
+<li>Usa un formulario reactivo filtroForm con campos correo, rol y estado.</li>
 </ul>
 
     </p>
@@ -780,8 +780,8 @@ import { AdminService } from &#x27;./admin.service&#x27;;
  * Panel de administración para listar y filtrar usuarios,
  * así como cambiar su estado activo/inactivo.
  * @usageNotes
- * - Se apoya en &#x60;AdminService&#x60; para cargar, filtrar y actualizar usuarios.
- * - Usa un formulario reactivo &#x60;filtroForm&#x60; con campos &#x60;correo&#x60;, &#x60;rol&#x60; y &#x60;estado&#x60;.
+ * - Se apoya en AdminService para cargar, filtrar y actualizar usuarios.
+ * - Usa un formulario reactivo filtroForm con campos correo, rol y estado.
  */
 @Component({
   selector: &#x27;app-admin&#x27;,
@@ -880,20 +880,34 @@ export class AdminComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;!-- Cleaned Mobile-First Admin HTML --&gt;
-&lt;div class&#x3D;&quot;admin-wrapper&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;admin-wrapper container my-4&quot;&gt;
   &lt;section class&#x3D;&quot;admin-container&quot;&gt;
     &lt;h1 class&#x3D;&quot;h4 mb-3&quot;&gt;Panel de administración&lt;/h1&gt;
 
     &lt;!-- ERROR GENERAL --&gt;
-    &lt;div *ngIf&#x3D;&quot;error&quot; class&#x3D;&quot;alert alert-danger text-center&quot;&gt;{{ error }}&lt;/div&gt;
+    &lt;div *ngIf&#x3D;&quot;error&quot; class&#x3D;&quot;alert alert-danger text-center mb-3&quot;&gt;
+      {{ error }}
+    &lt;/div&gt;
 
-    &lt;!-- FORMULARIO REACTIVO --&gt;
+    &lt;!-- FORMULARIO REACTIVO DE FILTRO --&gt;
     &lt;form [formGroup]&#x3D;&quot;filtroForm&quot; class&#x3D;&quot;row g-3 mb-4&quot;&gt;
       &lt;!-- CORREO --&gt;
       &lt;div class&#x3D;&quot;col-12 col-md-4&quot;&gt;
-        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Filtrar por correo&quot; formControlName&#x3D;&quot;correo&quot; /&gt;
-        &lt;small class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;filtroForm.get(&#x27;correo&#x27;)?.invalid &amp;&amp; filtroForm.get(&#x27;correo&#x27;)?.touched&quot;&gt;Formato de correo inválido&lt;/small&gt;
+        &lt;input
+          type&#x3D;&quot;text&quot;
+          class&#x3D;&quot;form-control&quot;
+          placeholder&#x3D;&quot;Filtrar por correo&quot;
+          formControlName&#x3D;&quot;correo&quot;
+        /&gt;
+        &lt;small
+          class&#x3D;&quot;text-danger&quot;
+          *ngIf&#x3D;&quot;
+            filtroForm.get(&#x27;correo&#x27;)?.invalid &amp;&amp;
+            filtroForm.get(&#x27;correo&#x27;)?.touched
+          &quot;
+        &gt;
+          Formato de correo inválido
+        &lt;/small&gt;
       &lt;/div&gt;
 
       &lt;!-- ROL --&gt;
@@ -914,14 +928,19 @@ export class AdminComponent implements OnInit {
         &lt;/select&gt;
       &lt;/div&gt;
 
-      &lt;!-- LIMPIAR --&gt;
+      &lt;!-- LIMPIAR: usa tu método EXISTENTE resetFiltro() --&gt;
       &lt;div class&#x3D;&quot;col-12 col-md-2&quot;&gt;
-        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary w-100&quot; (click)&#x3D;&quot;resetFiltro()&quot;&gt;Limpiar&lt;/button&gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          class&#x3D;&quot;btn btn-secondary w-100&quot;
+          (click)&#x3D;&quot;resetFiltro()&quot;
+        &gt;
+          Limpiar
+        &lt;/button&gt;
       &lt;/div&gt;
-      
     &lt;/form&gt;
 
-    &lt;!-- TABLA --&gt;
+    &lt;!-- TABLA / TARJETAS RESPONSIVE --&gt;
     &lt;div class&#x3D;&quot;card shadow-sm&quot; *ngIf&#x3D;&quot;usuariosFiltrados.length &gt; 0&quot;&gt;
       &lt;div class&#x3D;&quot;card-body p-0&quot;&gt;
         &lt;div class&#x3D;&quot;table-responsive-mobile&quot;&gt;
@@ -937,16 +956,32 @@ export class AdminComponent implements OnInit {
             &lt;/thead&gt;
             &lt;tbody&gt;
               &lt;tr *ngFor&#x3D;&quot;let u of usuariosFiltrados&quot;&gt;
-                &lt;td&gt;{{ u.correo }}&lt;/td&gt;
-                &lt;td&gt;{{ u.usuario }}&lt;/td&gt;
-                &lt;td&gt;{{ u.rol }}&lt;/td&gt;
-                &lt;td&gt;
-                  &lt;span class&#x3D;&quot;badge&quot; [class.text-bg-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot; [class.text-bg-secondary]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot;&gt;
+                &lt;td data-label&#x3D;&quot;Correo&quot;&gt;
+                  {{ u.correo }}
+                &lt;/td&gt;
+                &lt;td data-label&#x3D;&quot;Usuario&quot;&gt;
+                  {{ u.usuario }}
+                &lt;/td&gt;
+                &lt;td data-label&#x3D;&quot;Rol&quot;&gt;
+                  {{ u.rol }}
+                &lt;/td&gt;
+                &lt;td data-label&#x3D;&quot;Estado&quot;&gt;
+                  &lt;span
+                    class&#x3D;&quot;badge&quot;
+                    [class.text-bg-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot;
+                    [class.text-bg-secondary]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot;
+                  &gt;
                     {{ u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27; ? &#x27;Activo&#x27; : &#x27;Inactivo&#x27; }}
                   &lt;/span&gt;
                 &lt;/td&gt;
-                &lt;td class&#x3D;&quot;text-end&quot;&gt;
-                  &lt;button class&#x3D;&quot;btn btn-sm&quot; [class.btn-outline-danger]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot; [class.btn-outline-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot; (click)&#x3D;&quot;toggleEstado(u)&quot;&gt;
+                &lt;td data-label&#x3D;&quot;Acciones&quot; class&#x3D;&quot;text-end&quot;&gt;
+                  &lt;button
+                    type&#x3D;&quot;button&quot;
+                    class&#x3D;&quot;btn btn-sm&quot;
+                    [class.btn-outline-danger]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27;&quot;
+                    [class.btn-outline-success]&#x3D;&quot;u.status &#x3D;&#x3D;&#x3D; &#x27;inactive&#x27;&quot;
+                    (click)&#x3D;&quot;toggleEstado(u)&quot;
+                  &gt;
                     {{ u.status &#x3D;&#x3D;&#x3D; &#x27;active&#x27; ? &#x27;Desactivar&#x27; : &#x27;Activar&#x27; }}
                   &lt;/button&gt;
                 &lt;/td&gt;
@@ -958,12 +993,15 @@ export class AdminComponent implements OnInit {
     &lt;/div&gt;
 
     &lt;!-- SIN RESULTADOS --&gt;
-    &lt;div *ngIf&#x3D;&quot;usuariosFiltrados.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;alert alert-info text-center&quot;&gt;
+    &lt;div
+      *ngIf&#x3D;&quot;usuariosFiltrados.length &#x3D;&#x3D;&#x3D; 0&quot;
+      class&#x3D;&quot;alert alert-info text-center&quot;
+    &gt;
       No hay usuarios que coincidan con el filtro.
     &lt;/div&gt;
-
   &lt;/section&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -971,108 +1009,79 @@ export class AdminComponent implements OnInit {
                     <code>./admin.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
-/*   ADMIN PANEL - MOBILE FIRST    */
+/* TABLA RESPONSIVE - MODO TARJETA */
 /* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
 
-/* WRAPPER PRINCIPAL */
-.admin-wrapper {
-  width: 100%;
-  max-width: none;
-  padding: 1rem;
-  margin: 0;
-
-  @media (min-width: 768px) {
-    max-width: 900px;
-    margin: 0 auto;
+@media (max-width: 767.98px) {
+  /* 1. Ocultar los encabezados de la tabla original */
+  .table-responsive-mobile thead {
+    display: none;
   }
 
-  @media (min-width: 992px) {
-    max-width: 850px;
-  }
-}
-
-/* TITULO */
-.admin-container h1 {
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-/* FORMULARIO REACTIVO */
-input.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched {
-  border-color: #dc3545 !important;
-}
-
-small.text-danger {
-  font-size: 0.8rem;
-  margin-top: 3px;
-  display: block;
-}
-
-.form-state-box {
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.75rem;
-}
-
-/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
-/*   TABLA RESPONSIVE MOBILE       */
-/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
-
-@media (max-width: 767px) {
-  .table-responsive-mobile {
+  /* 2. Convertir tabla y partes en bloques */
+  .table-responsive-mobile table,
+  .table-responsive-mobile tbody,
+  .table-responsive-mobile tr,
+  .table-responsive-mobile td {
+    display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Neutralizar comportamiento de tabla */
+  .table-responsive-mobile table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  /* 3. Tarjeta (fila) */
+  .table-responsive-mobile tr {
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
   }
 
-  /* Anchos mínimos para evitar compresión */
-  .table-responsive-mobile th:nth-child(1),
-  .table-responsive-mobile td:nth-child(1) {
-    min-width: 160px;
+  /* 4. Celdas dentro de la tarjeta */
+  .table-responsive-mobile td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    min-height: 50px;
+
+    overflow-wrap: anywhere; /* evita que correos largos rompan el layout */
+    /* word-break: break-word; */ /* deja esto comentado salvo que lo necesites */
   }
 
-  .table-responsive-mobile th:nth-child(2),
-  .table-responsive-mobile td:nth-child(2) {
-    min-width: 120px;
+  .table-responsive-mobile td:last-child {
+    border-bottom: 0;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #fcfcfc;
   }
 
-  .table-responsive-mobile th:nth-child(3),
-  .table-responsive-mobile td:nth-child(3) {
-    min-width: 100px;
+  /* 5. Label usando data-label */
+  .table-responsive-mobile td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #555;
+    text-align: left;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
 
-  .table-responsive-mobile th:nth-child(4),
-  .table-responsive-mobile td:nth-child(4) {
-    min-width: 100px;
+  /* Mantener visible &quot;Acciones&quot; y empujar el botón a la derecha */
+  .table-responsive-mobile td[data-label&#x3D;&#x27;Acciones&#x27;]::before {
+    display: inline-block;
+    margin-right: auto;
   }
-
-  .table-responsive-mobile th:nth-child(5),
-  .table-responsive-mobile td:nth-child(5) {
-    min-width: 140px;
-    text-align: left !important;
-  }
-}
-
-@media (min-width: 768px) {
-  tbody tr:hover {
-    background: #fafafa;
-  }
-}
-
-/* BADGES */
-.badge {
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.4rem;
-  font-size: 0.75rem;
-}
-
-/* BOTONES */
-button.btn {
-  min-width: 110px;
-  font-size: 0.8rem;
 }
 </code></pre>
     </div>
@@ -1102,8 +1111,8 @@ button.btn {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Cleaned Mobile-First Admin HTML --><div class="admin-wrapper">  <section class="admin-container">    <h1 class="h4 mb-3">Panel de administración</h1>    <!-- ERROR GENERAL -->    <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>    <!-- FORMULARIO REACTIVO -->    <form [formGroup]="filtroForm" class="row g-3 mb-4">      <!-- CORREO -->      <div class="col-12 col-md-4">        <input type="text" class="form-control" placeholder="Filtrar por correo" formControlName="correo" />        <small class="text-danger" *ngIf="filtroForm.get(\'correo\')?.invalid && filtroForm.get(\'correo\')?.touched">Formato de correo inválido</small>      </div>      <!-- ROL -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="rol">          <option value="">Rol (todos)</option>          <option value="admin">Administrador</option>          <option value="cliente">Cliente</option>        </select>      </div>      <!-- ESTADO -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="estado">          <option value="">Estado (todos)</option>          <option value="active">Activo</option>          <option value="inactive">Inactivo</option>        </select>      </div>      <!-- LIMPIAR -->      <div class="col-12 col-md-2">        <button type="button" class="btn btn-secondary w-100" (click)="resetFiltro()">Limpiar</button>      </div>          </form>    <!-- TABLA -->    <div class="card shadow-sm" *ngIf="usuariosFiltrados.length > 0">      <div class="card-body p-0">        <div class="table-responsive-mobile">          <table class="table table-hover align-middle mb-0">            <thead class="table-dark">              <tr>                <th>Correo</th>                <th>Usuario</th>                <th>Rol</th>                <th>Estado</th>                <th class="text-end">Acciones</th>              </tr>            </thead>            <tbody>              <tr *ngFor="let u of usuariosFiltrados">                <td>{{ u.correo }}</td>                <td>{{ u.usuario }}</td>                <td>{{ u.rol }}</td>                <td>                  <span class="badge" [class.text-bg-success]="u.status === \'active\'" [class.text-bg-secondary]="u.status === \'inactive\'">                    {{ u.status === \'active\' ? \'Activo\' : \'Inactivo\' }}                  </span>                </td>                <td class="text-end">                  <button class="btn btn-sm" [class.btn-outline-danger]="u.status === \'active\'" [class.btn-outline-success]="u.status === \'inactive\'" (click)="toggleEstado(u)">                    {{ u.status === \'active\' ? \'Desactivar\' : \'Activar\' }}                  </button>                </td>              </tr>            </tbody>          </table>        </div>      </div>    </div>    <!-- SIN RESULTADOS -->    <div *ngIf="usuariosFiltrados.length === 0" class="alert alert-info text-center">      No hay usuarios que coincidan con el filtro.    </div>  </section></div></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+        var COMPONENT_TEMPLATE = '<div><div class="admin-wrapper container my-4">  <section class="admin-container">    <h1 class="h4 mb-3">Panel de administración</h1>    <!-- ERROR GENERAL -->    <div *ngIf="error" class="alert alert-danger text-center mb-3">      {{ error }}    </div>    <!-- FORMULARIO REACTIVO DE FILTRO -->    <form [formGroup]="filtroForm" class="row g-3 mb-4">      <!-- CORREO -->      <div class="col-12 col-md-4">        <input          type="text"          class="form-control"          placeholder="Filtrar por correo"          formControlName="correo"        />        <small          class="text-danger"          *ngIf="            filtroForm.get(\'correo\')?.invalid &&            filtroForm.get(\'correo\')?.touched          "        >          Formato de correo inválido        </small>      </div>      <!-- ROL -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="rol">          <option value="">Rol (todos)</option>          <option value="admin">Administrador</option>          <option value="cliente">Cliente</option>        </select>      </div>      <!-- ESTADO -->      <div class="col-12 col-md-3">        <select class="form-select" formControlName="estado">          <option value="">Estado (todos)</option>          <option value="active">Activo</option>          <option value="inactive">Inactivo</option>        </select>      </div>      <!-- LIMPIAR: usa tu método EXISTENTE resetFiltro() -->      <div class="col-12 col-md-2">        <button          type="button"          class="btn btn-secondary w-100"          (click)="resetFiltro()"        >          Limpiar        </button>      </div>    </form>    <!-- TABLA / TARJETAS RESPONSIVE -->    <div class="card shadow-sm" *ngIf="usuariosFiltrados.length > 0">      <div class="card-body p-0">        <div class="table-responsive-mobile">          <table class="table table-hover align-middle mb-0">            <thead class="table-dark">              <tr>                <th>Correo</th>                <th>Usuario</th>                <th>Rol</th>                <th>Estado</th>                <th class="text-end">Acciones</th>              </tr>            </thead>            <tbody>              <tr *ngFor="let u of usuariosFiltrados">                <td data-label="Correo">                  {{ u.correo }}                </td>                <td data-label="Usuario">                  {{ u.usuario }}                </td>                <td data-label="Rol">                  {{ u.rol }}                </td>                <td data-label="Estado">                  <span                    class="badge"                    [class.text-bg-success]="u.status === \'active\'"                    [class.text-bg-secondary]="u.status === \'inactive\'"                  >                    {{ u.status === \'active\' ? \'Activo\' : \'Inactivo\' }}                  </span>                </td>                <td data-label="Acciones" class="text-end">                  <button                    type="button"                    class="btn btn-sm"                    [class.btn-outline-danger]="u.status === \'active\'"                    [class.btn-outline-success]="u.status === \'inactive\'"                    (click)="toggleEstado(u)"                  >                    {{ u.status === \'active\' ? \'Desactivar\' : \'Activar\' }}                  </button>                </td>              </tr>            </tbody>          </table>        </div>      </div>    </div>    <!-- SIN RESULTADOS -->    <div      *ngIf="usuariosFiltrados.length === 0"      class="alert alert-info text-center"    >      No hay usuarios que coincidan con el filtro.    </div>  </section></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AdminComponent'};
 </script>

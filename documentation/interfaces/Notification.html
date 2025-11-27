@@ -308,32 +308,41 @@ export class NotificationService {
   readonly currentNotification &#x3D; signal&lt;Notification | null&gt;(null);
 
   /**
-   *   Muestra un mensaje de éxito que desaparece automáticamente
-   * después de un tiempo.
+   * Muestra una notificación del tipo indicado que desaparece automáticamente.
    * @param message Mensaje a mostrar.
-   * @param duration Duración en milisegundos antes de ocultar el mensaje
-   * (por defecto 2500 ms).
-   * @returns Nada (&#x60;void&#x60;).
-   * @usageNotes
-   * &#x60;&#x60;&#x60;ts
-   * this.notificationService.showSuccess(&#x27;Operación realizada con éxito&#x27;);
-   * &#x60;&#x60;&#x60;
+   * @param type Tipo de notificación.
+   * @param duration Duración en ms antes de ocultar (por defecto 2200).
    */
-  /**
-   * Muestra un mensaje de éxito que desaparece automáticamente después de 2.5s.
-   */
-  showSuccess(message: string, duration: number &#x3D; 2500): void {
-    this.currentNotification.set({ message, type: &#x27;success&#x27; });
+  private show(
+    message: string,
+    type: Notification[&#x27;type&#x27;],
+    duration: number &#x3D; 2200
+  ): void {
+    this.currentNotification.set({ message, type });
 
     setTimeout(() &#x3D;&gt; {
-      // Limpiar solo si sigue siendo el mismo mensaje (evita limpiar un mensaje nuevo)
+      // Solo limpia si sigue siendo el mismo mensaje (evita borrar uno nuevo).
       if (this.currentNotification()?.message &#x3D;&#x3D;&#x3D; message) {
         this.currentNotification.set(null);
       }
     }, duration);
   }
-}
-</code></pre>
+
+  /** Atajo para mensajes de éxito. */
+  showSuccess(message: string, duration?: number): void {
+    this.show(message, &#x27;success&#x27;, duration);
+  }
+
+  /** Atajo para mensajes de error. */
+  showError(message: string, duration?: number): void {
+    this.show(message, &#x27;error&#x27;, duration);
+  }
+
+  /** Atajo para mensajes informativos. */
+  showInfo(message: string, duration?: number): void {
+    this.show(message, &#x27;info&#x27;, duration);
+  }
+}</code></pre>
     </div>
 </div>
 

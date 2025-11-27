@@ -178,6 +178,16 @@ y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#show" >show</a>
+                            </li>
+                            <li>
+                                <a href="#showError" >showError</a>
+                            </li>
+                            <li>
+                                <a href="#showInfo" >showInfo</a>
+                            </li>
+                            <li>
                                 <a href="#showSuccess" >showSuccess</a>
                             </li>
                         </ul>
@@ -202,31 +212,33 @@ y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="showSuccess"></a>
+                    <a name="show"></a>
                     <span class="name">
-                        <span ><b>showSuccess</b></span>
-                        <a href="#showSuccess"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>show</b></span>
+                        <a href="#show"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>showSuccess(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, duration: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>show(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="../interfaces/Notification.html" target="_self">Notification</a>, duration: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/core/notification.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/core/notification.service.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Muestra un mensaje de éxito que desaparece automáticamente después de 2.5s.</p>
+                        <div class="io-description"><p>Muestra una notificación del tipo indicado que desaparece automáticamente.</p>
 </div>
 
                             <div class="io-description">
@@ -262,6 +274,24 @@ y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
                                             </td>
                                         </tr>
                                         <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Notification.html" target="_self" >Notification</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>Tipo de notificación.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
                                                 <td>duration</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
@@ -272,12 +302,11 @@ y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
                                             </td>
 
                                             <td>
-                                                    <code>2500</code>
+                                                    <code>2200</code>
                                             </td>
 
                                             <td>
-                                                    <p>Duración en milisegundos antes de ocultar el mensaje
-(por defecto 2500 ms).</p>
+                                                    <p>Duración en ms antes de ocultar (por defecto 2200).</p>
 
                                             </td>
                                         </tr>
@@ -289,8 +318,250 @@ y ofrece métodos de alto nivel para mostrar mensajes temporales.</p>
 
                         </div>
                             <div class="io-description">
-                                <p>Nada (<code>void</code>).</p>
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showError"></a>
+                    <span class="name">
+                        <span ><b>showError</b></span>
+                        <a href="#showError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showError(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, duration?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/core/notification.service.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atajo para mensajes de error.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>duration</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showInfo"></a>
+                    <span class="name">
+                        <span ><b>showInfo</b></span>
+                        <a href="#showInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showInfo(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, duration?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/core/notification.service.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atajo para mensajes informativos.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>duration</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showSuccess"></a>
+                    <span class="name">
+                        <span ><b>showSuccess</b></span>
+                        <a href="#showSuccess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showSuccess(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, duration?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/core/notification.service.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atajo para mensajes de éxito.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>message</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>duration</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
                             </div>
                 </td>
             </tr>
@@ -382,32 +653,41 @@ export class NotificationService {
   readonly currentNotification &#x3D; signal&lt;Notification | null&gt;(null);
 
   /**
-   *   Muestra un mensaje de éxito que desaparece automáticamente
-   * después de un tiempo.
+   * Muestra una notificación del tipo indicado que desaparece automáticamente.
    * @param message Mensaje a mostrar.
-   * @param duration Duración en milisegundos antes de ocultar el mensaje
-   * (por defecto 2500 ms).
-   * @returns Nada (&#x60;void&#x60;).
-   * @usageNotes
-   * &#x60;&#x60;&#x60;ts
-   * this.notificationService.showSuccess(&#x27;Operación realizada con éxito&#x27;);
-   * &#x60;&#x60;&#x60;
+   * @param type Tipo de notificación.
+   * @param duration Duración en ms antes de ocultar (por defecto 2200).
    */
-  /**
-   * Muestra un mensaje de éxito que desaparece automáticamente después de 2.5s.
-   */
-  showSuccess(message: string, duration: number &#x3D; 2500): void {
-    this.currentNotification.set({ message, type: &#x27;success&#x27; });
+  private show(
+    message: string,
+    type: Notification[&#x27;type&#x27;],
+    duration: number &#x3D; 2200
+  ): void {
+    this.currentNotification.set({ message, type });
 
     setTimeout(() &#x3D;&gt; {
-      // Limpiar solo si sigue siendo el mismo mensaje (evita limpiar un mensaje nuevo)
+      // Solo limpia si sigue siendo el mismo mensaje (evita borrar uno nuevo).
       if (this.currentNotification()?.message &#x3D;&#x3D;&#x3D; message) {
         this.currentNotification.set(null);
       }
     }, duration);
   }
-}
-</code></pre>
+
+  /** Atajo para mensajes de éxito. */
+  showSuccess(message: string, duration?: number): void {
+    this.show(message, &#x27;success&#x27;, duration);
+  }
+
+  /** Atajo para mensajes de error. */
+  showError(message: string, duration?: number): void {
+    this.show(message, &#x27;error&#x27;, duration);
+  }
+
+  /** Atajo para mensajes informativos. */
+  showInfo(message: string, duration?: number): void {
+    this.show(message, &#x27;info&#x27;, duration);
+  }
+}</code></pre>
     </div>
 
 </div>

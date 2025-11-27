@@ -997,7 +997,10 @@ export class RegistroComponent implements OnInit {
       formControlName&#x3D;&quot;correo&quot;
       placeholder&#x3D;&quot;Ej: PSilva@gmail.com&quot;
     /&gt;
-    &lt;small *ngIf&#x3D;&quot;campo(&#x27;correo&#x27;).touched &amp;&amp; campo(&#x27;correo&#x27;).invalid &amp;&amp; !campo(&#x27;correo&#x27;).errors?.[&#x27;existe&#x27;]&quot; class&#x3D;&quot;error&quot;&gt;
+    &lt;small
+      *ngIf&#x3D;&quot;campo(&#x27;correo&#x27;).touched &amp;&amp; campo(&#x27;correo&#x27;).invalid &amp;&amp; !campo(&#x27;correo&#x27;).errors?.[&#x27;existe&#x27;]&quot;
+      class&#x3D;&quot;error&quot;
+    &gt;
       Ingresa un correo válido.
     &lt;/small&gt;
     &lt;small *ngIf&#x3D;&quot;campo(&#x27;correo&#x27;).errors?.[&#x27;existe&#x27;]&quot; class&#x3D;&quot;error&quot;&gt;
@@ -1013,10 +1016,16 @@ export class RegistroComponent implements OnInit {
 
     &lt;!-- REGLAS --&gt;
     &lt;div class&#x3D;&quot;reglas&quot; *ngIf&#x3D;&quot;campo(&#x27;clave&#x27;).touched&quot;&gt;
-      &lt;span [class.ok]&#x3D;&quot;!campo(&#x27;clave&#x27;).errors?.[&#x27;minlength&#x27;]&quot;&gt;Mín. 6&lt;/span&gt;
-      &lt;span [class.ok]&#x3D;&quot;!campo(&#x27;clave&#x27;).errors?.[&#x27;maxlength&#x27;]&quot;&gt;Máx. 18&lt;/span&gt;
-      &lt;span [class.ok]&#x3D;&quot;!campo(&#x27;clave&#x27;).errors?.[&#x27;uppercase&#x27;]&quot;&gt;Mayúscula&lt;/span&gt;
-      &lt;span [class.ok]&#x3D;&quot;!campo(&#x27;clave&#x27;).errors?.[&#x27;number&#x27;]&quot;&gt;Número&lt;/span&gt;
+      &lt;span [class.ok]&#x3D;&quot;campo(&#x27;clave&#x27;).value &amp;&amp; !campo(&#x27;clave&#x27;).errors?.[&#x27;minlength&#x27;]&quot;&gt;
+        Mín. 6
+      &lt;/span&gt;
+      &lt;span [class.ok]&#x3D;&quot;campo(&#x27;clave&#x27;).value &amp;&amp; !campo(&#x27;clave&#x27;).errors?.[&#x27;maxlength&#x27;]&quot;&gt;
+        Máx. 18
+      &lt;/span&gt;
+      &lt;span [class.ok]&#x3D;&quot;campo(&#x27;clave&#x27;).value &amp;&amp; !campo(&#x27;clave&#x27;).errors?.[&#x27;uppercase&#x27;]&quot;&gt;
+        Mayúscula
+      &lt;/span&gt;
+      &lt;span [class.ok]&#x3D;&quot;campo(&#x27;clave&#x27;).value &amp;&amp; !campo(&#x27;clave&#x27;).errors?.[&#x27;number&#x27;]&quot;&gt; Número &lt;/span&gt;
     &lt;/div&gt;
 
     &lt;!-- REPETIR CLAVE --&gt;
@@ -1031,7 +1040,7 @@ export class RegistroComponent implements OnInit {
     &lt;/div&gt;
 
     &lt;small *ngIf&#x3D;&quot;form.errors?.[&#x27;noCoinciden&#x27;] &amp;&amp; campo(&#x27;repetirClave&#x27;).touched&quot; class&#x3D;&quot;error&quot;&gt;
-    {{ form.errors?.[&#x27;noCoinciden&#x27;] }}
+      {{ form.errors?.[&#x27;noCoinciden&#x27;] }}
     &lt;/small&gt;
 
     &lt;!-- FECHA --&gt;
@@ -1044,7 +1053,7 @@ export class RegistroComponent implements OnInit {
       &quot;
       class&#x3D;&quot;error&quot;
     &gt;
-        {{ getFechaError() }} 
+      {{ getFechaError() }}
     &lt;/small&gt;
 
     &lt;!-- DIRECCIÓN --&gt;
@@ -1172,8 +1181,8 @@ label {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section class="registro-container">  <h2 class="text-center mb-4">Formulario de Registro</h2>  <form [formGroup]="form" (ngSubmit)="submit()" class="registro-form">    <!-- NOMBRE -->    <label>Nombre completo:</label>    <input      type="text"      class="form-control"      formControlName="nombre"      placeholder="Ej: Patricio Silva"    />    <small *ngIf="campo(\'nombre\').touched && campo(\'nombre\').invalid" class="error">      Ingresa un nombre válido.    </small>    <!-- USUARIO -->    <label>Nombre de usuario:</label>    <input type="text" class="form-control" formControlName="usuario" placeholder="Ej: PSilva" />    <small *ngIf="campo(\'usuario\').touched && campo(\'usuario\').invalid" class="error">      Debe tener al menos 3 caracteres.    </small>    <!-- CORREO -->    <label>Correo electrónico:</label>    <input      type="email"      class="form-control"      formControlName="correo"      placeholder="Ej: PSilva@gmail.com"    />    <small *ngIf="campo(\'correo\').touched && campo(\'correo\').invalid && !campo(\'correo\').errors?.[\'existe\']" class="error">      Ingresa un correo válido.    </small>    <small *ngIf="campo(\'correo\').errors?.[\'existe\']" class="error">      Este correo ya se encuentra registrado.    </small>    <!-- CLAVE -->    <label>Clave de ingreso:</label>    <div class="input-group password-group">      <input [type]="verClave ? \'text\' : \'password\'" class="form-control" formControlName="clave" />      <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>    </div>    <!-- REGLAS -->    <div class="reglas" *ngIf="campo(\'clave\').touched">      <span [class.ok]="!campo(\'clave\').errors?.[\'minlength\']">Mín. 6</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'maxlength\']">Máx. 18</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'uppercase\']">Mayúscula</span>      <span [class.ok]="!campo(\'clave\').errors?.[\'number\']">Número</span>    </div>    <!-- REPETIR CLAVE -->    <label>Repetir clave:</label>    <div class="input-group password-group">      <input        [type]="verClave2 ? \'text\' : \'password\'"        formControlName="repetirClave"        class="form-control"      />      <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>    </div>    <small *ngIf="form.errors?.[\'noCoinciden\'] && campo(\'repetirClave\').touched" class="error">    {{ form.errors?.[\'noCoinciden\'] }}    </small>    <!-- FECHA -->    <label>Fecha de nacimiento:</label>    <input type="date" formControlName="fechaNacimiento" class="form-control" />    <small      *ngIf="        campo(\'fechaNacimiento\').errors &&        (campo(\'fechaNacimiento\').dirty || campo(\'fechaNacimiento\').touched)      "      class="error"    >        {{ getFechaError() }}     </small>    <!-- DIRECCIÓN -->    <label>Dirección de despacho (opcional):</label>    <input type="text" formControlName="direccion" class="form-control" />    <!-- BOTONES -->    <div class="botones">      <button type="button" class="btn btn-outline-secondary" (click)="limpiar()">Limpiar</button>      <button type="submit" class="btn btn-primary">Registrar</button>    </div>  </form></section></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+        var COMPONENT_TEMPLATE = '<div><section class="registro-container">  <h2 class="text-center mb-4">Formulario de Registro</h2>  <form [formGroup]="form" (ngSubmit)="submit()" class="registro-form">    <!-- NOMBRE -->    <label>Nombre completo:</label>    <input      type="text"      class="form-control"      formControlName="nombre"      placeholder="Ej: Patricio Silva"    />    <small *ngIf="campo(\'nombre\').touched && campo(\'nombre\').invalid" class="error">      Ingresa un nombre válido.    </small>    <!-- USUARIO -->    <label>Nombre de usuario:</label>    <input type="text" class="form-control" formControlName="usuario" placeholder="Ej: PSilva" />    <small *ngIf="campo(\'usuario\').touched && campo(\'usuario\').invalid" class="error">      Debe tener al menos 3 caracteres.    </small>    <!-- CORREO -->    <label>Correo electrónico:</label>    <input      type="email"      class="form-control"      formControlName="correo"      placeholder="Ej: PSilva@gmail.com"    />    <small      *ngIf="campo(\'correo\').touched && campo(\'correo\').invalid && !campo(\'correo\').errors?.[\'existe\']"      class="error"    >      Ingresa un correo válido.    </small>    <small *ngIf="campo(\'correo\').errors?.[\'existe\']" class="error">      Este correo ya se encuentra registrado.    </small>    <!-- CLAVE -->    <label>Clave de ingreso:</label>    <div class="input-group password-group">      <input [type]="verClave ? \'text\' : \'password\'" class="form-control" formControlName="clave" />      <button type="button" class="btn-ojo" (click)="verClave = !verClave">👁️</button>    </div>    <!-- REGLAS -->    <div class="reglas" *ngIf="campo(\'clave\').touched">      <span [class.ok]="campo(\'clave\').value && !campo(\'clave\').errors?.[\'minlength\']">        Mín. 6      </span>      <span [class.ok]="campo(\'clave\').value && !campo(\'clave\').errors?.[\'maxlength\']">        Máx. 18      </span>      <span [class.ok]="campo(\'clave\').value && !campo(\'clave\').errors?.[\'uppercase\']">        Mayúscula      </span>      <span [class.ok]="campo(\'clave\').value && !campo(\'clave\').errors?.[\'number\']"> Número </span>    </div>    <!-- REPETIR CLAVE -->    <label>Repetir clave:</label>    <div class="input-group password-group">      <input        [type]="verClave2 ? \'text\' : \'password\'"        formControlName="repetirClave"        class="form-control"      />      <button type="button" class="btn-ojo" (click)="verClave2 = !verClave2">👁️</button>    </div>    <small *ngIf="form.errors?.[\'noCoinciden\'] && campo(\'repetirClave\').touched" class="error">      {{ form.errors?.[\'noCoinciden\'] }}    </small>    <!-- FECHA -->    <label>Fecha de nacimiento:</label>    <input type="date" formControlName="fechaNacimiento" class="form-control" />    <small      *ngIf="        campo(\'fechaNacimiento\').errors &&        (campo(\'fechaNacimiento\').dirty || campo(\'fechaNacimiento\').touched)      "      class="error"    >      {{ getFechaError() }}    </small>    <!-- DIRECCIÓN -->    <label>Dirección de despacho (opcional):</label>    <input type="text" formControlName="direccion" class="form-control" />    <!-- BOTONES -->    <div class="botones">      <button type="button" class="btn btn-outline-secondary" (click)="limpiar()">Limpiar</button>      <button type="submit" class="btn btn-primary">Registrar</button>    </div>  </form></section></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CategoriaComponent', 'selector': 'app-categoria'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegistroComponent'};
 </script>
