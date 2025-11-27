@@ -1,59 +1,137 @@
-# Juegomesa
+# Juegos de Mesa – Cuatro Esquinas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+Aplicación web desarrollada con **Angular** y **TypeScript** para la exploración y compra de juegos de mesa familiares.
+El proyecto fue generado con **Angular CLI 20.3.9**. 
+---
 
-## Development server
+## Tabla de Contenidos
 
-To start a local development server, run:
+1. [Descripción General](#descripción-general)
+2. [Características Principales](#características-principales)
+3. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+4. [Requisitos Previos](#requisitos-previos)
+5. [Instalación y Puesta en Marcha](#instalación-y-puesta-en-marcha)
+6. [Estructura del Proyecto](#estructura-del-proyecto)
+7. [Pruebas](#pruebas)
+---
+
+## Descripción General
+
+**Juegos de Mesa – Cuatro Esquinas** es una SPA (Single Page Application) que simula una tienda de juegos de mesa.  
+Permite a los usuarios:
+
+- Explorar categorías de juegos.
+- Ver el detalle de los productos.
+- Agregar ítems a un carrito de compras.
+- Registrarse, iniciar sesión y gestionar su perfil.
+- (Opcional) Acceder a un panel de administración protegido por rol.
+
+La aplicación está diseñada con una arquitectura modular, separando responsabilidades entre **componentes**, **servicios**, **guards** y **módulos** para favorecer la escalabilidad y el mantenimiento.
+---
+
+## Características Principales
+
+- **Catálogo de juegos de mesa**
+  - Listado de categorías.
+  - Vistas de productos por categoría.
+  - Detalle básico de cada juego (imagen, título, precio, etc.).
+
+- **Carrito de compras**
+  - Agregar / eliminar productos.
+  - Actualizar cantidades.
+  - Cálculo automático de subtotal, costo de envío y total.
+  - Soporte para cupones de descuento (lógica encapsulada en servicios).
+
+- **Autenticación de usuarios**
+  - Registro de nuevos usuarios con formularios reactivos.
+  - Inicio de sesión con validaciones de credenciales.
+  - Gestión de sesión a nivel de frontend.
+
+- **Perfil de usuario**
+  - Visualización de datos básicos del usuario autenticado.
+  - Actualización de información y cambio de contraseña.
+
+- **Panel de administración (si aplica)**
+  - Acceso protegido mediante **guards** por rol.
+  - Listado de usuarios y cambio de estado (activo/inactivo).
+
+- **Diseño responsivo**
+  - Maquetación con **Bootstrap** y estilos personalizados en **SCSS**.
+  - Adaptación automática a distintos tamaños de pantalla (desktop, tablet, móvil).
+---
+
+## Tecnologías Utilizadas
+
+- **Framework Frontend:** Angular  
+- **Lenguaje:** TypeScript  
+- **CLI:** Angular CLI 20.3.9 :contentReference[oaicite:1]{index=1}  
+- **Estilos y UI:**
+  - Bootstrap (sistema de grillas, componentes básicos).
+  - SCSS para estilos personalizados.
+- **Pruebas:**
+  - Karma + Jasmine para pruebas unitarias. :contentReference[oaicite:2]{index=2}
+---
+
+## Requisitos Previos
+
+Antes de clonar y ejecutar el proyecto, asegúrate de tener instalado:
+
+- [Node.js](https://nodejs.org/) (versión LTS recomendada).
+- [npm](https://www.npmjs.com/) (incluido con Node.js).
+- Angular CLI:
 
 ```bash
-ng serve
-```
+npm install -g @angular/cli
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Estructura del Proyecto
 
-```bash
-ng generate component component-name
-```
+La aplicación sigue una arquitectura modular organizada principalmente en **páginas** (vistas) y **componentes compartidos**. A continuación se detalla el contenido de los directorios principales dentro de `src/app`:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **`core/`**: Contiene la lógica esencial y de única instancia, como los **guards** para proteger rutas (admin, usuarios).
+- **`pages/`**: Aquí se encuentran los componentes que actúan como "vistas" o páginas completas de la aplicación:
+  - **`admin/`**: Panel de gestión.
+  - **`home/`**: Página de inicio (Landing page).
+  - **`carrito/`**: Vista del resumen de compra.
+  - **`login/`, `registro/`, `recuperar/`**: Vistas de autenticación.
+  - **`categoria/`**: Exploración de productos.
+- **`shared/`**: Componentes visuales reutilizables que aparecen en múltiples partes de la app, como el  **navbar**, el **footer** y las notificaciones tipo **toast**.
+- **`assets/`**: Recursos estáticos, incluyendo las imágenes de las categorías de juegos.
 
-```bash
-ng generate --help
-```
+### Árbol de Directorios
 
-## Building
+```text
++---app
+|   +---core
+|   |   \---guards
+|   +---pages
+|   |   +---admin
+|   |   +---carrito
+|   |   +---categoria
+|   |   +---home
+|   |   +---login
+|   |   +---perfil
+|   |   +---recuperar
+|   |   \---registro
+|   +---shared
+|   |   +---footer
+|   |   +---navbar
+|   |   \---toast
+|   \---styles
+\---assets
+    \---img
+        \---categorias
 
-To build the project run:
+## Pruebas
 
-```bash
-ng build
-```
+Las pruebas unitarias se implementan en los archivos con extensión `*.spec.ts` y cubren principalmente:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Creación básica** de componentes y servicios.
+- **Validaciones simples** de formularios reactivos.
+- **Comportamiento esperado** de métodos de lógica de negocio.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Para ejecutar las pruebas, utiliza el comando:
 
 ```bash
 ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

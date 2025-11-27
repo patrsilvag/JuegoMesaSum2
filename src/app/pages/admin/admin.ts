@@ -6,8 +6,8 @@ import { AdminService } from './admin.service';
  * Panel de administración para listar y filtrar usuarios,
  * así como cambiar su estado activo/inactivo.
  * @usageNotes
- * - Se apoya en `AdminService` para cargar, filtrar y actualizar usuarios.
- * - Usa un formulario reactivo `filtroForm` con campos `correo`, `rol` y `estado`.
+ * - Se apoya en AdminService para cargar, filtrar y actualizar usuarios.
+ * - Usa un formulario reactivo filtroForm con campos correo, rol y estado.
  */
 @Component({
   selector: 'app-admin',

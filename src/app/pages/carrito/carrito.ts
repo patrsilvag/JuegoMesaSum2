@@ -7,8 +7,8 @@ import { Cart, CartItem } from '../../core/cart';
  * Página del carrito de compras. Muestra los productos añadidos,
  * permite modificar cantidades, vaciar el carrito y aplicar cupones de descuento.
  * @usageNotes
- * - Se apoya en el servicio `Cart` para la lógica de negocio (totales, envío, etc.).
- * - Usa un formulario reactivo sencillo (`cuponForm`) para introducir el código de cupón.
+ * - Se apoya en el servicio Cart para la lógica de negocio (totales, envío, etc.).
+ * - Usa un formulario reactivo sencillo (cuponForm) para introducir el código de cupón.
  */
 @Component({
   selector: 'app-carrito',
